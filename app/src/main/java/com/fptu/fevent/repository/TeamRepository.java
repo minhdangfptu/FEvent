@@ -3,7 +3,7 @@ package com.fptu.fevent.repository;
 import android.app.Application;
 
 import com.fptu.fevent.model.Team;
-import com.fptu.fevent.model.TeamDao;
+import com.fptu.fevent.dao.TeamDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

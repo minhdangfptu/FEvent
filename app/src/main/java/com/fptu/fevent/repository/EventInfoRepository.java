@@ -3,7 +3,7 @@ package com.fptu.fevent.repository;
 import android.app.Application;
 
 import com.fptu.fevent.model.EventInfo;
-import com.fptu.fevent.model.EventInfoDao;
+import com.fptu.fevent.dao.EventInfoDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

@@ -17,6 +17,6 @@ public interface ScheduleDao {
     @Delete
     void delete(Schedule entity);
 
-    @Query("SELECT * FROM schedule")
+    @Query("SELECT * FROM Schedule")
     List<Schedule> getAll();
 }

@@ -17,6 +17,6 @@ public interface TaskDao {
     @Delete
     void delete(Task entity);
 
-    @Query("SELECT * FROM task")
+    @Query("SELECT * FROM Task")
     List<Task> getAll();
 }

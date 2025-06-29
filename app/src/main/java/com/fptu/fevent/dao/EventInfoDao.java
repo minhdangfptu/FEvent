@@ -17,6 +17,6 @@ public interface EventInfoDao {
     @Delete
     void delete(EventInfo entity);
 
-    @Query("SELECT * FROM eventinfo")
+    @Query("SELECT * FROM EventInfo")
     List<EventInfo> getAll();
 }

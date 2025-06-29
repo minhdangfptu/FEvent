@@ -5,26 +5,24 @@ import androidx.room.*;
 import java.util.Date;
 
 @Entity(
-        tableName = "EventInfo",
+        tableName = "EventFeedback",
         foreignKeys = {
                 @ForeignKey(
                         entity = User.class,
                         parentColumns = "id",
-                        childColumns = "created_by",
-                        onDelete = ForeignKey.SET_NULL
+                        childColumns = "user_id",
+                        onDelete = ForeignKey.CASCADE
                 )
         }
 )
-public class EventInfo {
+public class EventFeedback {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public String name;
-    public Date start_time;
-    public Date end_time;
-    public String location;
-    public String description;
-
     @ColumnInfo(index = true)
-    public Integer created_by;
+    public int user_id;
+
+    public int rating;
+    public String comment;
+    public Date created_at;
 }

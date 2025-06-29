@@ -3,7 +3,7 @@ package com.fptu.fevent.repository;
 import android.app.Application;
 
 import com.fptu.fevent.model.User;
-import com.fptu.fevent.model.UserDao;
+import com.fptu.fevent.dao.UserDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

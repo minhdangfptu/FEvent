@@ -2,8 +2,8 @@ package com.fptu.fevent.repository;
 
 import android.app.Application;
 
-import com.fptu.fevent.model.EventFeedbacks;
-import com.fptu.fevent.model.EventFeedbacksDao;
+import com.fptu.fevent.dao.EventFeedback;
+import com.fptu.fevent.dao.EventFeedbackDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

@@ -5,34 +5,33 @@ import androidx.room.*;
 import java.util.Date;
 
 @Entity(
-        tableName = "Task",
+        tableName = "UserFeedback",
         foreignKeys = {
                 @ForeignKey(
                         entity = User.class,
                         parentColumns = "id",
-                        childColumns = "assigned_to",
-                        onDelete = ForeignKey.SET_NULL
+                        childColumns = "from_user_id",
+                        onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
-                        entity = Team.class,
+                        entity = User.class,
                         parentColumns = "id",
-                        childColumns = "team_id",
-                        onDelete = ForeignKey.SET_NULL
+                        childColumns = "to_user_id",
+                        onDelete = ForeignKey.CASCADE
                 )
         }
 )
-public class Task {
+public class UserFeedback {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public String title;
-    public String description;
-    public String status;
-    public Date due_date;
+    @ColumnInfo(index = true)
+    public int from_user_id;
 
     @ColumnInfo(index = true)
-    public Integer assigned_to;
+    public int to_user_id;
 
-    @ColumnInfo(index = true)
-    public Integer team_id;
+    public int rating;
+    public String comment;
+    public Date created_at;
 }

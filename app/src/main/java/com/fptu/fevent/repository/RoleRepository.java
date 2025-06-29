@@ -3,7 +3,7 @@ package com.fptu.fevent.repository;
 import android.app.Application;
 
 import com.fptu.fevent.model.Role;
-import com.fptu.fevent.model.RoleDao;
+import com.fptu.fevent.dao.RoleDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

@@ -17,6 +17,6 @@ public interface UserDao {
     @Delete
     void delete(User entity);
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM User")
     List<User> getAll();
 }

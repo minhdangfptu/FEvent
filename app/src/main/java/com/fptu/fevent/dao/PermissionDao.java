@@ -17,6 +17,6 @@ public interface PermissionDao {
     @Delete
     void delete(Permission entity);
 
-    @Query("SELECT * FROM permission")
+    @Query("SELECT * FROM Permission")
     List<Permission> getAll();
 }

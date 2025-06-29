@@ -17,6 +17,6 @@ public interface TeamDao {
     @Delete
     void delete(Team entity);
 
-    @Query("SELECT * FROM team")
+    @Query("SELECT * FROM Team")
     List<Team> getAll();
 }
