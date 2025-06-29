@@ -2,6 +2,10 @@ package com.fptu.fevent.model;
 
 import androidx.room.*;
 
+import com.fptu.fevent.util.DateConverter;
+
+import java.util.Date;
+
 @Entity(
         tableName = "User",
         foreignKeys = {
@@ -17,14 +21,9 @@ import androidx.room.*;
                         childColumns = "team_id",
                         onDelete = ForeignKey.SET_NULL
                 ),
-                @ForeignKey(
-                        entity = EventInfo.class,
-                        parentColumns = "id",
-                        childColumns = "evenInfo_id;",
-                        onDelete = ForeignKey.SET_NULL
-                )
         }
 )
+@TypeConverters(DateConverter.class)
 public class User {
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -33,6 +32,7 @@ public class User {
     public String email;
     public String password;
     public String fullname;
+    public Date date_of_birth;
     public String phone_number;
     public String club;
     public String department;
@@ -43,6 +43,4 @@ public class User {
     @ColumnInfo(index = true)
     public Integer team_id;
 
-    @ColumnInfo(index = true)
-    public Integer evenInfo_id;
 }

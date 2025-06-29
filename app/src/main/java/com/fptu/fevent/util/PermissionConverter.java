@@ -1,19 +1,30 @@
 package com.fptu.fevent.util;
 
 import androidx.room.TypeConverter;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import org.json.JSONArray;
+import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
+
 public class PermissionConverter {
 
     @TypeConverter
-    public static String fromList(List<Integer> list) {
-        return new Gson().toJson(list);
+    public String fromList(List<String> list) {
+        return new JSONArray(list).toString();  // lưu dưới dạng ["a", "b"]
     }
 
     @TypeConverter
-    public static List<Integer> toList(String json) {
-        return new Gson().fromJson(json, new TypeToken<List<Integer>>(){}.getType());
+    public List<String> toList(String json) {
+        List<String> list = new ArrayList<>();
+        try {
+            JSONArray array = new JSONArray(json);
+            for (int i = 0; i < array.length(); i++) {
+                list.add(array.getString(i));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

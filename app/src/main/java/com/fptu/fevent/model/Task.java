@@ -2,6 +2,8 @@ package com.fptu.fevent.model;
 
 import androidx.room.*;
 
+import com.fptu.fevent.util.DateConverter;
+
 import java.util.Date;
 
 @Entity(
@@ -21,6 +23,7 @@ import java.util.Date;
                 )
         }
 )
+@TypeConverters(DateConverter.class)
 public class Task {
     @PrimaryKey(autoGenerate = true)
     public int id;

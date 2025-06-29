@@ -19,7 +19,7 @@ import com.fptu.fevent.util.PermissionConverter;
         },
         version = 1
 )
-@TypeConverters({ PermissionConverter.class })
+@TypeConverters({PermissionConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
