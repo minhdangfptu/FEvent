@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- 🔵 Cơ bản -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- 🔴 Màu Chủ Đạo – F-Event Red -->
+    <color name="red_500">#EF4444</color> <!-- Primary action -->
+
+    <!-- 🔵 Màu Phụ – F-Event Blue -->
+    <color name="blue_500">#3B82F6</color> <!-- Secondary buttons, link -->
+
+    <!-- ⚪ Màu Trung Tính – Gray Scale -->
+    <color name="gray_100">#F5F7FA</color> <!-- Background -->
+    <color name="gray_600">#4B5563</color> <!-- Text muted -->
+    <color name="gray_700">#374151</color> <!-- Text dark -->
+
+    <!-- 🟣 Màu Nhấn – Dành cho trạng thái -->
+    <color name="success_green">#22C55E</color>
+    <color name="warning_yellow">#FACC15</color>
+    <color name="urgent_orange">#F97316</color>
+    <color name="admin_purple">#8B5CF6</color>
+
+    <!-- 🌈 Màu Gradient / Branding riêng -->
+    <color name="bg_gradient_start">#1775F4</color>
+    <color name="bg_gradient_end">#2342B0</color>
+
+    <!-- 🔵 Thêm màu phụ branding nếu dùng -->
+    <color name="primary_300">#7D8DFF</color>
+    <color name="primary_500">#4C6FFF</color>
+    <color name="primary_700">#3553F0</color>
+
 </resources>
