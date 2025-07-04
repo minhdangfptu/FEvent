@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:src="@drawable/fe_knen"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:contentDescription="Customize Icon" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:text="Cá nhân hóa theo phong cách của bạn"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray_700"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:text="Thiết lập trải nghiệm phù hợp với từng người dùng."
+        android:textSize="16sp"
+        android:textColor="@color/gray_600"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" />
+</LinearLayout>

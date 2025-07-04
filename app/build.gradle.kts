@@ -41,6 +41,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     // Room (Java support)
+    implementation ("androidx.core:core-ktx:1.12.0")  // hoặc phiên bản mới nhất
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1") // dùng cho Java
 
