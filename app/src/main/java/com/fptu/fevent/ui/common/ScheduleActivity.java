@@ -1,4 +1,4 @@
-package com.fptu.fevent.ui;
+package com.fptu.fevent.ui.common;
 
 import android.os.Bundle;
 
@@ -10,14 +10,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.fptu.fevent.R;
 
-public class HomeActivity extends AppCompatActivity  {
+public class ScheduleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_home);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_container), (v, insets) -> {
+        setContentView(R.layout.activity_schedule);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;

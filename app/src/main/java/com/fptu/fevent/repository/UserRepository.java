@@ -43,4 +43,24 @@ public class UserRepository {
             callback.onResult(user);
         });
     }
+
+    public interface CheckEmailCallback { void onResult(boolean exists); }
+
+    /** true = email đã tồn tại */
+    public void isEmailExists(String email, CheckEmailCallback cb) {
+        executor.execute(() -> {
+            boolean exists = userDao.countByEmail(email) > 0;
+            cb.onResult(exists);
+        });
+    }
+
+    /** thêm user xong trả về ID row ( >0 nếu OK ) */
+    public interface InsertCallback { void onInserted(long id); }
+
+    public void insertAsync(User user, InsertCallback cb) {
+        executor.execute(() -> {
+            long newId = userDao.insert(user);
+            cb.onInserted(newId);
+        });
+    }
 }

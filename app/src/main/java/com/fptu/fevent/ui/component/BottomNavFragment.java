@@ -1,4 +1,4 @@
-package com.fptu.fevent.ui;
+package com.fptu.fevent.ui.component;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.fptu.fevent.R;
-import com.fptu.fevent.ui.EventInfoActivity;
-import com.fptu.fevent.ui.HomeActivity;
-import com.fptu.fevent.ui.DepartmentActivity;
-import com.fptu.fevent.ui.ScheduleActivity;
-import com.fptu.fevent.ui.TaskActivity;
+import com.fptu.fevent.ui.common.EventInfoActivity;
+import com.fptu.fevent.ui.common.HomeActivity;
+import com.fptu.fevent.ui.common.DepartmentActivity;
+import com.fptu.fevent.ui.common.ScheduleActivity;
+import com.fptu.fevent.ui.common.TaskActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavFragment extends Fragment {

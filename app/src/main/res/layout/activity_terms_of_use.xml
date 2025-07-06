@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_100"
+    tools:context=".ui.auth.TermsOfUseActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Quay lại"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:tint="@color/gray_700" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Điều Khoản Sử Dụng"
+            android:textColor="@color/gray_700"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Main Content ScrollView -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Document Info -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/fe_knen" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Công Ty TNHH Công Nghệ F-Event"
+                        android:textColor="@color/gray_700"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Ngày có hiệu lực: 1 tháng 1, 2024"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Cập nhật lần cuối: 15 tháng 12, 2025 • Phiên bản 3.0"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 1: Acceptance of Terms -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1. Chấp Nhận Điều Khoản"
+                        android:textColor="@color/red_500"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Bằng việc truy cập và sử dụng các dịch vụ F-Event (&quot;Dịch vụ&quot;), bạn chấp nhận và đồng ý bị ràng buộc bởi các điều khoản và điều kiện của thỏa thuận này. Nếu bạn không đồng ý tuân thủ các điều khoản trên, vui lòng không sử dụng dịch vụ này."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Các Điều Khoản Sử Dụng này tạo thành một thỏa thuận ràng buộc về mặt pháp lý giữa bạn và Công Ty TNHH Công Nghệ F-Event liên quan đến việc sử dụng các dịch vụ, trang web và ứng dụng của chúng tôi."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/warning_yellow"
+                        android:padding="8dp"
+                        android:text="⚠️ Bằng việc tiếp tục sử dụng dịch vụ của chúng tôi, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý bị ràng buộc bởi các điều khoản này."
+                        android:textColor="@color/gray_700"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 2: User Accounts -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2. Tài Khoản Người Dùng và Đăng Ký"
+                        android:textColor="@color/gray_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Để truy cập một số tính năng nhất định của Dịch vụ, bạn phải đăng ký tài khoản. Bạn đồng ý cung cấp thông tin chính xác, hiện tại và đầy đủ trong quá trình đăng ký."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Yêu cầu:"
+                        android:textColor="@color/blue_500"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="• Bạn phải ít nhất 13 tuổi để tạo tài khoản\n• Bạn phải cung cấp địa chỉ email hợp lệ\n• Bạn có trách nhiệm duy trì tính bảo mật của thông tin đăng nhập tài khoản\n• Bạn phải thông báo ngay lập tức cho chúng tôi về bất kỳ việc sử dụng trái phép nào đối với tài khoản của bạn"
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 3: Acceptable Use Policy -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3. Chính Sách Sử Dụng Chấp Nhận Được"
+                        android:textColor="@color/urgent_orange"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Bạn đồng ý chỉ sử dụng Dịch vụ cho các mục đích hợp pháp và phù hợp với các Điều khoản này. Bạn đồng ý không sử dụng Dịch vụ để:"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="• Vi phạm bất kỳ luật hoặc quy định địa phương, tiểu bang, quốc gia hoặc quốc tế nào\n• Truyền tải bất kỳ tài liệu quảng cáo hoặc khuyến mại nào, bao gồm thư rác\n• Mạo danh Công ty, nhân viên hoặc người dùng khác\n• Tham gia vào hành vi hạn chế việc sử dụng Dịch vụ của người khác\n• Sử dụng Dịch vụ theo cách có thể làm hỏng hoặc làm suy giảm nó\n• Sử dụng thiết bị tự động để truy cập Dịch vụ mà không có sự cho phép"
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/red_500"
+                        android:padding="8dp"
+                        android:text="⚠️ Vi phạm chính sách này có thể dẫn đến việc chấm dứt tài khoản của bạn ngay lập tức."
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 4: Privacy and Data Protection -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4. Quyền Riêng Tư và Bảo Vệ Dữ Liệu"
+                        android:textColor="@color/admin_purple"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Chúng tôi thu thập và xử lý dữ liệu cá nhân theo Chính sách Quyền riêng tư của chúng tôi. Bằng việc sử dụng Dịch vụ, bạn đồng ý với việc xử lý như vậy và đảm bảo rằng tất cả dữ liệu do bạn cung cấp là chính xác."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Biện Pháp Bảo Mật:"
+                        android:textColor="@color/success_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="• Mã hóa đầu cuối cho dữ liệu nhạy cảm\n• Kiểm tra bảo mật thường xuyên và thử nghiệm thâm nhập\n• Kiểm soát truy cập và giao thức xác thực\n• Sao lưu dữ liệu và quy trình khôi phục thảm họa"
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Đối với người dùng EU: Chúng tôi tuân thủ GDPR. Bạn có quyền truy cập, chỉnh sửa, xóa, hạn chế xử lý và chuyển dữ liệu cá nhân của mình."
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 5: Payment and Billing -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5. Thanh Toán và Lập Hóa Đơn"
+                        android:textColor="@color/success_green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Một số tính năng nhất định yêu cầu thanh toán phí. Bạn đồng ý thanh toán tất cả các khoản phí áp dụng như được mô tả trên Dịch vụ tại thời điểm mua hàng."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="• Phí được tính trước theo tháng hoặc năm\n• Tất cả các khoản phí không được hoàn lại trừ khi được nêu rõ\n• Chúng tôi có quyền thay đổi phí với thông báo trước 30 ngày\n• Không thanh toán có thể dẫn đến việc tạm ngưng tài khoản"
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/success_green"
+                        android:padding="8dp"
+                        android:text="💰 Đảm bảo hoàn tiền trong 14 ngày cho đăng ký mới"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 6: Termination -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="6. Chấm Dứt"
+                        android:textColor="@color/urgent_orange"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Bạn có thể chấm dứt tài khoản của mình bất cứ lúc nào. Chúng tôi có thể chấm dứt hoặc tạm ngưng tài khoản của bạn ngay lập tức vì bất kỳ lý do gì, bao gồm vi phạm các Điều khoản này."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Khi chấm dứt, quyền sử dụng Dịch vụ của bạn sẽ chấm dứt ngay lập tức. Chúng tôi sẽ cung cấp cho bạn cơ hội hợp lý để lấy lại dữ liệu của bạn trong 30 ngày sau khi chấm dứt."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 7: Disclaimers -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="7. Tuyên Bố Từ Chối và Giới Hạn Trách Nhiệm"
+                        android:textColor="@color/warning_yellow"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="DỊCH VỤ ĐƯỢC CUNG CẤP TRÊN CƠ SỞ &quot;NHƯ LÀ&quot; VÀ &quot;NHƯ CÓ SẴN&quot;. CHÚNG TÔI TỪ CHỐI RÕ RÀNG TẤT CẢ CÁC BẢO HÀNH THUỘC BẤT KỲ LOẠI NÀO, DÙ LÀ RÕ RÀNG, NGỤ Ý HAY THEO LUẬT ĐỊNH."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="TRONG MỌI TRƯỜNG HỢP, CÔNG TY SẼ KHÔNG CHỊU TRÁCH NHIỆM ĐỐI VỚI BẤT KỲ THIỆT HẠI GIÁN TIẾP, NGẪU NHIÊN, ĐẶC BIỆT, HẬU QUẢ HOẶC TRỪNG PHẠT NÀO, BAO GỒM NHƯNG KHÔNG GIỚI HẠN, MẤT LỢI NHUẬN, DỮ LIỆU, SỬ DỤNG, UY TÍN HOẶC CÁC THIỆT HẠI VÔ HÌNH KHÁC."
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Section 8: Contact Information -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="8. Thông Tin Liên Hệ"
+                        android:textColor="@color/blue_500"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Nếu bạn có bất kỳ câu hỏi nào về các Điều Khoản Sử Dụng này, vui lòng liên hệ với chúng tôi:"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="📧 support@fevent.com\n📞 +84 0398826650 - MangDinhDepTrai\n🏢 Công Ty TNHH Công Nghệ F-Event\n    Tòa nhà Delta, Đại học FPT Hà Nội\n    Xã Hòa Lạc, TP. Hà Nội\n    Việt Nam\n🕒 Thứ Hai - Thứ Sáu, 9:00 - 18:00 (GMT+7)"
+                        android:textColor="@color/gray_600"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom Action Layout -->
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="© 2024 Công Ty TNHH Công Nghệ F-Event."
+            android:textColor="@color/gray_600"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_decline"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@color/gray_100"
+                android:text="TỪ CHỐI"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_accept"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@color/red_500"
+                android:text="CHẤP NHẬN"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

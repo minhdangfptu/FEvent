@@ -9,7 +9,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Insert
-    void insert(User entity);
+    long insert(User entity);
 
     @Update
     void update(User entity);
@@ -22,4 +22,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM User WHERE email = :email AND password = :password LIMIT 1")
     User login(String email, String password);
+
+    @Query("SELECT COUNT(*) FROM User WHERE email = :email")
+    int countByEmail(String email);
 }

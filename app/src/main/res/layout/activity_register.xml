@@ -36,7 +36,7 @@
                 <!-- Logo -->
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="8dp"
                     android:src="@drawable/fe_knen" />
@@ -230,7 +230,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#FECACA">
@@ -241,6 +241,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="12dp">
+
 
                         <ImageView
                             android:layout_width="20dp"

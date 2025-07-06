@@ -26,25 +26,25 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//// CHỈ thêm user nếu chưa có dữ liệu
-        Executors.newSingleThreadExecutor().execute(() -> {
-            UserRepository userRepository = new UserRepository(getApplication());
-            List<User> existingUsers = userRepository.getAll(); // getAll là hàm sync trong repo bạn đã có
-
-            if (existingUsers == null || existingUsers.isEmpty()) {
-                User demoUser = new User();
-                demoUser.name = "admin";
-                demoUser.email = "admin@vn";
-                demoUser.password = "1234";
-                demoUser.fullname = "Quản trị viên";
-                demoUser.date_of_birth = new Date();
-                demoUser.phone_number = "0901234567";
-                demoUser.club = "FPT Club";
-                demoUser.department = "CNTT";
-
-                userRepository.insert(demoUser);
-            }
-        });
+////// CHỈ thêm user nếu chưa có dữ liệu
+//        Executors.newSingleThreadExecutor().execute(() -> {
+//            UserRepository userRepository = new UserRepository(getApplication());
+//            List<User> existingUsers = userRepository.getAll(); // getAll là hàm sync trong repo bạn đã có
+//
+//            if (existingUsers == null || existingUsers.isEmpty()) {
+//                User demoUser = new User();
+//                demoUser.name = "admin";
+//                demoUser.email = "admin@vn";
+//                demoUser.password = "1234";
+//                demoUser.fullname = "Quản trị viên";
+//                demoUser.date_of_birth = new Date();
+//                demoUser.phone_number = "0901234567";
+//                demoUser.club = "FPT Club";
+//                demoUser.department = "CNTT";
+//
+//                userRepository.insert(demoUser);
+//            }
+//        });
 //         Kiểm tra nếu người dùng đã onboarding rồi → chuyển thẳng đến Login
         SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         if (!prefs.getBoolean("isFirstTime", true)) {

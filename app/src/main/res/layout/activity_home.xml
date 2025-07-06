@@ -400,7 +400,7 @@
     <!-- Fragment NavBar cố định dưới cùng -->
     <fragment
         android:id="@+id/bottom_nav_fragment"
-        android:name="com.fptu.fevent.ui.BottomNavFragment"
+        android:name="com.fptu.fevent.ui.component.BottomNavFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />

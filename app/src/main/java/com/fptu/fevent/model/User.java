@@ -43,4 +43,10 @@ public class User {
     @ColumnInfo(index = true)
     public Integer team_id;
 
+   
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 }
