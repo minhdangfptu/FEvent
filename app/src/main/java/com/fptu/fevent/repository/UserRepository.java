@@ -32,4 +32,15 @@ public class UserRepository {
     public void delete(User entity) {
         executor.execute(() -> userDao.delete(entity));
     }
+
+    public interface LoginCallback {
+        void onResult(User user);
+    }
+
+    public void login(String email, String password, LoginCallback callback) {
+        executor.execute(() -> {
+            User user = userDao.login(email, password);
+            callback.onResult(user);
+        });
+    }
 }
