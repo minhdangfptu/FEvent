@@ -6,6 +6,8 @@ import com.fptu.fevent.model.Team;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
+
 @Dao
 public interface TeamDao {
     @Insert
@@ -18,5 +20,5 @@ public interface TeamDao {
     void delete(Team entity);
 
     @Query("SELECT * FROM Team")
-    List<Team> getAll();
+    LiveData<List<Team>> getAllTeams();
 }
