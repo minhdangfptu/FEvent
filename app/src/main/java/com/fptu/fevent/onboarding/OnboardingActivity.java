@@ -9,7 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.fptu.fevent.R;
-import com.fptu.fevent.auth.LoginActivity;
+import com.fptu.fevent.database.DatabaseInitializer;
+import com.fptu.fevent.model.User;
+import com.fptu.fevent.repository.UserRepository;
+import com.fptu.fevent.ui.auth.LoginActivity;
+
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 public class OnboardingActivity extends AppCompatActivity {
 
@@ -20,14 +27,35 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Kiểm tra nếu người dùng đã onboarding rồi → chuyển thẳng đến Login
-//        SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-//        if (!prefs.getBoolean("isFirstTime", true)) {
-//            startActivity(new Intent(this, LoginActivity.class));
-//            finish();
-//            return;
-//        }
+        // 🟡 Gọi DatabaseInitializer để đảm bảo dữ liệu demo luôn có sẵn
+        DatabaseInitializer.initialize(getApplication());
+////// CHỈ thêm user nếu chưa có dữ liệu
+//        Executors.newSingleThreadExecutor().execute(() -> {
+//            UserRepository userRepository = new UserRepository(getApplication());
+//            List<User> existingUsers = userRepository.getAll(); // getAll là hàm sync trong repo bạn đã có
+//
+//            if (existingUsers == null || existingUsers.isEmpty()) {
+//                User demoUser = new User();
+//                demoUser.name = "admin";
+//                demoUser.email = "admin@vn";
+//                demoUser.password = "1234";
+//                demoUser.fullname = "Quản trị viên";
+//                demoUser.date_of_birth = new Date();
+//                demoUser.phone_number = "0901234567";
+//                demoUser.club = "FPT Club";
+//                demoUser.department = "CNTT";
+//                demoUser.role_id = null;
+//                demoUser.team_id = null;
+//                userRepository.insert(demoUser);
+//            }
+//        });
+//         Kiểm tra nếu người dùng đã onboarding rồi → chuyển thẳng đến Login
+        SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        if (!prefs.getBoolean("isFirstTime", true)) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
 
         setContentView(R.layout.activity_onboarding);
 
@@ -57,4 +85,5 @@ public class OnboardingActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+
 }

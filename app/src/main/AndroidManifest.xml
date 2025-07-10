@@ -13,10 +13,36 @@
         android:theme="@style/Theme.FEvent"
         tools:targetApi="31">
         <activity
-            android:name=".auth.RegisterActivity"
+            android:name=".ui.auth.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".ui.auth.TermsOfUseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.DepartmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.TaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.EventInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.HomeActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.component.BottomNavFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".onboarding.OnboardingFragment3"

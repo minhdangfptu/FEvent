@@ -11,6 +11,9 @@ public interface RoleDao {
     @Insert
     void insert(Role entity);
 
+    @Insert
+    void insertAll(Role... entities);
+
     @Update
     void update(Role entity);
 
@@ -19,4 +22,7 @@ public interface RoleDao {
 
     @Query("SELECT * FROM Role")
     List<Role> getAll();
+
+    @Query("SELECT COUNT(*) FROM Role")
+    int getCount();
 }

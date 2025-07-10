@@ -13,4 +13,10 @@ public class Permission {
     public String description;  // Mô tả quyền, ví dụ: "Tạo nhiệm vụ mới"
     public String group;        // Nhóm chức năng, ví dụ: TASK, SCHEDULE
 
+    public Permission(int id, String name, String description, String group) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.group = group;
+    }
 }

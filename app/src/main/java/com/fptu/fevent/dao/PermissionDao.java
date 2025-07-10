@@ -3,6 +3,7 @@ package com.fptu.fevent.dao;
 import androidx.room.*;
 
 import com.fptu.fevent.model.Permission;
+import com.fptu.fevent.model.Team;
 
 import java.util.List;
 
@@ -19,4 +20,10 @@ public interface PermissionDao {
 
     @Query("SELECT * FROM Permission")
     List<Permission> getAll();
+
+    @Insert
+    void insertAll(Permission... entities);
+
+    @Query("SELECT COUNT(*) FROM Permission")
+    int getCount();
 }

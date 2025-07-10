@@ -2,6 +2,7 @@ package com.fptu.fevent.dao;
 
 import androidx.room.*;
 
+import com.fptu.fevent.model.Team;
 import com.fptu.fevent.model.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Insert
-    void insert(User entity);
+    long insert(User entity);
 
     @Update
     void update(User entity);
@@ -19,4 +20,16 @@ public interface UserDao {
 
     @Query("SELECT * FROM User")
     List<User> getAll();
+
+    @Query("SELECT * FROM User WHERE email = :email AND password = :password LIMIT 1")
+    User login(String email, String password);
+
+    @Query("SELECT COUNT(*) FROM User WHERE email = :email")
+    int countByEmail(String email);
+
+    @Insert
+    void insertAll(User... entities);
+
+    @Query("SELECT COUNT(*) FROM User")
+    int getCount();
 }
