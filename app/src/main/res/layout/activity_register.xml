@@ -9,16 +9,14 @@
     android:fontFamily="@font/roboto">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
         android:paddingTop="32dp"
         android:paddingBottom="24dp">
-
-        <!-- Header Image -->
-
 
         <!-- Register Card Container -->
         <androidx.cardview.widget.CardView
@@ -222,7 +220,28 @@
                             android:focusable="true"
                             android:background="?android:attr/selectableItemBackgroundBorderless" />
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Chọn Ban của bạn"
+
+                    app:startIconDrawable="@drawable/baseline_apartment_24"
+                    app:startIconTint="@color/gray_600">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actvTeam"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray_100"
+                        android:inputType="none"
+                        android:textColor="@color/gray_700"
+                        android:textColorHint="@color/gray_600"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Error Message -->
                 <androidx.cardview.widget.CardView

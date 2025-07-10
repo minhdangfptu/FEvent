@@ -2,6 +2,7 @@ package com.fptu.fevent.dao;
 
 import androidx.room.*;
 
+import com.fptu.fevent.model.Team;
 import com.fptu.fevent.model.User;
 
 import java.util.List;
@@ -25,4 +26,10 @@ public interface UserDao {
 
     @Query("SELECT COUNT(*) FROM User WHERE email = :email")
     int countByEmail(String email);
+
+    @Insert
+    void insertAll(User... entities);
+
+    @Query("SELECT COUNT(*) FROM User")
+    int getCount();
 }

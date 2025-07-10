@@ -3,6 +3,7 @@ package com.fptu.fevent.dao;
 import androidx.room.*;
 
 import com.fptu.fevent.model.EventFeedback;
+import com.fptu.fevent.model.Team;
 
 
 import java.util.List;
@@ -20,4 +21,9 @@ public interface EventFeedbackDao {
 
     @Query("SELECT * FROM EventFeedback")
     List<EventFeedback> getAll();
+    @Insert
+    void insertAll(EventFeedback... entities);
+
+    @Query("SELECT COUNT(*) FROM EventFeedback")
+    int getCount();
 }

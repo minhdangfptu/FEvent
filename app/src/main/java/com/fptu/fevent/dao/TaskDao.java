@@ -3,6 +3,7 @@ package com.fptu.fevent.dao;
 import androidx.room.*;
 
 import com.fptu.fevent.model.Task;
+import com.fptu.fevent.model.Team;
 
 import java.util.List;
 
@@ -19,4 +20,9 @@ public interface TaskDao {
 
     @Query("SELECT * FROM Task")
     List<Task> getAll();
+    @Insert
+    void insertAll(Task... entities);
+
+    @Query("SELECT COUNT(*) FROM Task")
+    int getCount();
 }

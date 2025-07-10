@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.fptu.fevent.R;
+import com.fptu.fevent.database.DatabaseInitializer;
 import com.fptu.fevent.model.User;
 import com.fptu.fevent.repository.UserRepository;
 import com.fptu.fevent.ui.auth.LoginActivity;
@@ -26,6 +27,8 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 🟡 Gọi DatabaseInitializer để đảm bảo dữ liệu demo luôn có sẵn
+        DatabaseInitializer.initialize(getApplication());
 ////// CHỈ thêm user nếu chưa có dữ liệu
 //        Executors.newSingleThreadExecutor().execute(() -> {
 //            UserRepository userRepository = new UserRepository(getApplication());
@@ -41,7 +44,8 @@ public class OnboardingActivity extends AppCompatActivity {
 //                demoUser.phone_number = "0901234567";
 //                demoUser.club = "FPT Club";
 //                demoUser.department = "CNTT";
-//
+//                demoUser.role_id = null;
+//                demoUser.team_id = null;
 //                userRepository.insert(demoUser);
 //            }
 //        });

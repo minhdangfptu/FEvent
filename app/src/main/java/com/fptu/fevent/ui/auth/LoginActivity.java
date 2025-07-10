@@ -19,6 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.fptu.fevent.R;
+import com.fptu.fevent.model.User;
 import com.fptu.fevent.repository.UserRepository;
 import com.fptu.fevent.ui.common.HomeActivity;
 
@@ -91,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
             userRepo.login(email, password, user -> runOnUiThread(() -> {
                 if (user != null) {
+                    saveUserToPrefs(user);
                     Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
@@ -119,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         tvForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -134,5 +136,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    private void saveUserToPrefs(User user) {
+        getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .edit()
+                .putInt("user_id", user.id)
+                .putString("email", user.email)
+                .putString("fullname", user.fullname)
+                .putInt("role_id", user.role_id != null ? user.role_id : -1)
+                .putInt("team_id", user.team_id != null ? user.team_id : -1)
+                .apply();
     }
 }

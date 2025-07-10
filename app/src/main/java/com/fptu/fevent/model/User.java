@@ -3,8 +3,10 @@ package com.fptu.fevent.model;
 import androidx.room.*;
 
 import com.fptu.fevent.util.DateConverter;
+import com.fptu.fevent.util.IntegerListConverter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity(
         tableName = "User",
@@ -20,10 +22,11 @@ import java.util.Date;
                         parentColumns = "id",
                         childColumns = "team_id",
                         onDelete = ForeignKey.SET_NULL
-                ),
+                )
         }
 )
-@TypeConverters(DateConverter.class)
+
+@TypeConverters({DateConverter.class, IntegerListConverter.class})
 public class User {
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -40,13 +43,32 @@ public class User {
     @ColumnInfo(index = true)
     public Integer role_id;
 
+
     @ColumnInfo(index = true)
     public Integer team_id;
 
-   
+    @Ignore
+    public User() {
+
+    }
+
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+    @Ignore
+    public User(int id, String name, String email, String password, String fullname, Date date_of_birth, String phone_number, String club, String department, Integer role_id, Integer team_id) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.fullname = fullname;
+        this.date_of_birth = date_of_birth;
+        this.phone_number = phone_number;
+        this.club = club;
+        this.department = department;
+        this.role_id = role_id;
+        this.team_id = team_id;
     }
 }

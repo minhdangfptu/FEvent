@@ -32,4 +32,11 @@ public class TeamRepository {
     public void delete(Team entity) {
         executor.execute(() -> teamDao.delete(entity));
     }
+    public void getAllAsync(java.util.function.Consumer<List<Team>> callback) {
+        executor.execute(() -> {
+            List<Team> result = teamDao.getAll();
+            callback.accept(result);
+        });
+    }
+
 }

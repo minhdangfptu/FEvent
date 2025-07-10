@@ -3,7 +3,9 @@ package com.fptu.fevent.ui.auth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,8 +20,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.fptu.fevent.R;
+import com.fptu.fevent.model.Team;
 import com.fptu.fevent.model.User;
+import com.fptu.fevent.repository.TeamRepository;
 import com.fptu.fevent.repository.UserRepository;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -31,6 +40,10 @@ public class RegisterActivity extends AppCompatActivity {
     private CardView errorContainer;
 
     private UserRepository userRepo;
+    private MaterialAutoCompleteTextView actvTeam;
+    private List<Team> teams;          // giữ full object để lấy id
+    private ArrayAdapter<String> teamAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +71,12 @@ public class RegisterActivity extends AppCompatActivity {
         TextView tvTerms   = findViewById(R.id.tvTerms);
         TextView tvSignIn  = findViewById(R.id.tvSignIn);
         TextView btnRegister= findViewById(R.id.btnRegister);
+        actvTeam = findViewById(R.id.actvTeam);
 
         userRepo = new UserRepository(getApplication());
+        Log.d("RegisterActivity", "onCreate() - before loadTeams()");
+        loadTeams();
+        Log.d("RegisterActivity", "onCreate() - after loadTeams()");
 
         /* ========== TỰ CHECK BOX NẾU ĐÃ ACCEPT ========== */
         if (getIntent().getBooleanExtra("termsAccepted", false)) cbTerms.setChecked(true);
@@ -86,6 +103,17 @@ public class RegisterActivity extends AppCompatActivity {
         String email     = edtEmail.getText().toString().trim();
         String pass      = edtPassword.getText().toString();
         String passAgain = edtConfirmPassword.getText().toString();
+        String teamName  = actvTeam.getText().toString().trim();
+
+        // ✅ Lấy teamId theo tên
+        final int[] matchedTeamId = { -1 };
+        for (Team t : teams) {
+            if (t.name.equals(teamName)) {
+                matchedTeamId[0] = t.id;
+                break;
+            }
+        }
+
 
         /* 1. Kiểm tra dữ liệu */
         if (name.isEmpty() || email.isEmpty() || pass.isEmpty() || passAgain.isEmpty()) {
@@ -108,6 +136,10 @@ public class RegisterActivity extends AppCompatActivity {
             showError("Bạn phải đồng ý Điều khoản sử dụng");
             return;
         }
+        if (matchedTeamId[0] == -1) {
+            showError("Vui lòng chọn Ban tham gia");
+            return;
+        }
 
         /* 2. Kiểm tra email trùng */
         userRepo.isEmailExists(email, exists -> runOnUiThread(() -> {
@@ -116,9 +148,14 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 /* 3. Insert user */
                 User newUser = new User(name, email, pass);
+                newUser.team_id = matchedTeamId[0];
+                newUser.role_id = 4;
+
+                Log.d("RegisterActivity", "Inserting user: " + newUser.name);
                 userRepo.insertAsync(newUser, id -> runOnUiThread(() -> {
+                    Log.d("RegisterActivity", "Insert returned ID: " + id);
                     if (id > 0) {
-                        Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this, LoginActivity.class));
                         finish();
                     } else {
@@ -128,6 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }));
     }
+
 
     /* ---------- Helpers ---------- */
 
@@ -149,5 +187,32 @@ public class RegisterActivity extends AppCompatActivity {
         tvError.setText(msg);
         errorContainer.setVisibility(View.VISIBLE);
     }
+
+    private void loadTeams() {
+        TeamRepository teamRepo = new TeamRepository(getApplication());
+        teamRepo.getAllAsync(teams -> runOnUiThread(() -> {
+            this.teams = teams;
+            Log.d("RegisterActivity", "loadTeams() called");
+
+            if (teams == null || teams.isEmpty()) {
+                Toast.makeText(this, "Không có dữ liệu Team", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            List<String> teamNames = new ArrayList<>();
+            for (Team t : teams) {
+                teamNames.add(t.name);
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_dropdown_item_1line,
+                    teamNames
+            );
+            actvTeam.setAdapter(adapter);
+        }));
+    }
+
+
 }
 
