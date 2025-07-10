@@ -1,9 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FEvent" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.FEvent" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Màu chủ đạo (Primary Brand Color) -->
+        <item name="colorPrimary">@color/red_600</item>
+        <item name="colorPrimaryVariant">@color/red_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Màu phụ (Secondary Brand Color) - Tạm thời có thể dùng màu xám đậm hoặc màu xanh như gợi ý -->
+        <item name="colorSecondary">@color/gray_700</item>
+        <item name="colorSecondaryVariant">@color/gray_800</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Màu nền và các bề mặt -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnBackground">@color/gray_900</item>
+        <item name="colorOnSurface">@color/gray_900</item>
+
+        <!-- Màu báo lỗi -->
+        <item name="colorError">@color/red_500</item>
+        <item name="colorOnError">@color/white</item>
     </style>
 
-    <style name="Theme.FEvent" parent="Base.Theme.FEvent" />
+    <!-- Theme không có ActionBar, kế thừa từ theme chính -->
+    <style name="Theme.FEvent.NoActionBar" parent="Theme.FEvent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Widget.FEvent.Button.Success" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/status_success_green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

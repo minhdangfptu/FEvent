@@ -23,5 +23,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_24"
-        android:contentDescription="@string/add_new_team"/>
+        android:contentDescription="@string/add_new_team"
+        app:backgroundTint="@color/red_600"
+        app:tint="@color/white" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

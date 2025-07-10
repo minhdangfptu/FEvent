@@ -1,7 +1,9 @@
 <resources>
+    <!-- Các string cũ của bạn -->
     <string name="app_name">FEvent</string>
-    <string name="add_new_team">Thêm ban mới</string>
+
     <!-- Thêm các string mới này vào -->
+    <string name="add_new_team">Thêm ban mới</string>
     <string name="hint_team_name">Tên ban</string>
     <string name="hint_team_description">Mô tả ban</string>
     <string name="button_save">Lưu</string>

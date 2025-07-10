@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- MÀU CHỦ ĐẠO - F-EVENT RED -->
+    <color name="red_50">#FEF2F2</color>
+    <color name="red_100">#FEE2E2</color>
+    <color name="red_200">#FECACA</color>
+    <color name="red_300">#FCA5A5</color>
+    <color name="red_400">#F87171</color>
+    <color name="red_500">#EF4444</color> <!-- Error states -->
+    <color name="red_600">#DC2626</color> <!-- Main primary color -->
+    <color name="red_700">#B91C1C</color> <!-- Primary variant -->
+    <color name="red_800">#991B1B</color> <!-- Dark surfaces -->
+    <color name="red_900">#7F1D1D</color> <!-- Very dark accents -->
+
+    <!-- MÀU TRUNG TÍNH - GRAY SCALE -->
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_200">#E5E7EB</color>
+    <color name="gray_300">#D1D5DB</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_700">#374151</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_900">#111827</color>
+
+    <!-- MÀU NHẤN - STATUS COLORS -->
+    <color name="status_success_green">#10B981</color> <!-- Hoàn thành, thành công -->
+    <color name="status_warning_yellow">#F59E0B</color> <!-- Cảnh báo, đang chờ -->
+    <color name="status_urgent_orange">#F97316</color> <!-- Khẩn cấp, quá hạn -->
+    <color name="status_admin_purple">#8B5CF6</color> <!-- Tính năng admin -->
+
+    <!-- MÀU ĐEN VÀ TRẮNG CƠ BẢN -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="delete_red">#FF0000</color>
 </resources>

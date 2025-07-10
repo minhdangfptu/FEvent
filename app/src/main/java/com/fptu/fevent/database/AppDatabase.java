@@ -17,7 +17,7 @@ import com.fptu.fevent.util.PermissionConverter;
                 Team.class, EventInfo.class, Schedule.class,
                 Task.class, EventFeedback.class, UserFeedback.class
         },
-        version = 1
+        version = 2
 )
 @TypeConverters({PermissionConverter.class})
 public abstract class AppDatabase extends RoomDatabase {

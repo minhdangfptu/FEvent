@@ -13,6 +13,8 @@ import com.fptu.fevent.model.Team;
 
 public class TeamAdapter extends ListAdapter<Team, TeamAdapter.TeamViewHolder> {
 
+    private OnItemClickListener listener;
+
     public TeamAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -57,6 +59,21 @@ public class TeamAdapter extends ListAdapter<Team, TeamAdapter.TeamViewHolder> {
             super(itemView);
             textViewName = itemView.findViewById(R.id.text_view_team_name);
             textViewDescription = itemView.findViewById(R.id.text_view_team_description);
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(getItem(position));
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Team team);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }
