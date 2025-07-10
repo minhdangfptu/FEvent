@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topBarContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:background="@color/white"
+    android:elevation="4dp">
+
+    <!-- Nút Menu bên trái -->
+    <ImageView
+        android:id="@+id/btnMenu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_circle_white"
+        android:padding="2dp"
+        android:src="@drawable/baseline_apps_24"
+        android:contentDescription="Menu" />
+
+    <!-- Logo giữa (giãn cách tự động bằng weight) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fe_knen"
+            android:contentDescription="Logo FEvent" />
+    </LinearLayout>
+
+    <!-- 2 nút bên phải -->
+    <LinearLayout
+        android:id="@+id/rightButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Notification -->
+        <ImageView
+            android:id="@+id/btnNotification"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_circle_white"
+            android:src="@drawable/baseline_circle_notifications_24"
+            android:contentDescription="Thông báo" />
+
+        <!-- Search -->
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_circle_white"
+            android:src="@drawable/baseline_blur_circular_24"
+            android:contentDescription="Tìm kiếm" />
+    </LinearLayout>
+</LinearLayout>

@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                 .putString("fullname", user.fullname)
                 .putInt("role_id", user.role_id != null ? user.role_id : -1)
                 .putInt("team_id", user.team_id != null ? user.team_id : -1)
+                .putString("position", user.position != null ? user.position : "")
                 .apply();
     }
 }

@@ -98,13 +98,13 @@ public class DatabaseInitializer {
 
                 dao.insertAll(
                         new User(1, "admin", "admin@fevent.vn", "123", "Quản Trị Viên",
-                                dob1, "0900000001", "CLB IT", "CNTT", 1, 1),
+                                dob1, "0900000001", "CLB IT", "Trưởng ban Tổ chức","CNTT", 1, 1),
 
                         new User(2, "linh.lead", "linh@fevent.vn", "pass456", "Lê Thị Linh",
-                                dob2, "0900000002", "CLB Truyền thông", "Marketing", 2, 2),
+                                dob2, "0900000002", "CLB Truyền thông", "Marketing","Thành viên ban Hậu cần", 2, 2),
 
                         new User(3, "son.member", "son@fevent.vn", "pass789", "Nguyễn Sơn",
-                                dob3, "0900000003", "CLB Âm nhạc", "Kinh tế", 3, 3)
+                                dob3, "0900000003", "CLB Âm nhạc", "Kinh tế","Trưởng ban Truyền thông", 3, 3)
                 );
             } catch (ParseException e) {
                 e.printStackTrace();

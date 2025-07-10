@@ -39,6 +39,7 @@ public class User {
     public String phone_number;
     public String club;
     public String department;
+    public String position;
 
     @ColumnInfo(index = true)
     public Integer role_id;
@@ -58,7 +59,7 @@ public class User {
         this.password = password;
     }
     @Ignore
-    public User(int id, String name, String email, String password, String fullname, Date date_of_birth, String phone_number, String club, String department, Integer role_id, Integer team_id) {
+    public User(int id, String name, String email, String password, String fullname, Date date_of_birth, String phone_number, String club, String department, String position, Integer role_id, Integer team_id) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -68,7 +69,9 @@ public class User {
         this.phone_number = phone_number;
         this.club = club;
         this.department = department;
+        this.position = position;
         this.role_id = role_id;
         this.team_id = team_id;
+
     }
 }
