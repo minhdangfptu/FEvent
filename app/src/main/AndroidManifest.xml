@@ -31,5 +31,14 @@
             android:name=".ui.team.AddEditTeamActivity"
             android:exported="false"
             android:parentActivityName=".ui.team.TeamListActivity" />
+        <activity
+            android:name=".ui.team.TeamDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.team.TeamListActivity" />
+        <!-- Thêm vào trong thẻ <application> -->
+        <activity
+            android:name=".ui.team.AssignUserActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.team.TeamDetailActivity" />
     </application>
 </manifest>
