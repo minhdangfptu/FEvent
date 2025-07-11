@@ -115,7 +115,8 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
 //            Toast.makeText(this, "Xếp hạng ứng dụng", Toast.LENGTH_SHORT).show();
             navigateToRating();
         } else if (id == R.id.nav_about) {
-            Toast.makeText(this, "Về chúng tôi", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Về chúng tôi", Toast.LENGTH_SHORT).show();
+            navigateToAboutUs();
         } else if (id == R.id.nav_support) {
             Toast.makeText(this, "Liên hệ hỗ trợ", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_logout) {
@@ -159,6 +160,10 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
     }
     private void navigateToRating() {
         Intent intent = new Intent(HomeActivity.this, RatingActivity.class);
+        startActivity(intent);
+    }
+    private void navigateToAboutUs() {
+        Intent intent = new Intent(HomeActivity.this, AboutUsActivity.class);
         startActivity(intent);
     }
     private void openAppInStore() {
