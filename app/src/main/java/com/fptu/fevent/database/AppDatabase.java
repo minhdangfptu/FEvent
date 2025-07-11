@@ -9,7 +9,12 @@ import androidx.room.TypeConverters;
 
 import com.fptu.fevent.dao.*;
 import com.fptu.fevent.model.*;
+import com.fptu.fevent.util.DateConverter;
+import com.fptu.fevent.util.IntegerListConverter;
 import com.fptu.fevent.util.PermissionConverter;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Database(
         entities = {
@@ -19,7 +24,8 @@ import com.fptu.fevent.util.PermissionConverter;
         },
         version = 1
 )
-@TypeConverters({PermissionConverter.class})
+@TypeConverters({PermissionConverter.class, DateConverter.class, IntegerListConverter.class})
+
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
@@ -38,6 +44,8 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+    public static final ExecutorService databaseWriteExecutor =
+            Executors.newFixedThreadPool(4);
 
     public abstract UserDao userDao();
 

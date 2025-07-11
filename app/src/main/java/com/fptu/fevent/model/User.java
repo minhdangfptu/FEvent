@@ -40,7 +40,7 @@ public class User {
     public String club;
     public String department;
     public String position;
-
+    public Date deactivated_until;
     @ColumnInfo(index = true)
     public Integer role_id;
 
