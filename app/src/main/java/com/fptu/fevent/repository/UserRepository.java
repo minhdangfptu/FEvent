@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 public class UserRepository {
     private final UserDao userDao;
@@ -148,5 +149,22 @@ public class UserRepository {
             }
         });
     }
-
+    public void updateEmail(String currentEmail, String newEmail, Runnable callback) {
+        executor.execute(() -> {
+            userDao.updateEmail(currentEmail, newEmail);
+            if (callback != null) callback.run();
+        });
+    }
+    public void getAllUsers(Consumer<List<User>> callback) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            List<User> users = userDao.getAll();
+            callback.accept(users);
+        });
+    }
+    public void searchUsers(String query, Consumer<List<User>> callback) {
+        executor.execute(() -> {
+            List<User> result = userDao.searchUsers(query);
+            callback.accept(result);
+        });
+    }
 }

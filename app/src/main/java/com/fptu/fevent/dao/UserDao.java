@@ -63,5 +63,9 @@ public interface UserDao {
 
     @Query("UPDATE User SET password = :newPassword WHERE email = :email")
     void updatePassword(String email, String newPassword);
+    @Query("UPDATE User SET email = :newEmail WHERE email = :currentEmail")
+    void updateEmail(String currentEmail, String newEmail);
+    @Query("SELECT * FROM User WHERE fullname LIKE '%' || :query || '%' OR email LIKE '%' || :query || '%'")
+    List<User> searchUsers(String query);
 
 }

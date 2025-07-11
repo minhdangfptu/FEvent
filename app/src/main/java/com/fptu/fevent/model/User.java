@@ -74,4 +74,28 @@ public class User {
         this.team_id = team_id;
 
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFullName() {
+        return fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Integer getRole_id() {
+        return role_id;
+    }
+
+    public Integer getTeam_id() {
+        return team_id;
+    }
+
+    public Date getDeactivated_until() {
+        return deactivated_until;
+    }
 }
