@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish(); // đóng trang login
                 } else {
-                    Toast.makeText(this, "Email hoặc mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Sai thông tin đăng nhập hoặc tài khoản bị khóa", Toast.LENGTH_LONG).show();
                 }
             }));
         });

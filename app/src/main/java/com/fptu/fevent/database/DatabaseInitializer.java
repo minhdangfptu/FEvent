@@ -97,8 +97,8 @@ public class DatabaseInitializer {
                 Date dob3 = sdf.parse("20-10-2004");
 
                 dao.insertAll(
-                        new User(1, "admin", "admin@fevent.vn", "123", "Quản Trị Viên",
-                                dob1, "0900000001", "CLB IT", "Trưởng ban Tổ chức","CNTT", 1, 1),
+                        new User(1, "ad", "ad@mail.com", "123", "Quản Trị Viên",
+                                dob1, "0900000001", "CLB IT", "TCNTT","Gám dốc", 1, 1),
 
                         new User(2, "linh.lead", "linh@fevent.vn", "pass456", "Lê Thị Linh",
                                 dob2, "0900000002", "CLB Truyền thông", "Marketing","Thành viên ban Hậu cần", 2, 2),

@@ -40,7 +40,7 @@ public class User {
     public String club;
     public String department;
     public String position;
-
+    public Date deactivated_until;
     @ColumnInfo(index = true)
     public Integer role_id;
 
@@ -53,8 +53,8 @@ public class User {
 
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String fullname, String email, String password) {
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
     }

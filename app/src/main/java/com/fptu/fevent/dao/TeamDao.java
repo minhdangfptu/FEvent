@@ -26,4 +26,6 @@ public interface TeamDao {
 
     @Query("SELECT COUNT(*) FROM Team")
     int getCount();
+    @Query("SELECT name FROM Team WHERE id = :teamId LIMIT 1")
+    String getTeamNameById(int teamId);
 }
