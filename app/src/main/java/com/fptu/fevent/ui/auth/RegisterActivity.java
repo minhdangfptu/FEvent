@@ -148,8 +148,10 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 /* 3. Insert user */
                 User newUser = new User(name, email, pass);
+                String nameFromEmail = email.split("@")[0];
                 newUser.team_id = matchedTeamId[0];
                 newUser.role_id = 4;
+                newUser.name = nameFromEmail;
 
                 Log.d("RegisterActivity", "Inserting user: " + newUser.name);
                 userRepo.insertAsync(newUser, id -> runOnUiThread(() -> {

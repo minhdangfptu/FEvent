@@ -31,6 +31,7 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM User WHERE email = :email")
     int countByEmail(String email);
 
+
     @Insert
     void insertAll(User... entities);
 
@@ -48,8 +49,8 @@ public interface UserDao {
             "WHERE u.id = :userId LIMIT 1")
     UserWithDetails getUserDetailsWithNames(int userId);
 
-    @Query("UPDATE User SET name = :name, email = :email, fullname = :fullname, date_of_birth = :dob, club = :club, department = :department, position = :position WHERE id = :id")
-    void updateUserById(int id, String name, String email, String fullname, Date dob, String club, String department, String position);
+    @Query("UPDATE User SET name = :name, email = :email, fullname = :fullname, date_of_birth = :dob, phone_number = :phoneNum, club = :club, department = :department, position = :position WHERE id = :id")
+    void updateUserById(int id, String name, String email, String fullname, Date dob,String phoneNum, String club, String department, String position);
 
     @Query("UPDATE User SET deactivated_until = :until WHERE id = :userId")
     void deactivateUser(int userId, Date until);
@@ -59,4 +60,8 @@ public interface UserDao {
 
     @Query("DELETE FROM User WHERE id = :userId")
     void deleteById(int userId);
+
+    @Query("UPDATE User SET password = :newPassword WHERE email = :email")
+    void updatePassword(String email, String newPassword);
+
 }

@@ -160,6 +160,26 @@
                             android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <!-- Phone Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Số điện thoại"
+                        app:boxStrokeColor="@color/red_500"
+                        app:hintTextColor="@color/red_500"
+                        app:startIconDrawable="@drawable/baseline_blur_circular_24"
+                        app:startIconTint="@color/gray_600">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_phoneNum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_700"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Date of Birth Field -->
                     <com.google.android.material.textfield.TextInputLayout

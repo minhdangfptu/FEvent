@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_100">
+
+    <!-- Main Card Container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <!-- Header Section -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/btn_close"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:padding="2dp"
+                    android:src="@drawable/baseline_arrow_back_24"
+                    app:tint="@color/gray_700" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="Phản hồi ứng dụng"
+                    android:textColor="@color/gray_700"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+            <!-- Rating Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bạn thấy ứng dụng thế nào?"
+                    android:textColor="@color/red_500"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="32dp" />
+
+                <!-- Star Rating -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/star_1"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_brightness_7_24"
+                        android:tint="@color/gray_700"
+                        android:layout_marginEnd="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="2dp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/star_2"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_brightness_7_24"
+                        android:tint="@color/gray_700"
+                        android:layout_marginEnd="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="2dp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/star_3"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_brightness_7_24"
+                        android:tint="@color/gray_700"
+                        android:layout_marginEnd="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="2dp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/star_4"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_brightness_7_24"
+                        android:tint="@color/gray_700"
+                        android:layout_marginEnd="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="2dp" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/star_5"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_brightness_7_24"
+                        android:tint="@color/gray_700"
+                        android:layout_marginEnd="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="2dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excellent"
+                    android:textColor="@color/gray_700"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="32dp" />
+
+            </LinearLayout>
+
+            <!-- Feedback Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="24dp">
+
+                <EditText
+                    android:id="@+id/et_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:padding="16dp"
+                    android:text=""
+                    android:textColor="@color/gray_700"
+                    android:textSize="14sp"
+                    android:gravity="top|start"
+                    android:hint="Share your experience..."
+                    android:textColorHint="@color/gray_700"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="4"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+            <!-- Confirm Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Phản hồi"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/red_500"
+                    app:cornerRadius="28dp"
+                    app:elevation="2dp" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

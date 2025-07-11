@@ -53,8 +53,8 @@ public class User {
 
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String fullname, String email, String password) {
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
     }

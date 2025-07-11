@@ -185,6 +185,33 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
                 </LinearLayout>
+                <!-- Fullname -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Số điện thoại"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_phoneNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/input_background_readonly"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:text=""
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <!-- Date of Birth -->
                 <LinearLayout

@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.fptu.fevent.R;
 import com.fptu.fevent.repository.UserRepository;
+import com.fptu.fevent.ui.auth.ChangePasswordActivity;
 import com.fptu.fevent.ui.auth.LoginActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
 
@@ -142,4 +143,5 @@ public class UserManagementActivity extends AppCompatActivity {
         Intent intent = new Intent(UserManagementActivity.this, UserEditProfileActivity.class);
         startActivity(intent);
     }
+
 }

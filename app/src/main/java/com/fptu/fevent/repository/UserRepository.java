@@ -65,6 +65,7 @@ public class UserRepository {
         });
     }
 
+
     /**
      * thêm user xong trả về ID row ( >0 nếu OK )
      */
@@ -105,10 +106,10 @@ public class UserRepository {
         void onUpdated(boolean success);
     }
 
-    public void updateUserById(int id, String name, String email, String fullname, Date dob, String club, String department, String position, UpdateCallback cb) {
+    public void updateUserById(int id, String name, String email, String fullname, Date dob, String phoneNum, String club, String department, String position, UpdateCallback cb) {
         executor.execute(() -> {
             try {
-                userDao.updateUserById(id, name, email, fullname, dob, club, department, position);
+                userDao.updateUserById(id, name, email, fullname, dob, phoneNum, club, department, position);
                 cb.onUpdated(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -139,6 +140,13 @@ public class UserRepository {
             }
         });
     }
-
+    public void updatePassword(String email, String newPassword, Runnable callback) {
+        executor.execute(() -> {
+            userDao.updatePassword(email, newPassword);
+            if (callback != null) {
+                callback.run();
+            }
+        });
+    }
 
 }

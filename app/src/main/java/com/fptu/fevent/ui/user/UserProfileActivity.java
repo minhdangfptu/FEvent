@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    private TextView tvUserName, tvUserEmail, tvFullname, tvDob, tvClub, tvDepartment, tvPosition, tvRole, tvTeam, tv_user_name1;
+    private TextView tvUserName, tvUserEmail, tvFullname, tvDob, tvClub, tvDepartment, tvPosition, tvRole, tvTeam, tv_user_name1, tvPhoneNum;
     private ImageView btnBack;
     private Button btnEdit;
 
@@ -55,6 +55,7 @@ public class UserProfileActivity extends AppCompatActivity {
         tvUserName = findViewById(R.id.tv_user_name);
         tvUserEmail = findViewById(R.id.tv_user_email);
         tvFullname = findViewById(R.id.tv_fullname);
+        tvPhoneNum = findViewById(R.id.tv_phoneNum);
         tvDob = findViewById(R.id.tv_dob);
         tvClub = findViewById(R.id.tv_club);
         tvDepartment = findViewById(R.id.tv_department);
@@ -87,6 +88,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 tvUserEmail.setText(user.email);
                 tvFullname.setText(getSafe(user.fullname));
                 tvDob.setText(formatDate(user.date_of_birth));
+                tvPhoneNum.setText(getSafe(user.phone_number));
                 tvClub.setText(getSafe(user.club));
                 tvDepartment.setText(getSafe(user.department));
                 tvPosition.setText(getSafe(user.position));

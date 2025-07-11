@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class UserEditProfileActivity extends AppCompatActivity {
 
-    private EditText edtUserName, edtUserEmail, edtFullname, edtDob, edtClub, edtDepartment, edtPosition;
+    private EditText edtUserName, edtUserEmail, edtFullname, edtDob, edtClub, edtDepartment, edtPosition, edtPhoneNum;
     private ImageView btnBack;
     private MaterialButton btnSave;
 
@@ -57,6 +57,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
         edtUserName = findViewById(R.id.edt_user_name);
         edtUserEmail = findViewById(R.id.edt_user_email);
         edtFullname = findViewById(R.id.edt_fullname);
+        edtPhoneNum = findViewById(R.id.edt_phoneNum);
         edtDob = findViewById(R.id.edt_dob);
         edtDob.setOnClickListener(v -> showDatePickerDialog());
         edtClub = findViewById(R.id.edt_club);
@@ -88,6 +89,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
                 edtFullname.setText(getSafe(user.fullname));
                 edtDob.setText(formatDate(user.date_of_birth));
                 edtClub.setText(getSafe(user.club));
+                edtPhoneNum.setText(getSafe(user.phone_number));
                 edtDepartment.setText(getSafe(user.department));
                 edtPosition.setText(getSafe(user.position));
             });
@@ -108,6 +110,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
         String name = edtUserName.getText().toString().trim();
         String email = edtUserEmail.getText().toString().trim();
         String fullname = edtFullname.getText().toString().trim();
+        String phoneNum = edtPhoneNum.getText().toString().trim();
         String dobStr = edtDob.getText().toString().trim();
         String club = edtClub.getText().toString().trim();
         String department = edtDepartment.getText().toString().trim();
@@ -121,7 +124,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
             return;
         }
 
-        userRepo.updateUserById(userId, name, email, fullname, dob, club, department, position, success -> {
+        userRepo.updateUserById(userId, name, email, fullname,  dob,phoneNum, club, department, position, success -> {
             runOnUiThread(() -> {
                 if (success) {
                     Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
@@ -137,6 +140,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
         edtUserName.setError(null);
         edtUserEmail.setError(null);
         edtFullname.setError(null);
+        edtPhoneNum.setError(null);
         edtDob.setError(null);
         edtClub.setError(null);
         edtDepartment.setError(null);
@@ -162,6 +166,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
             edtFullname.setError("Họ tên không được để trống");
             return false;
         }
+
 
         String dobStr = edtDob.getText().toString().trim();
         if (dobStr.isEmpty()) {
@@ -201,6 +206,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
     private String formatDate(Date date) {
         return date != null ? dateFormat.format(date) : "";
     }
+
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
 
@@ -210,7 +216,8 @@ public class UserEditProfileActivity extends AppCompatActivity {
             try {
                 Date parsedDate = dateFormat.parse(currentDate);
                 calendar.setTime(parsedDate);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
 
         int year = calendar.get(Calendar.YEAR);

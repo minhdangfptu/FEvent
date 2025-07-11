@@ -2,6 +2,7 @@ package com.fptu.fevent.ui.common;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import com.fptu.fevent.R;
 import com.fptu.fevent.ui.auth.LoginActivity;
 import com.fptu.fevent.ui.component.DrawerController;
 import com.fptu.fevent.ui.component.TopMenuFragment;
+import com.fptu.fevent.ui.user.PrivacyManagementActivity;
 import com.fptu.fevent.ui.user.UserManagementActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -99,15 +101,19 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
 //            Toast.makeText(this, "Quản lý tài khoản", Toast.LENGTH_SHORT).show();
             manageAccount();
         } else if (id == R.id.nav_secure) {
-            Toast.makeText(this, "Bảo mật tài khoản", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Cài đặt ứng dụng", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Bảo mật tài khoản", Toast.LENGTH_SHORT).show();
+            navigateToPrivacy();
+        } else if (id == R.id.nav_settings){
+//            Toast.makeText(this, "Cài đặt ứng dụng", Toast.LENGTH_SHORT).show();
+            openAppInStore();
         } else if (id == R.id.nav_linked) {
-            Toast.makeText(this, "Ứng dụng liên kết", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Ứng dụng liên kết", Toast.LENGTH_SHORT).show();
+            openMyFapApp();
         } else if (id == R.id.nav_share) {
             shareApp();
         } else if (id == R.id.nav_rate) {
-            Toast.makeText(this, "Xếp hạng ứng dụng", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Xếp hạng ứng dụng", Toast.LENGTH_SHORT).show();
+            navigateToRating();
         } else if (id == R.id.nav_about) {
             Toast.makeText(this, "Về chúng tôi", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_support) {
@@ -147,4 +153,43 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         Intent intent = new Intent(HomeActivity.this, UserManagementActivity.class);
         startActivity(intent);
     }
+    private void navigateToPrivacy() {
+        Intent intent = new Intent(HomeActivity.this, PrivacyManagementActivity.class);
+        startActivity(intent);
+    }
+    private void navigateToRating() {
+        Intent intent = new Intent(HomeActivity.this, RatingActivity.class);
+        startActivity(intent);
+    }
+    private void openAppInStore() {
+        final String appPackageName = getPackageName(); // Lấy package hiện tại
+
+        try {
+            // Mở bằng Google Play App
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException e) {
+            // Nếu không có Play Store thì mở bằng trình duyệt
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
+    }
+    private void openMyFapApp() {
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.fuct");
+        if (launchIntent != null) {
+            startActivity(launchIntent); // Mở app nếu đã cài
+        } else {
+            // Nếu chưa cài, mở trang ứng dụng trên CH Play
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("market://details?id=com.fuct")));
+            } catch (android.content.ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=com.fuct")));
+            }
+        }
+    }
+
+
+
 }
