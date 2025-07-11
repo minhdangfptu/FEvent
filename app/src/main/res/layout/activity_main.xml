@@ -8,14 +8,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Nút "Quản lý Ban" -->
+    <!-- Nút này được neo vào giữa màn hình -->
     <Button
         android:id="@+id/button_manage_teams"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quản lý Ban"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Một đường kẻ vô hình để giúp căn chỉnh -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Nút "Quản lý Sự kiện" -->
+    <!-- Nút này được neo vào bên dưới nút "Quản lý Ban" -->
+    <Button
+        android:id="@+id/button_manage_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Quản lý Sự kiện"
+        app:layout_constraintTop_toBottomOf="@+id/button_manage_teams"
+        app:layout_constraintEnd_toEndOf="@+id/button_manage_teams"
+        app:layout_constraintStart_toStartOf="@+id/button_manage_teams" />
+
+    <Button
+        android:id="@+id/button_manage_feedbacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Đánh giá Thành viên" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

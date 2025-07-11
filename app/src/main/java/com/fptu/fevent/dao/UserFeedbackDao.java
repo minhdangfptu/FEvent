@@ -1,5 +1,6 @@
 package com.fptu.fevent.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.*;
 
 import com.fptu.fevent.model.UserFeedback;
@@ -18,5 +19,5 @@ public interface UserFeedbackDao {
     void delete(UserFeedback entity);
 
     @Query("SELECT * FROM UserFeedback")
-    List<UserFeedback> getAll();
+    LiveData<List<UserFeedback>> getAll();
 }

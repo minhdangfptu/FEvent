@@ -6,6 +6,8 @@ import com.fptu.fevent.model.EventInfo;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
+
 @Dao
 public interface EventInfoDao {
     @Insert
@@ -18,5 +20,5 @@ public interface EventInfoDao {
     void delete(EventInfo entity);
 
     @Query("SELECT * FROM EventInfo")
-    List<EventInfo> getAll();
+    LiveData<List<EventInfo>> getAll();
 }
