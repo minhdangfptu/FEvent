@@ -15,6 +15,18 @@
         android:theme="@style/Theme.FEvent"
         tools:targetApi="31">
         <activity
+            android:name=".ui.admin.AdminUserManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.ChangeEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.PermissionSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ContactUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.common.AboutUsActivity"
             android:exported="false" />
         <activity

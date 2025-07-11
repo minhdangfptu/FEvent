@@ -245,7 +245,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Chính sách pháp lý"
+                            android:text="Liên hệ với chúng tôi"
                             android:textColor="@color/black"
                             android:textFontWeight="900"
                             android:textSize="16sp" />

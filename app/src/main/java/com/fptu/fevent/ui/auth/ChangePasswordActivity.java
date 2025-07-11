@@ -1,6 +1,8 @@
 package com.fptu.fevent.ui.auth;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,9 +35,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_change_password);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        View mainView = findViewById(R.id.main);
+
+        int originalPaddingLeft = mainView.getPaddingLeft();
+        int originalPaddingTop = mainView.getPaddingTop();
+        int originalPaddingRight = mainView.getPaddingRight();
+        int originalPaddingBottom = mainView.getPaddingBottom();
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(
+                    originalPaddingLeft + systemBars.left,
+                    originalPaddingTop + systemBars.top,
+                    originalPaddingRight + systemBars.right,
+                    originalPaddingBottom + systemBars.bottom
+            );
             return insets;
         });
 
@@ -43,8 +57,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         setupEvents();
         userRepo = new UserRepository(getApplication());
 
-        // Giả định email đã login lưu trong sharedPreferences hoặc truyền qua Intent
-        userEmail = getIntent().getStringExtra("email");
+        // ✅ Lấy email từ SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        userEmail = prefs.getString("email", null);
     }
 
     private void initViews() {

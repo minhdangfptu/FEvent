@@ -1,33 +1,59 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/nav_notification"
-        android:title="Thông báo"
-        android:icon="@drawable/baseline_circle_notifications_24" />
-    <item android:id="@+id/nav_manage"
-        android:title="Quản lý tài khoản"
-        android:icon="@drawable/baseline_account_circle_24" />
-    <item android:id="@+id/nav_secure"
-        android:title="Bảo mật tài khoản"
-        android:icon="@drawable/baseline_lock_24" />
-    <item android:id="@+id/nav_settings"
+    <item
+        android:id="@+id/nav_notification"
+        android:icon="@drawable/baseline_circle_notifications_24"
+        android:title="Thông báo" />
+    <item
+        android:id="@+id/nav_manage"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Quản lý tài khoản" />
+    <item
+        android:id="@+id/nav_secure"
+        android:icon="@drawable/baseline_lock_24"
+        android:title="Bảo mật tài khoản" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/baseline_admin_panel_settings_24"
         android:title="Cài đặt ứng dụng"
-        android:icon="@drawable/baseline_admin_panel_settings_24" />
-    <item android:id="@+id/nav_linked"
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_linked"
+        android:icon="@drawable/baseline_animation_24"
         android:title="Ứng dụng liên kết"
-        android:icon="@drawable/baseline_animation_24" />
-    <item android:id="@+id/nav_share"
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/baseline_add_chart_24"
         android:title="Giới thiệu lan tỏa FEvent"
-        android:icon="@drawable/baseline_add_chart_24" />
-    <item android:id="@+id/nav_rate"
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/baseline_assignment_24"
         android:title="Xếp hạng ứng dụng"
-        android:icon="@drawable/baseline_assignment_24" />
-    <item android:id="@+id/nav_about"
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/baseline_blur_circular_24"
         android:title="Về chúng tôi"
-        android:icon="@drawable/baseline_blur_circular_24" />
-    <item android:id="@+id/nav_support"
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_support"
+        android:icon="@drawable/baseline_circle_notifications_24"
         android:title="Liên hệ hỗ trợ"
-        android:icon="@drawable/baseline_circle_notifications_24" />
-    <item android:id="@+id/nav_logout"
-        android:title="Đăng xuất"
-        android:icon="@drawable/baseline_arrow_back_24" />
-
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_manage_users"
+        android:icon="@drawable/baseline_supervised_user_circle_24"
+        android:title="Quản lý người dùng"
+        android:visible="false" />
+    <item
+        android:id="@+id/nav_manage_event"
+        android:icon="@drawable/baseline_supervised_user_circle_24"
+        android:title="Quản lý sự kiện"
+        android:visible="false" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/baseline_arrow_back_24"
+        android:title="Đăng xuất" />
+    <!-- ban đầu ẩn -->
 </menu>

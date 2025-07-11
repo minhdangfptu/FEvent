@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/permission_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="?android:attr/dividerVertical"
+        android:showDividers="middle"
+        android:dividerPadding="8dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lý quyền ứng dụng"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Camera -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_camera"
+            android:tag="Máy ảnh (Camera)|switch_camera" />
+
+        <!-- Location -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_location"
+            android:tag="Vị trí (Location)|switch_location" />
+
+        <!-- Storage -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_storage"
+            android:tag="Bộ nhớ (Storage)|switch_storage" />
+
+        <!-- Microphone -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_microphone"
+            android:tag="Ghi âm (Microphone)|switch_microphone" />
+
+        <!-- Phone Call -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_call"
+            android:tag="Gọi điện (Call Phone)|switch_call" />
+
+        <!-- SMS -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_sms"
+            android:tag="Tin nhắn (SMS)|switch_sms" />
+
+        <!-- Contacts -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_contacts"
+            android:tag="Danh bạ (Contacts)|switch_contacts" />
+
+        <!-- Calendar -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_calendar"
+            android:tag="Lịch (Calendar)|switch_calendar" />
+
+        <!-- Sensors -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_sensors"
+            android:tag="Cảm biến (Sensors)|switch_sensors" />
+
+        <!-- Internet -->
+        <include layout="@layout/permission_toggle_item"
+            android:id="@+id/perm_internet"
+            android:tag="Kết nối mạng (Internet)|switch_internet" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.fptu.fevent.R;
+import com.fptu.fevent.ui.admin.AdminUserManagementActivity;
 import com.fptu.fevent.ui.auth.LoginActivity;
 import com.fptu.fevent.ui.component.DrawerController;
 import com.fptu.fevent.ui.component.TopMenuFragment;
@@ -45,6 +47,21 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         String fullname = prefs.getString("fullname", "Tên người dùng");
         String email = prefs.getString("email", "Email chưa xác định");
         String position = prefs.getString("position", "Position chưa xác định");
+        int roleId = prefs.getInt("role_id", 0); // 1 = admin
+
+        if (roleId == 1) {
+            Menu menu = navigationView.getMenu();
+            menu.findItem(R.id.nav_settings).setVisible(false);
+            menu.findItem(R.id.nav_linked).setVisible(false);
+            menu.findItem(R.id.nav_share).setVisible(false);
+            menu.findItem(R.id.nav_rate).setVisible(false);
+            menu.findItem(R.id.nav_about).setVisible(false);
+            menu.findItem(R.id.nav_support).setVisible(false);
+            menu.findItem(R.id.nav_manage_users).setVisible(true);
+            menu.findItem(R.id.nav_manage_event).setVisible(true);
+
+
+        }
 
         // Ánh xạ View trong layout nav_header.xml và activity_home.xml
         TextView tvFullname = headerView.findViewById(R.id.tvUsername);
@@ -118,7 +135,11 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
 //            Toast.makeText(this, "Về chúng tôi", Toast.LENGTH_SHORT).show();
             navigateToAboutUs();
         } else if (id == R.id.nav_support) {
-            Toast.makeText(this, "Liên hệ hỗ trợ", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Liên hệ hỗ trợ", Toast.LENGTH_SHORT).show();
+            navigateToContactUs();
+        } else if (id == R.id.nav_manage_users) {
+//            Toast.makeText(this, "Liên hệ hỗ trợ", Toast.LENGTH_SHORT).show();
+            navigateToManageUser();
         } else if (id == R.id.nav_logout) {
             performLogout();
         } else {
@@ -126,6 +147,11 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void navigateToManageUser() {
+        Intent intent = new Intent(HomeActivity.this, AdminUserManagementActivity.class);
+        startActivity(intent);
     }
 
 
@@ -164,6 +190,10 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
     }
     private void navigateToAboutUs() {
         Intent intent = new Intent(HomeActivity.this, AboutUsActivity.class);
+        startActivity(intent);
+    }
+    private void navigateToContactUs() {
+        Intent intent = new Intent(HomeActivity.this, ContactUsActivity.class);
         startActivity(intent);
     }
     private void openAppInStore() {
