@@ -65,4 +65,7 @@ dependencies {
     implementation ("com.sun.mail:android-mail:1.6.7")
     implementation ("com.sun.mail:android-activation:1.6.7")
 
+    //MPAndroidChart for pie charts
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }

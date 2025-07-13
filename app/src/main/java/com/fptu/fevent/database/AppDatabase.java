@@ -20,9 +20,10 @@ import java.util.concurrent.Executors;
         entities = {
                 User.class, Role.class, Permission.class,
                 Team.class, EventInfo.class, Schedule.class,
-                Task.class, EventFeedback.class, UserFeedback.class
+                Task.class, EventFeedback.class, UserFeedback.class,
+                Notification.class
         },
-        version = 1
+        version = 2
 )
 @TypeConverters({PermissionConverter.class, DateConverter.class, IntegerListConverter.class})
 
@@ -64,4 +65,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract EventFeedbackDao eventFeedbackDao();
 
     public abstract UserFeedbackDao userFeedbackDao();
+
+    public abstract NotificationDao notificationDao();
 }

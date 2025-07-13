@@ -38,4 +38,19 @@ public class Task {
 
     @ColumnInfo(index = true)
     public Integer team_id;
+
+    // Default constructor
+    public Task() {
+    }
+
+    // Constructor with parameters
+    @Ignore
+    public Task(String title, String description, String status, Date due_date, Integer assigned_to, Integer team_id) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.due_date = due_date;
+        this.assigned_to = assigned_to;
+        this.team_id = team_id;
+    }
 }

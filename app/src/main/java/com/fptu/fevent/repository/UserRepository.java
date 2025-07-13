@@ -28,6 +28,10 @@ public class UserRepository {
         return userDao.getAll();
     }
 
+    public User getUserById(int userId) {
+        return userDao.getById(userId);
+    }
+
     public void insert(User entity) {
         executor.execute(() -> userDao.insert(entity));
     }
@@ -166,5 +170,9 @@ public class UserRepository {
             List<User> result = userDao.searchUsers(query);
             callback.accept(result);
         });
+    }
+    
+    public List<User> getAllUsers() {
+        return userDao.getAll();
     }
 }

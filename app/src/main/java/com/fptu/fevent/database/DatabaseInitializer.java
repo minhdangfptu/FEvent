@@ -11,6 +11,7 @@ import com.fptu.fevent.dao.TeamDao;
 import com.fptu.fevent.dao.UserDao;
 import com.fptu.fevent.model.Permission;
 import com.fptu.fevent.model.Role;
+import com.fptu.fevent.model.Task;
 import com.fptu.fevent.model.Team;
 import com.fptu.fevent.model.User;
 import com.fptu.fevent.util.DateConverter;
@@ -41,6 +42,7 @@ public class DatabaseInitializer {
 
             if (teamCount > 0 && roleCount > 0) {
                 seedUsers(db.userDao());
+                seedTasks(db.taskDao());
             } else {
                 Log.e("SEED", "Không thể seed user vì thiếu Team hoặc Role");
             }
@@ -105,6 +107,34 @@ public class DatabaseInitializer {
 
                         new User(3, "son.member", "son@fevent.vn", "pass789", "Nguyễn Sơn",
                                 dob3, "0900000003", "CLB Âm nhạc", "Kinh tế","Trưởng ban Truyền thông", 3, 3)
+                );
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void seedTasks(com.fptu.fevent.dao.TaskDao dao) {
+        if (dao.getCount() == 0) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", new Locale("vi", "VN"));
+                
+                Date dueDate1 = sdf.parse("31-12-2024");
+                Date dueDate2 = sdf.parse("15-01-2025");
+                Date dueDate3 = sdf.parse("25-01-2025");
+
+                dao.insertAll(
+                        new Task("Thiết kế poster sự kiện", 
+                                "Tạo poster quảng bá cho sự kiện Halloween FPT", 
+                                "Chưa bắt đầu", dueDate1, 2, null),
+                        
+                        new Task("Chuẩn bị âm thanh", 
+                                "Kiểm tra và setup hệ thống âm thanh cho sự kiện", 
+                                "Đang thực hiện", dueDate2, null, 4),
+                        
+                        new Task("Liên hệ khách mời", 
+                                "Gửi thư mời và xác nhận tham gia của các khách mời VIP", 
+                                "Hoàn thành", dueDate3, 3, null)
                 );
             } catch (ParseException e) {
                 e.printStackTrace();

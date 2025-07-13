@@ -21,6 +21,10 @@ public class TaskRepository {
         return taskDao.getAll();
     }
 
+    public Task getTaskById(int id) {
+        return taskDao.getTaskById(id);
+    }
+
     public void insert(Task entity) {
         executor.execute(() -> taskDao.insert(entity));
     }
@@ -31,5 +35,61 @@ public class TaskRepository {
 
     public void delete(Task entity) {
         executor.execute(() -> taskDao.delete(entity));
+    }
+
+    // Async methods for better performance
+    public void getAllAsync(java.util.function.Consumer<List<Task>> callback) {
+        executor.execute(() -> {
+            List<Task> result = taskDao.getAll();
+            callback.accept(result);
+        });
+    }
+
+    public void insertAsync(Task task, java.util.function.Consumer<Long> callback) {
+        executor.execute(() -> {
+            long id = taskDao.insert(task);
+            callback.accept(id);
+        });
+    }
+
+    public void updateAsync(Task task, Runnable callback) {
+        executor.execute(() -> {
+            taskDao.update(task);
+            if (callback != null) {
+                callback.run();
+            }
+        });
+    }
+
+    public void deleteAsync(Task task, Runnable callback) {
+        executor.execute(() -> {
+            taskDao.delete(task);
+            if (callback != null) {
+                callback.run();
+            }
+        });
+    }
+
+    // Get tasks by assignment
+    public void getTasksByUserId(int userId, java.util.function.Consumer<List<Task>> callback) {
+        executor.execute(() -> {
+            List<Task> result = taskDao.getTasksByUserId(userId);
+            callback.accept(result);
+        });
+    }
+
+    public void getTasksByTeamId(int teamId, java.util.function.Consumer<List<Task>> callback) {
+        executor.execute(() -> {
+            List<Task> result = taskDao.getTasksByTeamId(teamId);
+            callback.accept(result);
+        });
+    }
+
+    // Get tasks by status
+    public void getTasksByStatus(String status, java.util.function.Consumer<List<Task>> callback) {
+        executor.execute(() -> {
+            List<Task> result = taskDao.getTasksByStatus(status);
+            callback.accept(result);
+        });
     }
 }

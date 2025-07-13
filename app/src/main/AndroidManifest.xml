@@ -18,6 +18,27 @@
             android:name=".ui.admin.AdminUserManagementActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.task.CreateTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.task.TaskDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.task.UpdateTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.task.EditTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.task.TaskSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.EventTimelineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.ChangeEmailActivity"
             android:exported="false" />
         <activity
@@ -78,22 +99,10 @@
             android:name=".ui.common.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.component.BottomNavFragment"
-            android:exported="false" />
-        <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".onboarding.OnboardingFragment3"
-            android:exported="false" />
-        <activity
-            android:name=".onboarding.OnboardingFragment2"
-            android:exported="false" />
-        <activity
-            android:name=".onboarding.OnboardingAdapter"
             android:exported="false" />
         <activity
             android:name=".onboarding.OnboardingActivity"
@@ -107,6 +116,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        
+        <service
+            android:name=".service.NotificationBackgroundService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.fptu.fevent.R;
 import com.fptu.fevent.ui.common.EventInfoActivity;
+import com.fptu.fevent.ui.common.EventTimelineActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
 import com.fptu.fevent.ui.common.DepartmentActivity;
 import com.fptu.fevent.ui.common.ScheduleActivity;
@@ -36,22 +37,32 @@ public class BottomNavFragment extends Fragment {
 
         BottomNavigationView nav = view.findViewById(R.id.bottomNavigationView);
 
-        // Đặt item hiện tại nếu bạn muốn
-        // nav.setSelectedItemId(R.id.nav_home);
+        // Set current selected item based on current activity
+        if (context instanceof HomeActivity) {
+            nav.setSelectedItemId(R.id.nav_home);
+        } else if (context instanceof DepartmentActivity) {
+            nav.setSelectedItemId(R.id.nav_department);
+        } else if (context instanceof ScheduleActivity || context instanceof EventTimelineActivity) {
+            nav.setSelectedItemId(R.id.nav_schedule);
+        } else if (context instanceof TaskActivity) {
+            nav.setSelectedItemId(R.id.nav_task);
+        } else if (context instanceof EventInfoActivity) {
+            nav.setSelectedItemId(R.id.nav_info);
+        }
 
         nav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.nav_home && !(context instanceof HomeActivity)) {
-                startActivity(new Intent(context, HomeActivity.class));
+                requireActivity().startActivity(new Intent(context, HomeActivity.class));
             } else if (id == R.id.nav_department && !(context instanceof DepartmentActivity)) {
-                startActivity(new Intent(context, DepartmentActivity.class));
-            } else if (id == R.id.nav_schedule && !(context instanceof ScheduleActivity)) {
-                startActivity(new Intent(context, ScheduleActivity.class));
+                requireActivity().startActivity(new Intent(context, DepartmentActivity.class));
+            } else if (id == R.id.nav_schedule && !(context instanceof ScheduleActivity) && !(context instanceof EventTimelineActivity)) {
+                requireActivity().startActivity(new Intent(context, ScheduleActivity.class));
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {
-                startActivity(new Intent(context, TaskActivity.class));
+                requireActivity().startActivity(new Intent(context, TaskActivity.class));
             } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
-                startActivity(new Intent(context, EventInfoActivity.class));
+                requireActivity().startActivity(new Intent(context, EventInfoActivity.class));
             }
             return true;
         });

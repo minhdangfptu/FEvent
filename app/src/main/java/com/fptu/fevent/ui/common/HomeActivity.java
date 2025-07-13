@@ -49,6 +49,17 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         String position = prefs.getString("position", "Position chưa xác định");
         int roleId = prefs.getInt("role_id", 0); // 1 = admin
 
+        // Start notification background service
+        Intent serviceIntent = new Intent(this, com.fptu.fevent.service.NotificationBackgroundService.class);
+        startService(serviceIntent);
+
+        // Create sample notifications for testing (only on first run)
+        if (prefs.getBoolean("first_run", true)) {
+            com.fptu.fevent.util.NotificationHelper notificationHelper = new com.fptu.fevent.util.NotificationHelper(getApplication());
+            notificationHelper.createSampleNotifications();
+            prefs.edit().putBoolean("first_run", false).apply();
+        }
+
         if (roleId == 1) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.nav_settings).setVisible(false);
@@ -113,7 +124,8 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         int id = item.getItemId();
 
         if (id == R.id.nav_notification) {
-            Toast.makeText(this, "Thông báo", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, com.fptu.fevent.ui.notification.NotificationActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_manage) {
 //            Toast.makeText(this, "Quản lý tài khoản", Toast.LENGTH_SHORT).show();
             manageAccount();
