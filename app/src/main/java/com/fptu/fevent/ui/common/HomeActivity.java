@@ -1,5 +1,6 @@
 package com.fptu.fevent.ui.common;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
 
     private DrawerLayout drawerLayout;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

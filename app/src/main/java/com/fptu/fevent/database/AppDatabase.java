@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
                 Team.class, EventInfo.class, Schedule.class,
                 Task.class, EventFeedback.class, UserFeedback.class
         },
-        version = 1
+        version = 2
 )
 @TypeConverters({PermissionConverter.class, DateConverter.class, IntegerListConverter.class})
 

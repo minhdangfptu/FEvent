@@ -26,4 +26,7 @@ public interface EventInfoDao {
 
     @Query("SELECT COUNT(*) FROM EventInfo")
     int getCount();
+
+    @Query("SELECT * FROM EventInfo WHERE id = :eventId LIMIT 1")
+    EventInfo getById(int eventId);
 }

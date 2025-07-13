@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.fptu.fevent.R;
-import com.fptu.fevent.ui.common.EventInfoActivity;
+import com.fptu.fevent.ui.common.AddEventFeedbackActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
 import com.fptu.fevent.ui.common.DepartmentActivity;
 import com.fptu.fevent.ui.common.ScheduleActivity;
@@ -50,8 +50,8 @@ public class BottomNavFragment extends Fragment {
                 startActivity(new Intent(context, ScheduleActivity.class));
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {
                 startActivity(new Intent(context, TaskActivity.class));
-            } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
-                startActivity(new Intent(context, EventInfoActivity.class));
+            } else if (id == R.id.nav_info && !(context instanceof AddEventFeedbackActivity)) {
+                startActivity(new Intent(context, AddEventFeedbackActivity.class));
             }
             return true;
         });

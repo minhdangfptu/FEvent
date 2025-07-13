@@ -1,9 +1,7 @@
 package com.fptu.fevent.model;
 
 import androidx.room.*;
-
 import com.fptu.fevent.util.DateConverter;
-
 import java.util.Date;
 
 @Entity(

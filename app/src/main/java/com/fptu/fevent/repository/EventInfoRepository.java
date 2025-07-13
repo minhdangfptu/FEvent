@@ -32,4 +32,7 @@ public class EventInfoRepository {
     public void delete(EventInfo entity) {
         executor.execute(() -> eventInfoDao.delete(entity));
     }
+    public EventInfo getById(int eventId) {
+        return eventInfoDao.getById(eventId);
+    }
 }
