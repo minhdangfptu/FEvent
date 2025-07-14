@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.fptu.fevent.R;
-import com.fptu.fevent.ui.common.EventInfoActivity;
+//import com.fptu.fevent.ui.common.EventInfoActivity;
 import com.fptu.fevent.ui.common.EventTimelineActivity;
 import com.fptu.fevent.ui.common.AddEventFeedbackActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
@@ -47,8 +47,8 @@ public class BottomNavFragment extends Fragment {
             nav.setSelectedItemId(R.id.nav_schedule);
         } else if (context instanceof TaskActivity) {
             nav.setSelectedItemId(R.id.nav_task);
-        } else if (context instanceof EventInfoActivity) {
-            nav.setSelectedItemId(R.id.nav_info);
+//        } else if (context instanceof EventInfoActivity) {
+//            nav.setSelectedItemId(R.id.nav_info);
         }
 
         nav.setOnItemSelectedListener(item -> {
@@ -62,9 +62,9 @@ public class BottomNavFragment extends Fragment {
                 requireActivity().startActivity(new Intent(context, ScheduleActivity.class));
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {
                 requireActivity().startActivity(new Intent(context, TaskActivity.class));
-            } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
-                requireActivity().startActivity(new Intent(context, EventInfoActivity.class));
-                startActivity(new Intent(context, TaskActivity.class));
+//            } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
+//                requireActivity().startActivity(new Intent(context, EventInfoActivity.class));
+//                startActivity(new Intent(context, TaskActivity.class));
             } else if (id == R.id.nav_info && !(context instanceof AddEventFeedbackActivity)) {
                 startActivity(new Intent(context, AddEventFeedbackActivity.class));
             }

@@ -33,21 +33,21 @@ public class DatabaseInitializer {
         executor.execute(() -> {
             AppDatabase db = AppDatabase.getInstance(application);
 
+            // Seed các bảng không có khóa ngoại trước
             seedTeams(db.teamDao());
             seedPermissions(db.permissionDao());
             seedRoles(db.roleDao());
+
+            // Seed User trước vì EventInfo phụ thuộc vào User
+            seedUsers(db.userDao());
+
+            // Sau đó mới seed EventInfo và Task
             seedEvents(db.eventInfoDao());
+            seedTasks(db.taskDao());
 
             int teamCount = db.teamDao().getCount();
             int roleCount = db.roleDao().getCount();
             Log.d("SEED", "teamCount: " + teamCount + ", roleCount: " + roleCount);
-
-            if (teamCount > 0 && roleCount > 0) {
-                seedUsers(db.userDao());
-                seedTasks(db.taskDao());
-            } else {
-                Log.e("SEED", "Không thể seed user vì thiếu Team hoặc Role");
-            }
         });
     }
 
