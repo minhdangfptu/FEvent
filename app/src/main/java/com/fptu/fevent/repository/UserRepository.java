@@ -11,7 +11,6 @@ import com.fptu.fevent.dao.UserDao;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
@@ -42,6 +41,10 @@ public class UserRepository {
 
     public void delete(User entity) {
         executor.execute(() -> userDao.delete(entity));
+    }
+
+    public List<User> getAllUsersSync() {
+        return userDao.getAll();
     }
 
     public interface LoginCallback {

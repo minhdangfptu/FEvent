@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- ✅ Permission INTERNET -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -87,17 +88,49 @@
             android:name=".ui.common.DepartmentActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.common.AddEventFeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ExportEventDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.common.ScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".ui.common.TaskActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.common.EventInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.common.HomeActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".ui.common.CreateScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.DeleteScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.EditScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.EventFeedbackListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.EventInfoDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ScheduleDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ScheduleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.UpdateScheduleAttendanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.common.ViewOwnEventFeedbackActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
@@ -109,7 +142,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -122,5 +154,4 @@
             android:enabled="true"
             android:exported="false" />
     </application>
-
 </manifest>

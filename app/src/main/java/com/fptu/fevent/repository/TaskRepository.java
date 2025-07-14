@@ -92,4 +92,7 @@ public class TaskRepository {
             callback.accept(result);
         });
     }
+    public List<Task> getAllTasksSync() {
+        return taskDao.getAll();
+    }
 }
