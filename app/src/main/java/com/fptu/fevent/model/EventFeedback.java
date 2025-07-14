@@ -21,10 +21,9 @@ import java.util.Date;
 public class EventFeedback {
     @PrimaryKey(autoGenerate = true)
     public int id;
-
     @ColumnInfo(index = true)
     public int user_id;
-
+    public int eventId;
     public int rating;
     public String comment;
     public Date created_at;

@@ -25,8 +25,6 @@ import java.util.Map;
 public class UserProfileActivity extends AppCompatActivity {
 
     private TextView tvUserName, tvUserEmail, tvFullname, tvDob, tvClub, tvDepartment, tvPosition, tvRole, tvTeam, tv_user_name1, tvPhoneNum;
-    private ImageView btnBack;
-    private Button btnEdit;
 
     private UserRepository userRepo;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -50,8 +48,8 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        btnBack = findViewById(R.id.btn_back);
-        btnEdit = findViewById(R.id.btn_edit_profile);
+        ImageView btnBack = findViewById(R.id.btn_back);
+        Button btnEdit = findViewById(R.id.btn_edit_profile);
         tvUserName = findViewById(R.id.tv_user_name);
         tvUserEmail = findViewById(R.id.tv_user_email);
         tvFullname = findViewById(R.id.tv_fullname);
