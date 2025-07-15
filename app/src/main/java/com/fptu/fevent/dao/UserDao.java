@@ -41,7 +41,7 @@ public interface UserDao {
     User getById(int userId);
 
     @Query("SELECT u.id, u.name, u.email, u.fullname, u.date_of_birth, u.phone_number, " +
-            "u.club, u.department, u.position, " +
+            "u.club, u.department, u.position, u.image, u.deactivated_until, " +
             "t.name AS team_name, r.roleName AS role_name " +
             "FROM User u " +
             "LEFT JOIN Team t ON u.team_id = t.id " +

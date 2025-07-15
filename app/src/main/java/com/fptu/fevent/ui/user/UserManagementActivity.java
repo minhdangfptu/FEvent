@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ImageView; // Import ImageView
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,18 +16,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.bumptech.glide.Glide; // Import Glide
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.GlideException;
 import com.fptu.fevent.R;
 import com.fptu.fevent.repository.UserRepository;
-import com.fptu.fevent.ui.auth.ChangePasswordActivity; // Giữ nếu có dùng, nếu không thì xóa
+import com.fptu.fevent.ui.auth.ChangePasswordActivity;
 import com.fptu.fevent.ui.auth.LoginActivity;
-import com.fptu.fevent.ui.common.HomeActivity; // Giữ nếu có dùng, nếu không thì xóa
+import com.fptu.fevent.ui.common.HomeActivity;
 
 import java.util.Calendar;
 
 public class UserManagementActivity extends AppCompatActivity {
     private TextView tvUserName, tvUserEmail;
-    private ImageView profileImage; // Khai báo ImageView
+    private ImageView profileImage;
+    private ProgressBar progressBarImage; // Thêm ProgressBar
     private UserRepository userRepo;
 
     @Override
@@ -37,7 +41,8 @@ public class UserManagementActivity extends AppCompatActivity {
         // Ánh xạ View
         tvUserName = findViewById(R.id.tv_user_name);
         tvUserEmail = findViewById(R.id.tv_user_email);
-        profileImage = findViewById(R.id.profile_image); // Ánh xạ ImageView
+        profileImage = findViewById(R.id.profile_image);
+        progressBarImage = findViewById(R.id.progress_bar_image); // Ánh xạ ProgressBar
 
         userRepo = new UserRepository(getApplication());
 
@@ -52,16 +57,31 @@ public class UserManagementActivity extends AppCompatActivity {
         tvUserName.setText(fullname);
         tvUserEmail.setText(email);
 
-        // --- HIỂN THỊ ẢNH VỚI GLIDE ---
+        // --- HIỂN THỊ ẢNH VỚI GLIDE VÀ LOADING ---
         if (!avatarUrl.isEmpty()) {
+            progressBarImage.setVisibility(View.VISIBLE); // Hiển thị ProgressBar khi bắt đầu tải
             Glide.with(this)
                     .load(avatarUrl)
-                    .placeholder(R.drawable.fu_login) // Ảnh placeholder khi đang tải hoặc lỗi
+                    .placeholder(R.drawable.fu_login) // Ảnh placeholder khi đang tải
                     .error(R.drawable.fu_login)      // Ảnh khi có lỗi tải
+                    .listener(new com.bumptech.glide.request.RequestListener<android.graphics.drawable.Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, Object model, com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target, boolean isFirstResource) {
+                            progressBarImage.setVisibility(View.GONE); // Ẩn ProgressBar khi lỗi
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(android.graphics.drawable.Drawable resource, Object model, com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
+                            progressBarImage.setVisibility(View.GONE); // Ẩn ProgressBar khi tải thành công
+                            return false;
+                        }
+                    })
                     .into(profileImage);
         } else {
-            // Nếu không có URL, hiển thị ảnh mặc định
+            // Nếu không có URL, hiển thị ảnh mặc định và ẩn ProgressBar
             profileImage.setImageResource(R.drawable.fu_login);
+            progressBarImage.setVisibility(View.GONE);
         }
         // -----------------------------
 
