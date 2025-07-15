@@ -26,5 +26,6 @@ public class EventFeedback {
     public int eventId;
     public int rating;
     public String comment;
+    
     public Date created_at;
 }
