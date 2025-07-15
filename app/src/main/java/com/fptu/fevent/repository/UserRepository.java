@@ -148,6 +148,7 @@ public class UserRepository {
             }
         });
     }
+
     public void updatePassword(String email, String newPassword, Runnable callback) {
         executor.execute(() -> {
             userDao.updatePassword(email, newPassword);
@@ -156,26 +157,40 @@ public class UserRepository {
             }
         });
     }
+
     public void updateEmail(String currentEmail, String newEmail, Runnable callback) {
         executor.execute(() -> {
             userDao.updateEmail(currentEmail, newEmail);
             if (callback != null) callback.run();
         });
     }
+
     public void getAllUsers(Consumer<List<User>> callback) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             List<User> users = userDao.getAll();
             callback.accept(users);
         });
     }
+
     public void searchUsers(String query, Consumer<List<User>> callback) {
         executor.execute(() -> {
             List<User> result = userDao.searchUsers(query);
             callback.accept(result);
         });
     }
-    
+
     public List<User> getAllUsers() {
         return userDao.getAll();
+    }
+    public void updateUserRole(int userId, int newRoleId, UpdateCallback callback) {
+        executor.execute(() -> {
+            try {
+                int updatedRows = userDao.updateUserRole(userId, newRoleId);
+                callback.onUpdated(updatedRows > 0);
+            } catch (Exception e) {
+                e.printStackTrace();
+                callback.onUpdated(false);
+            }
+        });
     }
 }
