@@ -64,7 +64,7 @@ public class RegisterEnterEmailActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> onBackPressed());
 
         btnContinue.setOnClickListener(v -> {
-            String email = edtEmailInput.getText().toString().trim();
+            String email = edtEmailInput.getText().toString().trim().toLowerCase();
 
             if (email.isEmpty()) {
                 emailInputLayout.setError("Vui lòng nhập email");

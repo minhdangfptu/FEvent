@@ -80,7 +80,7 @@ public class RegisterConfirmEmailActivity extends AppCompatActivity {
             Toast.makeText(this, "Không tìm thấy mã OTP. Vui lòng thử lại.", Toast.LENGTH_LONG).show();
         } else {
             // For debugging only. Remove in production.
-            Toast.makeText(this, "Mã OTP đã gửi: " + expectedOtp, Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Mã OTP đã gửi: " + expectedOtp, Toast.LENGTH_LONG).show();
         }
 
         // Set UI texts specifically for registration flow

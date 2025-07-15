@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleLogin() {
         btnLogin.setOnClickListener(v -> {
-            String email = edtUsername.getText().toString().trim();
+            String email = edtUsername.getText().toString().trim().toLowerCase();
             String password = edtPassword.getText().toString();
 
             if (email.isEmpty() || password.isEmpty()) {
