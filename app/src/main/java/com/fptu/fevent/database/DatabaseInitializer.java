@@ -5,10 +5,12 @@ import android.util.Log;
 
 import androidx.room.TypeConverters;
 
+import com.fptu.fevent.dao.EventInfoDao;
 import com.fptu.fevent.dao.PermissionDao;
 import com.fptu.fevent.dao.RoleDao;
 import com.fptu.fevent.dao.TeamDao;
 import com.fptu.fevent.dao.UserDao;
+import com.fptu.fevent.model.EventInfo;
 import com.fptu.fevent.model.Permission;
 import com.fptu.fevent.model.Role;
 import com.fptu.fevent.model.Team;
@@ -34,19 +36,17 @@ public class DatabaseInitializer {
             seedPermissions(db.permissionDao());
             seedRoles(db.roleDao());
 
-            // Confirm đã có dữ liệu
             int teamCount = db.teamDao().getCount();
             int roleCount = db.roleDao().getCount();
-            Log.d("SEED", "teamCount: " + teamCount + ", roleCount: " + roleCount);
 
             if (teamCount > 0 && roleCount > 0) {
                 seedUsers(db.userDao());
+                seedEvents(db.eventInfoDao());
             } else {
                 Log.e("SEED", "Không thể seed user vì thiếu Team hoặc Role");
             }
         });
     }
-
 
     private static void seedTeams(TeamDao dao) {
         if (dao.getCount() == 0) {
@@ -105,6 +105,19 @@ public class DatabaseInitializer {
 
                         new User(3, "son.member", "son@fevent.vn", "pass789", "Nguyễn Sơn",
                                 dob3, "0900000003", "CLB Âm nhạc", "Kinh tế","Trưởng ban Truyền thông", 3, 3)
+                );
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private static void seedEvents(EventInfoDao dao) {
+        if (dao.getCount() == 0) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm", new Locale("vi", "VN"));
+                dao.insertAll(
+                        new EventInfo(1, "Sự kiện 1", sdf.parse("01-01-2025 09:00"), sdf.parse("01-01-2025 17:00"), "Hà Nội", "Mô tả sự kiện 1", 1),
+                        new EventInfo(2, "Sự kiện 2", sdf.parse("02-01-2025 09:00"), sdf.parse("02-01-2025 17:00"), "TP.HCM", "Mô tả sự kiện 2", 2)
                 );
             } catch (ParseException e) {
                 e.printStackTrace();

@@ -33,4 +33,16 @@ public class EventFeedbackRepository {
     public void delete(EventFeedback entity) {
         executor.execute(() -> eventFeedbackDao.delete(entity));
     }
+
+    public List<EventFeedback> getByEventId(int eventId) {
+        return eventFeedbackDao.getByEventId(eventId);
+    }
+
+    public List<EventFeedback> getByUserAndEvent(int userId, int eventId) {
+        return eventFeedbackDao.getByUserAndEvent(userId, eventId);
+    }
+
+    public EventFeedback getById(int feedbackId) {
+        return eventFeedbackDao.getById(feedbackId);
+    }
 }
