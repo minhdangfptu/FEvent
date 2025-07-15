@@ -36,7 +36,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
-            // ✅ Thêm insets vào padding hiện có thay vì ghi đè
             v.setPadding(
                     v.getPaddingLeft() + systemBars.left,
                     v.getPaddingTop() + systemBars.top,

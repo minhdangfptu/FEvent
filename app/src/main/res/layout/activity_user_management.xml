@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:background="@color/gray_100">
 
-    <!-- Header -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -46,7 +45,6 @@
             android:padding="4dp" />
     </RelativeLayout>
 
-    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +66,6 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
-                <!-- Profile Section -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,8 +77,7 @@
                         android:id="@+id/profile_image"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/fu_login"
-                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_supervised_user_circle_24" android:scaleType="centerCrop"
                         android:background="@android:color/white"
                         android:elevation="4dp"
                         android:layout_margin="8dp"
@@ -121,20 +117,16 @@
                         android:minWidth="120dp" />
                 </LinearLayout>
 
-                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#E0E0E0" />
 
-                <!-- Menu Items -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Menu Item Template -->
-                    <!-- Mỗi mục có thể copy theo mẫu này -->
                     <LinearLayout
                         android:id="@+id/menu_favourites"
                         android:layout_width="match_parent"
@@ -166,14 +158,12 @@
                             app:tint="@color/black" />
                     </LinearLayout>
 
-                    <!-- Divider -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#E0E0E0"
                         android:layout_marginStart="56dp" />
 
-                    <!-- Các mục tiếp theo tương tự -->
                     <LinearLayout
                         android:id="@+id/menu_downloads"
                         android:layout_width="match_parent"

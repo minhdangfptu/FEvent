@@ -54,13 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Ánh xạ View
-        tvClock           = findViewById(R.id.tvClock);
-        edtUsername       = findViewById(R.id.edtUsername);
-        edtPassword       = findViewById(R.id.edtPassword);
-        btnLogin          = findViewById(R.id.btnLogin);
+        tvClock = findViewById(R.id.tvClock);
+        edtUsername = findViewById(R.id.edtUsername);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnLogin = findViewById(R.id.btnLogin);
         imgTogglePassword = findViewById(R.id.imgTogglePassword);
-        tvForgot          = findViewById(R.id.tvForgot);
-        tvSignup          = findViewById(R.id.tvSignup);
+        tvForgot = findViewById(R.id.tvForgot);
+        tvSignup = findViewById(R.id.tvSignup);
 
         userRepo = new UserRepository(getApplication());
 
@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         navigateToSignup();
         handleLogin();
     }
+
     private void handleLogin() {
         btnLogin.setOnClickListener(v -> {
             String email = edtUsername.getText().toString().trim();
@@ -131,12 +132,13 @@ public class LoginActivity extends AppCompatActivity {
             tvSignup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, RegisterEnterEmailActivity.class);
                     startActivity(intent);
                 }
             });
         }
     }
+
     private void saveUserToPrefs(User user) {
         getSharedPreferences("user_prefs", MODE_PRIVATE)
                 .edit()
@@ -146,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                 .putInt("role_id", user.role_id != null ? user.role_id : -1)
                 .putInt("team_id", user.team_id != null ? user.team_id : -1)
                 .putString("position", user.position != null ? user.position : "")
+                .putString("avatar", user.image != null ? user.image : "")
                 .apply();
     }
 }

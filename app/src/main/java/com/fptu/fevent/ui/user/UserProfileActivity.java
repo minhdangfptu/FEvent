@@ -2,17 +2,27 @@ package com.fptu.fevent.ui.user;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+// import android.graphics.drawable.Drawable; // Không còn cần thiết khi không dùng RequestListener
 import android.os.Bundle;
+// import android.view.View; // Vẫn cần View
 import android.widget.Button;
 import android.widget.ImageView;
+// import android.widget.ProgressBar; // Không còn cần thiết
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+// import androidx.annotation.Nullable; // Không còn cần thiết khi không dùng RequestListener
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.bumptech.glide.Glide;
+// import com.bumptech.glide.load.DataSource; // Không còn cần thiết khi không dùng RequestListener
+// import com.bumptech.glide.load.engine.GlideException; // Không còn cần thiết khi không dùng RequestListener
+// import com.bumptech.glide.request.RequestListener; // Không còn cần thiết khi không dùng RequestListener
+// import com.bumptech.glide.request.target.Target; // Không còn cần thiết khi không dùng RequestListener
 
 import com.fptu.fevent.R;
 import com.fptu.fevent.repository.UserRepository;
@@ -20,11 +30,12 @@ import com.fptu.fevent.repository.UserRepository;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
 
 public class UserProfileActivity extends AppCompatActivity {
 
     private TextView tvUserName, tvUserEmail, tvFullname, tvDob, tvClub, tvDepartment, tvPosition, tvRole, tvTeam, tv_user_name1, tvPhoneNum;
+    private ImageView profileImage; // Khai báo ImageView cho ảnh profile
+    // private ProgressBar profileImageProgress; // Đã loại bỏ ProgressBar
 
     private UserRepository userRepo;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -50,6 +61,10 @@ public class UserProfileActivity extends AppCompatActivity {
     private void initViews() {
         ImageView btnBack = findViewById(R.id.btn_back);
         Button btnEdit = findViewById(R.id.btn_edit_profile);
+
+        profileImage = findViewById(R.id.profile_image); // Ánh xạ ImageView
+        // profileImageProgress = findViewById(R.id.profile_image_progress); // Đã loại bỏ ánh xạ ProgressBar
+
         tvUserName = findViewById(R.id.tv_user_name);
         tvUserEmail = findViewById(R.id.tv_user_email);
         tvFullname = findViewById(R.id.tv_fullname);
@@ -61,6 +76,7 @@ public class UserProfileActivity extends AppCompatActivity {
         tvRole = findViewById(R.id.tv_role);
         tvTeam = findViewById(R.id.tv_team);
         tv_user_name1 = findViewById(R.id.tv_user_name1);
+
         btnBack.setOnClickListener(v -> onBackPressed());
         btnEdit.setOnClickListener(v -> navigateUserEditProfile());
     }
@@ -68,21 +84,27 @@ public class UserProfileActivity extends AppCompatActivity {
     private void loadUser() {
         SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
         int userId = prefs.getInt("user_id", -1);
+        String user_image = prefs.getString("avatar", ""); // Vẫn lấy từ SharedPreferences nếu muốn
 
         if (userId == -1) {
             Toast.makeText(this, "Không tìm thấy user_id", Toast.LENGTH_SHORT).show();
+            // Hiển thị ảnh mặc định ngay cả khi không tìm thấy user_id
+            profileImage.setImageResource(R.drawable.fu_login);
             return;
         }
 
         userRepo.getUserDetailsWithNames(userId, user -> {
             if (user == null) {
-                runOnUiThread(() -> Toast.makeText(this, "Không có người dùng", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Không có người dùng", Toast.LENGTH_SHORT).show();
+                    profileImage.setImageResource(R.drawable.fu_login);
+                });
                 return;
             }
 
             runOnUiThread(() -> {
                 tv_user_name1.setText(user.name);
-                tvUserName.setText(user.name);
+                tvUserName.setText(user.fullname);
                 tvUserEmail.setText(user.email);
                 tvFullname.setText(getSafe(user.fullname));
                 tvDob.setText(formatDate(user.date_of_birth));
@@ -92,9 +114,24 @@ public class UserProfileActivity extends AppCompatActivity {
                 tvPosition.setText(getSafe(user.position));
                 tvRole.setText(getSafe(user.roleName));
                 tvTeam.setText(getSafe(user.teamName));
+
+                // --- HIỂN THỊ ẢNH TRỰC TIẾP VỚI GLIDE ---
+                // Lấy URL ảnh từ đối tượng User (user.image) hoặc từ SharedPreferences (user_image)
+                // Ưu tiên dùng user.image nếu nó được trả về từ getUserDetailsWithNames
+                String imageUrl = user_image; // Lấy URL ảnh từ đối tượng User
+
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Glide.with(this)
+                            .load(imageUrl)
+                            .placeholder(R.drawable.fu_login) // Ảnh placeholder vẫn có thể hữu ích nếu ảnh tải chậm
+                            .error(R.drawable.fu_login)      // Ảnh khi có lỗi tải
+                            .into(profileImage);
+                } else {
+                    profileImage.setImageResource(R.drawable.fu_login); // Hiển thị ảnh mặc định nếu không có URL
+                }
+                // ------------------------------------------
             });
         });
-
     }
 
     private String getSafe(Object value) {
