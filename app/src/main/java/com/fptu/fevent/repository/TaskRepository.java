@@ -32,4 +32,8 @@ public class TaskRepository {
     public void delete(Task entity) {
         executor.execute(() -> taskDao.delete(entity));
     }
+
+    public List<Task> getAllTasksSync() {
+        return taskDao.getAll();
+    }
 }

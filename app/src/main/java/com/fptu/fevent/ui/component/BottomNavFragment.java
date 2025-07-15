@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.fptu.fevent.R;
+import com.fptu.fevent.ui.common.AddEventFeedbackActivity;
 import com.fptu.fevent.ui.common.EventInfoActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
 import com.fptu.fevent.ui.common.DepartmentActivity;

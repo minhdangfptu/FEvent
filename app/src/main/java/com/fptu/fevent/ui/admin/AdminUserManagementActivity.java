@@ -53,7 +53,7 @@ public class AdminUserManagementActivity extends AppCompatActivity implements Us
     }
 
     private void setupSearchView() {
-        SearchView searchView = findViewById(R.id.search_view); // dùng androidx.appcompat.widget.SearchView
+        SearchView searchView = findViewById(R.id.search_view);
         ImageView btnSearch = findViewById(R.id.btn_search);
 
         btnSearch.setOnClickListener(v -> {
