@@ -1,0 +1,73 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/gray_100"-->
+<!--    tools:context=".ui.common.EventInfoFragment">-->
+
+<!--    &lt;!&ndash; Header &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/header"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="@color/white"-->
+<!--        android:elevation="4dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Thông tin Sự kiện"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/gray_800"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="16dp" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@color/gray_300" />-->
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; RecyclerView for Events &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_view_events"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:layout_marginBottom="80dp"-->
+<!--        android:padding="8dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+
+<!--    &lt;!&ndash; Empty State &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/emptyState"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:orientation="vertical"-->
+<!--        android:gravity="center"-->
+<!--        android:visibility="gone">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:src="@drawable/baseline_event_note_24"-->
+<!--            android:alpha="0.3"-->
+<!--            android:layout_marginBottom="16dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Không có sự kiện nào"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/gray_600"-->
+<!--            android:gravity="center" />-->
+<!--    </LinearLayout>-->
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

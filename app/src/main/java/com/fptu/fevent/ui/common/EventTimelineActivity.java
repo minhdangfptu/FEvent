@@ -154,7 +154,7 @@ public class EventTimelineActivity extends AppCompatActivity implements Calendar
     }
 
     private void setupRecyclerView() {
-        detailsAdapter = new EventDetailsAdapter(selectedDateItems);
+//        detailsAdapter = new EventDetailsAdapter(selectedDateItems);
         recyclerViewDetails.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewDetails.setAdapter(detailsAdapter);
     }

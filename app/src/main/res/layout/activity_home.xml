@@ -445,6 +445,4 @@
         <include layout="@layout/nav_footer" />
     </LinearLayout>
 
-
-    <!--    <include layout="@layout/activity_menu_drawer" />-->
 </androidx.drawerlayout.widget.DrawerLayout>

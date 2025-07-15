@@ -21,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.User;
 import com.fptu.fevent.repository.UserRepository;
+import com.fptu.fevent.ui.common.CommonUIActivity;
 import com.fptu.fevent.ui.common.HomeActivity;
 
 import java.text.SimpleDateFormat;
@@ -94,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     saveUserToPrefs(user);
                     Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, CommonUIActivity.class);
                     startActivity(intent);
                     finish(); // đóng trang login
                 } else {

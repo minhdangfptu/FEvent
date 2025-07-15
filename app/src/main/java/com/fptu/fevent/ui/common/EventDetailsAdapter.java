@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.fptu.fevent.ui.common.ScheduleFragment.CalendarItem;
 import com.fptu.fevent.R;
 
 import java.text.SimpleDateFormat;
@@ -17,10 +17,11 @@ import java.util.Locale;
 
 public class EventDetailsAdapter extends RecyclerView.Adapter<EventDetailsAdapter.ViewHolder> {
 
-    private List<EventTimelineActivity.CalendarItem> items;
+    private List<CalendarItem> items;
+
     private SimpleDateFormat timeFormat;
 
-    public EventDetailsAdapter(List<EventTimelineActivity.CalendarItem> items) {
+    public EventDetailsAdapter(List<CalendarItem> items) {
         this.items = items;
         this.timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
     }
@@ -35,7 +36,7 @@ public class EventDetailsAdapter extends RecyclerView.Adapter<EventDetailsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        EventTimelineActivity.CalendarItem item = items.get(position);
+        CalendarItem item = items.get(position);
         
         holder.tvTitle.setText(item.title);
         holder.tvSubtitle.setText(item.subtitle);
