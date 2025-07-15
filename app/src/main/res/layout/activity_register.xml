@@ -9,21 +9,19 @@
     android:fontFamily="@font/roboto">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="32dp"
-        android:paddingBottom="24dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
-        <!-- Register Card Container -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="@color/white">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,33 +29,82 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Logo -->
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="0dp"
                     android:src="@drawable/fe_knen" />
 
-                <!-- Subtitle -->
+                <FrameLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="24dp"
+                    android:padding="4dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_account_circle_24"
+                        app:cornerRadius="8dp"
+                        app:tint="@null" />
+
+                    <ImageView
+                        android:id="@+id/imgChooseImage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/baseline_edit_24" android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/baseline_edit_24"
+                        app:tint="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/tvUploadStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom" android:layout_marginBottom="4dp"
+                        android:background="@android:color/white"
+                        android:padding="4dp"
+                        android:text="Upload thành công"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarUpload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" android:visibility="gone" />
+
+                </FrameLayout>
+
                 <TextView
                     android:id="@+id/tvSubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="20dp"
                     android:text="Tạo tài khoản mới"
                     android:textColor="@color/gray_600"
                     android:textSize="16sp" />
 
-                <!-- Name Input Container -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/gray_100"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@color/gray_100">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -87,14 +134,13 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Email Input Container -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/gray_100"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@color/gray_100">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -124,15 +170,14 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Password Input Container -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/gray_100"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp"
-                    app:cardBackgroundColor="@color/gray_100"
                     app:strokeColor="@color/red_500"
                     app:strokeWidth="0dp">
 
@@ -166,23 +211,22 @@
                             android:id="@+id/imgTogglePassword"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/baseline_remove_red_eye_24"
-                            app:tint="@color/gray_600"
+                            android:background="?android:attr/selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackgroundBorderless" />
+                            android:src="@drawable/baseline_remove_red_eye_24"
+                            app:tint="@color/gray_600" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Password Confirmation Input Container -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/gray_100"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@color/gray_100">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -214,21 +258,20 @@
                             android:id="@+id/imgToggleConfirmPassword"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/baseline_remove_red_eye_24"
-                            app:tint="@color/gray_600"
+                            android:background="?android:attr/selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackgroundBorderless" />
+                            android:src="@drawable/baseline_remove_red_eye_24"
+                            app:tint="@color/gray_600" />
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:hint="Chọn Ban của bạn"
-
                     app:startIconDrawable="@drawable/baseline_apartment_24"
                     app:startIconTint="@color/gray_600">
 
@@ -243,16 +286,15 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Error Message -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/errorContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardBackgroundColor="#FECACA"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#FECACA">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -260,7 +302,6 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="12dp">
-
 
                         <ImageView
                             android:layout_width="20dp"
@@ -280,11 +321,10 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Terms and Conditions -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="16dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -301,27 +341,26 @@
                         android:id="@+id/tvTerms"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="4dp"
                         android:text="Điều khoản sử dụng"
                         android:textColor="@color/red_500"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:padding="4dp" />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Register Button -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="24dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:cardBackgroundColor="@color/red_500"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/red_500"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:id="@+id/btnRegister"
@@ -334,7 +373,6 @@
                         android:textStyle="bold" />
                 </androidx.cardview.widget.CardView>
 
-                <!-- Sign In Link -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -353,14 +391,14 @@
                         android:id="@+id/tvSignIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
                         android:text="Đăng nhập ngay"
                         android:textColor="@color/red_500"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:padding="8dp" />
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

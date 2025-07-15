@@ -1,21 +1,31 @@
 package com.fptu.fevent.ui.user;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
 import com.fptu.fevent.R;
 import com.fptu.fevent.repository.UserRepository;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.fptu.fevent.model.User; // Import model User để lấy image URL hiện có
+import com.fptu.fevent.dto.UserWithDetails; // Import UserWithDetails
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,10 +37,16 @@ public class UserEditProfileActivity extends AppCompatActivity {
     private EditText edtUserName, edtUserEmail, edtFullname, edtDob, edtClub, edtDepartment, edtPosition, edtPhoneNum;
     private ImageView btnBack;
     private MaterialButton btnSave;
-
+    private ShapeableImageView imgUserProfile;
+    private FloatingActionButton fabAddImage; // Giữ lại FloatingActionButton
+    // private Uri selectedImageUri; // Không cần nếu không cho phép chọn ảnh mới
     private UserRepository userRepo;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private final int MAX_LENGTH = 50;
+
+    // private ActivityResultLauncher<Intent> pickImageLauncher; // Không cần launcher nếu không chọn ảnh mới
+
+    private String currentImageUrl = null; // Biến để lưu URL ảnh hiện tại của người dùng
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +63,12 @@ public class UserEditProfileActivity extends AppCompatActivity {
         });
 
         initViews();
+        // Không gọi setupImagePicker() nữa
         loadUser();
     }
+
+    // Xóa hoàn toàn phương thức setupImagePicker() vì không cần
+    // Xóa hoàn toàn phương thức openImagePicker() vì không cần
 
     private void initViews() {
         btnBack = findViewById(R.id.btn_back);
@@ -63,9 +83,18 @@ public class UserEditProfileActivity extends AppCompatActivity {
         edtClub = findViewById(R.id.edt_club);
         edtDepartment = findViewById(R.id.edt_department);
         edtPosition = findViewById(R.id.edt_position);
+        imgUserProfile = findViewById(R.id.img_user_profile);
+        fabAddImage = findViewById(R.id.fab_add_image); // Giữ lại tham chiếu đến FloatingActionButton
 
         btnBack.setOnClickListener(v -> onBackPressed());
         btnSave.setOnClickListener(v -> saveUser());
+
+        // Thay đổi listener cho fabAddImage để hiển thị Toast "đang phát triển"
+        fabAddImage.setOnClickListener(v -> Toast.makeText(this, "Chức năng chỉnh sửa ảnh đang phát triển", Toast.LENGTH_SHORT).show());
+
+        // LƯU Ý: Nếu có ImageView nào khác (ví dụ imgUserProfile) mà bạn muốn nhấn vào cũng hiện Toast
+        // bạn có thể thêm listener tương tự ở đây:
+        // imgUserProfile.setOnClickListener(v -> Toast.makeText(this, "Chức năng chỉnh sửa ảnh đang phát triển", Toast.LENGTH_SHORT).show());
     }
 
     private void loadUser() {
@@ -77,21 +106,36 @@ public class UserEditProfileActivity extends AppCompatActivity {
             return;
         }
 
-        userRepo.getUserDetailsWithNames(userId, user -> {
-            if (user == null) {
+        userRepo.getUserDetailsWithNames(userId, userDetails -> {
+            if (userDetails == null) {
                 runOnUiThread(() -> Toast.makeText(this, "Không có người dùng", Toast.LENGTH_SHORT).show());
                 return;
             }
 
             runOnUiThread(() -> {
-                edtUserName.setText(user.name);
-                edtUserEmail.setText(user.email);
-                edtFullname.setText(getSafe(user.fullname));
-                edtDob.setText(formatDate(user.date_of_birth));
-                edtClub.setText(getSafe(user.club));
-                edtPhoneNum.setText(getSafe(user.phone_number));
-                edtDepartment.setText(getSafe(user.department));
-                edtPosition.setText(getSafe(user.position));
+                edtUserName.setText(userDetails.name);
+                edtUserEmail.setText(userDetails.email);
+                edtFullname.setText(getSafe(userDetails.fullname));
+                edtDob.setText(formatDate(userDetails.date_of_birth));
+                edtClub.setText(getSafe(userDetails.club));
+                edtPhoneNum.setText(getSafe(userDetails.phone_number));
+                edtDepartment.setText(getSafe(userDetails.department));
+                edtPosition.setText(getSafe(userDetails.position));
+
+                // Lấy URL ảnh hiện tại từ userDetails và lưu vào currentImageUrl
+                currentImageUrl = userDetails.image;
+
+                // Load ảnh đại diện người dùng
+                if (currentImageUrl != null && !currentImageUrl.isEmpty()) {
+                    Glide.with(this)
+                            .load(currentImageUrl) // Load URL ảnh hiện tại
+                            .placeholder(R.drawable.avatar_default) // Ảnh mặc định khi đang tải
+                            .error(R.drawable.avatar_default)     // Ảnh mặc định nếu lỗi
+                            .into(imgUserProfile);
+                } else {
+                    // Nếu không có URL ảnh, hiển thị ảnh mặc định
+                    imgUserProfile.setImageResource(R.drawable.avatar_default);
+                }
             });
         });
     }
@@ -124,7 +168,9 @@ public class UserEditProfileActivity extends AppCompatActivity {
             return;
         }
 
-        userRepo.updateUserById(userId, name, email, fullname,  dob,phoneNum, club, department, position, success -> {
+        // Truyền currentImageUrl (URL ảnh hiện tại) xuống UserRepository
+        // Không có logic upload ảnh mới ở đây
+        userRepo.updateUserById(userId, name, email, fullname, dob, phoneNum, club, department, position, success -> {
             runOnUiThread(() -> {
                 if (success) {
                     Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();

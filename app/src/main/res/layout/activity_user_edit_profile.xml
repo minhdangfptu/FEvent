@@ -97,6 +97,40 @@
 
                     </LinearLayout>
 
+                    <RelativeLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="24dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/img_user_profile"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_default"
+
+                            app:strokeColor="@color/red_500"
+                            app:strokeWidth="2dp" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_add_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="-10dp"
+                            android:layout_marginBottom="-5dp"
+
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:tint="@color/white"
+                            app:backgroundTint="@color/red_500"
+                            app:elevation="2dp"
+                            app:fabSize="mini"
+                            app:srcCompat="@drawable/baseline_edit_24" />
+
+                    </RelativeLayout>
                     <!-- Username Field -->
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -187,7 +221,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:hint="Ngày sinh"
+                        android:hint="Ngày sinh (dd/mm/yyyy)"
                         app:boxStrokeColor="@color/red_500"
                         app:hintTextColor="@color/red_500"
                         app:startIconDrawable="@drawable/baseline_access_time_24"
@@ -199,7 +233,6 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:focusable="false"
-                            android:hint="dd/MM/yyyy"
                             android:inputType="none"
                             android:textColor="@color/gray_700"
                             android:textSize="16sp" />

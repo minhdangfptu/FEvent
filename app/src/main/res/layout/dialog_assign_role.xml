@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="0dp"
+    android:layout_height="match_parent"
+    app:cardElevation="4dp"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_assign_role_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phân quyền cho: Tên Người Dùng"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_role_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp">
+
+            <RadioButton
+                android:id="@+id/radio_role_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👑 Quản trị viên"
+                android:tag="1"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radio_role_truong_ban_to_chuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📋 Trưởng ban Tổ chức"
+                android:tag="2"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radio_role_truong_ban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👨‍💼 Trưởng ban"
+                android:tag="3"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radio_role_thanh_vien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👥 Thành viên"
+                android:tag="4"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

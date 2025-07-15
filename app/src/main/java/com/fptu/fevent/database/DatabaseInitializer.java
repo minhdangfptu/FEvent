@@ -103,18 +103,25 @@ public class DatabaseInitializer {
                 Date dob2 = sdf.parse("18-08-2005");
                 Date dob3 = sdf.parse("20-10-2004");
 
-                dao.insertAll(
-                        new User(1, "ad", "ad@mail.com", "123", "Quản Trị Viên",
-                                dob1, "0900000001", "CLB IT", "TCNTT","Gám dốc", 1, 1),
+                // --- Thay đổi ở đây: Sử dụng URL ảnh từ Cloudinary ---
+                String avatarAdminUrl = "https://res.cloudinary.com/dn9txxtvm/image/upload/v1741673471/CarImages/uvvvpxxfl0t85dbtbwmn.png"; // Thay bằng URL ảnh admin thật
+                String avatarLinhUrl = "https://res.cloudinary.com/dn9txxtvm/image/upload/v1741673471/CarImages/uvvvpxxfl0t85dbtbwmn.png";   // Thay bằng URL ảnh Linh thật
+                String avatarSonUrl = "https://res.cloudinary.com/dn9txxtvm/image/upload/v1741673471/CarImages/uvvvpxxfl0t85dbtbwmn.png";     // Thay bằng URL ảnh Sơn thật
+                // ----------------------------------------------------
 
-                        new User(2, "linh.lead", "linh@fevent.vn", "pass456", "Lê Thị Linh",
+                dao.insertAll(
+                        new User(1, "ad", "ad@mail.com", "123", "Quản Trị Viên", avatarAdminUrl, // <-- Đã thay "image" bằng URL
+                                dob1, "0900000001", "CLB IT", "TCNTT","Gám đốc", 1, 1),
+
+                        new User(2, "linh.lead", "linh@fevent.vn", "pass456", "Lê Thị Linh", avatarLinhUrl, // <-- Đã thay "image" bằng URL
                                 dob2, "0900000002", "CLB Truyền thông", "Marketing","Thành viên ban Hậu cần", 2, 2),
 
-                        new User(3, "son.member", "son@fevent.vn", "pass789", "Nguyễn Sơn",
+                        new User(3, "son.member", "son@fevent.vn", "pass789", "Nguyễn Sơn", avatarSonUrl, // <-- Đã thay "image" bằng URL
                                 dob3, "0900000003", "CLB Âm nhạc", "Kinh tế","Trưởng ban Truyền thông", 3, 3)
                 );
+                Log.d("SEED", "Seeded Users");
             } catch (ParseException e) {
-                e.printStackTrace();
+                Log.e("SEED", "Error parsing date in seedUsers", e);
             }
         }
     }

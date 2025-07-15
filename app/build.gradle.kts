@@ -72,4 +72,14 @@ dependencies {
     //MPAndroidChart for pie charts
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
+    implementation ("com.cloudinary:cloudinary-android:2.4.0")
+    dependencies {
+        implementation ("com.github.bumptech.glide:glide:4.16.0") // Đảm bảo phiên bản Glide khớp
+        annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0") // Thêm compiler
+    }
+
+
+    // Thư viện hỗ trợ ActivityResultLauncher (quan trọng cho Camera/Gallery API mới)
+    implementation ("androidx.activity:activity-ktx:1.9.0")
+    implementation ("androidx.fragment:fragment-ktx:1.8.0")
 }
