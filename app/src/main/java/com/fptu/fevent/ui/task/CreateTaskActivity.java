@@ -240,10 +240,26 @@ public class CreateTaskActivity extends AppCompatActivity {
 
         // Lưu task
         executor.execute(() -> {
-            taskRepository.insert(newTask);
-            runOnUiThread(() -> {
-                Toast.makeText(this, "Tạo công việc thành công!", Toast.LENGTH_SHORT).show();
-                finish();
+            // Use insertAsync instead of insert to get the ID
+            taskRepository.insertAsync(newTask, taskId -> {
+                if (taskId > 0) {
+                    // Set the ID to the newly created task
+                    newTask.id = taskId.intValue();
+                    
+                    // Send task assignment notification
+                    com.fptu.fevent.service.NotificationService notificationService = 
+                        new com.fptu.fevent.service.NotificationService(getApplication());
+                    notificationService.notifyTaskAssignment(newTask);
+                    
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Tạo công việc thành công và đã gửi thông báo!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                } else {
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Tạo công việc thất bại!", Toast.LENGTH_SHORT).show();
+                    });
+                }
             });
         });
     }

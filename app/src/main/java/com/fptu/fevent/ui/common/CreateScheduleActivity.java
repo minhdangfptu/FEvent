@@ -2,12 +2,14 @@ package com.fptu.fevent.ui.common;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.Schedule;
 import com.fptu.fevent.repository.ScheduleRepository;
+import com.fptu.fevent.service.NotificationService;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class CreateScheduleActivity extends AppCompatActivity {
     private Date startTime, endTime;
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
     private ScheduleRepository repository;
+    private NotificationService notificationService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class CreateScheduleActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_create_schedule);
         repository = new ScheduleRepository(getApplication());
+        notificationService = new NotificationService(getApplication());
 
         etTitle = findViewById(R.id.et_title);
         etLocation = findViewById(R.id.et_location);
@@ -83,8 +87,29 @@ public class CreateScheduleActivity extends AppCompatActivity {
         schedule.end_time = endTime;
         schedule.location = location;
         schedule.description = description;
-        repository.insert(schedule);
-        Toast.makeText(this, "Schedule created", Toast.LENGTH_SHORT).show();
-        finish();
+        
+        // Insert schedule and get ID for notifications
+        repository.insertAsync(schedule, insertedId -> {
+            if (insertedId > 0) {
+                // Get current user ID for notification
+                SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                int currentUserId = prefs.getInt("user_id", -1);
+                
+                // Set the ID to the inserted schedule
+                schedule.id = insertedId.intValue();
+                
+                // Send notifications about the new schedule
+                notificationService.notifyScheduleCreated(schedule, currentUserId);
+                
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Schedule created and notifications sent", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            } else {
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Failed to create schedule", Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 @Dao
 public interface ScheduleDao {
     @Insert
-    void insert(Schedule entity);
+    long insert(Schedule entity);
 
     @Update
     void update(Schedule entity);
@@ -17,4 +17,10 @@ public interface ScheduleDao {
 
     @Query("SELECT * FROM Schedule")
     List<Schedule> getAll();
+    
+    @Insert
+    void insertAll(Schedule... entities);
+
+    @Query("SELECT COUNT(*) FROM Schedule")
+    int getCount();
 }

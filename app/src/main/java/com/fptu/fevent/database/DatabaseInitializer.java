@@ -21,6 +21,7 @@ import com.fptu.fevent.util.DateConverter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
@@ -41,13 +42,15 @@ public class DatabaseInitializer {
             // Seed User trước vì EventInfo phụ thuộc vào User
             seedUsers(db.userDao());
 
-            // Sau đó mới seed EventInfo và Task
+            // Sau đó mới seed EventInfo, Schedule và Task
             seedEvents(db.eventInfoDao());
+            seedSchedules(db.scheduleDao());
             seedTasks(db.taskDao());
 
             int teamCount = db.teamDao().getCount();
             int roleCount = db.roleDao().getCount();
-            Log.d("SEED", "teamCount: " + teamCount + ", roleCount: " + roleCount);
+            int scheduleCount = db.scheduleDao().getCount();
+            Log.d("SEED", "teamCount: " + teamCount + ", roleCount: " + roleCount + ", scheduleCount: " + scheduleCount);
         });
     }
 
@@ -123,6 +126,66 @@ public class DatabaseInitializer {
                         new EventInfo(1, "Sự kiện 1", sdf.parse("01-01-2025 09:00"), sdf.parse("01-01-2025 17:00"), "Hà Nội", "Mô tả sự kiện 1", 1),
                         new EventInfo(2, "Sự kiện 2", sdf.parse("02-01-2025 09:00"), sdf.parse("02-01-2025 17:00"), "TP.HCM", "Mô tả sự kiện 2", 2)
                 );
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void seedSchedules(com.fptu.fevent.dao.ScheduleDao dao) {
+        if (dao.getCount() == 0) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm", new Locale("vi", "VN"));
+                
+                // Schedule 1: Họp ban Core - sắp diễn ra (để test reminder 1h)
+                com.fptu.fevent.model.Schedule schedule1 = new com.fptu.fevent.model.Schedule();
+                schedule1.title = "Họp ban Core - Chuẩn bị sự kiện Halloween";
+                schedule1.start_time = sdf.parse("31-12-2024 14:00");
+                schedule1.end_time = sdf.parse("31-12-2024 16:00");
+                schedule1.location = "Phòng họp A101";
+                schedule1.description = "Thảo luận kế hoạch tổ chức sự kiện Halloween 2024";
+                schedule1.team_id = 1; // Đội Core
+                
+                // Schedule 2: Họp ban Truyền thông - hôm nay (để test reminder 1h)
+                Calendar today = Calendar.getInstance();
+                today.add(Calendar.HOUR, 1); // 1 giờ nữa
+                com.fptu.fevent.model.Schedule schedule2 = new com.fptu.fevent.model.Schedule();
+                schedule2.title = "Họp ban Truyền thông - Review content";
+                schedule2.start_time = today.getTime();
+                today.add(Calendar.HOUR, 2); // kết thúc sau 2 giờ
+                schedule2.end_time = today.getTime();
+                schedule2.location = "Phòng họp B202";
+                schedule2.description = "Review nội dung truyền thông cho sự kiện sắp tới";
+                schedule2.team_id = 2; // Ban Truyền thông
+                
+                // Schedule 3: Họp tổng - không có team cụ thể (để test thông báo cho tất cả)
+                Calendar tomorrow = Calendar.getInstance();
+                tomorrow.add(Calendar.DAY_OF_MONTH, 1);
+                tomorrow.set(Calendar.HOUR_OF_DAY, 9);
+                tomorrow.set(Calendar.MINUTE, 0);
+                com.fptu.fevent.model.Schedule schedule3 = new com.fptu.fevent.model.Schedule();
+                schedule3.title = "Họp tổng toàn thể - Kick-off Q1 2025";
+                schedule3.start_time = tomorrow.getTime();
+                tomorrow.add(Calendar.HOUR, 3);
+                schedule3.end_time = tomorrow.getTime();
+                schedule3.location = "Hội trường chính";
+                schedule3.description = "Họp tổng toàn thể để kick-off quý 1 năm 2025";
+                schedule3.team_id = null; // Không có team cụ thể - cho tất cả
+                
+                // Schedule 4: Họp ban Media - trong 30 phút (để test reminder ngay lập tức)
+                Calendar soon = Calendar.getInstance();
+                soon.add(Calendar.MINUTE, 30);
+                com.fptu.fevent.model.Schedule schedule4 = new com.fptu.fevent.model.Schedule();
+                schedule4.title = "Họp ban Media - Urgent design review";
+                schedule4.start_time = soon.getTime();
+                soon.add(Calendar.HOUR, 1);
+                schedule4.end_time = soon.getTime();
+                schedule4.location = "Phòng Design Studio";
+                schedule4.description = "Review khẩn cấp các thiết kế poster cho sự kiện";
+                schedule4.team_id = 3; // Ban Media - Design
+                
+                dao.insertAll(schedule1, schedule2, schedule3, schedule4);
+                
             } catch (ParseException e) {
                 e.printStackTrace();
             }
