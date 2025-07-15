@@ -4,6 +4,12 @@
     <!-- ✅ Permission INTERNET -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- ✅ Permissions for Push Notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -139,6 +145,10 @@
             android:name=".ui.auth.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".onboarding.OnboardingActivity"
             android:exported="true">
             <intent-filter>
@@ -151,6 +161,7 @@
             android:name=".MainActivity"
             android:exported="true" />
 
+        
         <service
             android:name=".service.NotificationBackgroundService"
             android:enabled="true"

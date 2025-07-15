@@ -32,6 +32,9 @@ public class NotificationBackgroundService extends Service {
                 // Check for task delays and create notifications
                 notificationService.checkTaskDelaysAndNotify();
                 
+                // Check for schedule reminders
+                notificationService.checkScheduleReminders();
+                
                 // Clean up old notifications
                 notificationService.cleanupOldNotifications();
                 

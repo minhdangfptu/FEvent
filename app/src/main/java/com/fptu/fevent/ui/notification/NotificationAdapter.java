@@ -126,6 +126,26 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     iconColor = R.color.blue_500;
                     typeText = "Nhắc nhở";
                     break;
+                case "TASK_ASSIGNED":
+                    iconRes = R.drawable.baseline_assignment_24;
+                    iconColor = R.color.green_500;
+                    typeText = "Giao việc";
+                    break;
+                case "TASK_DEADLINE_1H":
+                    iconRes = R.drawable.baseline_assignment_late_24;
+                    iconColor = R.color.red_500;
+                    typeText = "Hết hạn 1h";
+                    break;
+                case "SCHEDULE_CREATED":
+                    iconRes = R.drawable.baseline_event_note_24;
+                    iconColor = R.color.purple_500;
+                    typeText = "Lịch họp mới";
+                    break;
+                case "SCHEDULE_REMINDER_1H":
+                    iconRes = R.drawable.baseline_event_note_24;
+                    iconColor = R.color.orange_500;
+                    typeText = "Họp 1h nữa";
+                    break;
                 case "GENERAL":
                     iconRes = R.drawable.baseline_circle_notifications_24;
                     iconColor = R.color.gray_600;

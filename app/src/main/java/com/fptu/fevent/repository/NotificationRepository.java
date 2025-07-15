@@ -52,8 +52,29 @@ public class NotificationRepository {
         return notificationDao.getNotificationsByTaskAndType(taskId, type, userId);
     }
 
+    public List<Notification> getNotificationsByScheduleAndType(int scheduleId, String type, int userId) {
+        return notificationDao.getNotificationsByScheduleAndType(scheduleId, type, userId);
+    }
+
     public void deleteOldNotifications(Date cutoffDate) {
         executor.execute(() -> notificationDao.deleteOldNotifications(cutoffDate));
+    }
+
+    // New methods for schedule notifications
+    public List<Notification> getNotificationsByScheduleId(int scheduleId) {
+        return notificationDao.getNotificationsByScheduleId(scheduleId);
+    }
+
+    public List<Notification> getNotificationsByTaskId(int taskId) {
+        return notificationDao.getNotificationsByTaskId(taskId);
+    }
+
+    public List<Notification> getRecentTaskNotifications(int userId, String type, int taskId, Date timeLimit) {
+        return notificationDao.getRecentTaskNotifications(userId, type, taskId, timeLimit);
+    }
+
+    public List<Notification> getRecentScheduleNotifications(int userId, String type, int scheduleId, Date timeLimit) {
+        return notificationDao.getRecentScheduleNotifications(userId, type, scheduleId, timeLimit);
     }
 
     // Async methods for better performance

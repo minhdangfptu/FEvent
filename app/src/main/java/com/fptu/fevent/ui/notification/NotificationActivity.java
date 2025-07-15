@@ -222,11 +222,18 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         
         // Navigate to task detail if it's a task-related notification
         if (notification.task_id != null) {
-            Intent intent = new Intent(this, TaskDetailActivity.class);
+            Intent intent = new Intent(this, com.fptu.fevent.ui.task.TaskDetailActivity.class);
             intent.putExtra("task_id", notification.task_id);
             startActivity(intent);
-        } else {
-            // Show notification details for non-task notifications
+        } 
+        // Navigate to schedule detail if it's a schedule-related notification
+        else if (notification.schedule_id != null) {
+            Intent intent = new Intent(this, com.fptu.fevent.ui.common.ScheduleDetailActivity.class);
+            intent.putExtra("schedule_id", notification.schedule_id);
+            startActivity(intent);
+        } 
+        else {
+            // Show notification details for non-task/schedule notifications
             showNotificationDetails(notification);
         }
     }
