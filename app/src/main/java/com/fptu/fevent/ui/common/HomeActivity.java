@@ -52,6 +52,13 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         String position = prefs.getString("position", "Position chưa xác định");
         int roleId = prefs.getInt("role_id", 0); // 1 = admin
 
+        //find view de navifate
+        findViewById(R.id.layout_team).setOnClickListener(v -> navigateToTeamManagement());
+        findViewById(R.id.layout_schedule).setOnClickListener(v -> navigateToSchedule());
+        findViewById(R.id.layout_task).setOnClickListener(v -> navigateToTaskManagement());
+        findViewById(R.id.layout_manage_account).setOnClickListener(v -> navigateToManageAccount());
+        findViewById(R.id.layout_privacy).setOnClickListener(v -> navigateToPrivacySetting());
+
         // Start notification background service
         Intent serviceIntent = new Intent(this, com.fptu.fevent.service.NotificationBackgroundService.class);
         startService(serviceIntent);
@@ -248,6 +255,30 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         NotificationPermissionHelper.handlePermissionResult(this, requestCode, permissions, grantResults);
+    }
+    private void navigateToTeamManagement() {
+        Intent intent = new Intent(HomeActivity.this, DepartmentActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToSchedule() {
+        Intent intent = new Intent(HomeActivity.this, ScheduleActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToTaskManagement() {
+        Intent intent = new Intent(HomeActivity.this, TaskActivity.class);
+        startActivity(intent);
+    }
+    private void navigateToManageAccount() {
+        Intent intent = new Intent(HomeActivity.this, UserManagementActivity.class);
+        startActivity(intent);
+    }
+
+    // Bảo mật tài khoản
+    private void navigateToPrivacySetting() {
+        Intent intent = new Intent(HomeActivity.this, PrivacyManagementActivity.class);
+        startActivity(intent);
     }
 
 }
