@@ -43,6 +43,7 @@ public class AddEventFeedbackActivity extends AppCompatActivity {
                 Toast.makeText(this, "Dữ liệu không hợp lệ! Vui lòng kiểm tra sự kiện hoặc người dùng.", Toast.LENGTH_SHORT).show();
                 return;
             }
+
             new Thread(() -> {
                 EventInfo event = eventInfoRepository.getById(eventId);
                 userRepository.getUserById(userId, user -> {

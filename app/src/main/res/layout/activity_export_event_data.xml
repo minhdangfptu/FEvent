@@ -31,6 +31,7 @@
             android:gravity="center"
             android:layout_marginBottom="32dp" />
 
+        <!-- Export Options -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
+                <!-- Export Excel -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,68 +57,71 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="16dp">
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/excel_icon_background"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="XLS"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                android:textColor="#FFFFFF" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:gravity="center_vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/excel_icon_background"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="XLS"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="Export to Excel"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="#2C3E50" />
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Xuất dữ liệu dạng bảng Excel (.xlsx)"
-                                android:textSize="14sp"
-                                android:textColor="#7F8C8D"
-                                android:layout_marginTop="4dp" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Export to Excel"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#2C3E50" />
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Xuất dữ liệu dạng bảng Excel (.xlsx)"
+                                    android:textSize="14sp"
+                                    android:textColor="#7F8C8D"
+                                    android:layout_marginTop="4dp" />
+                            </LinearLayout>
                         </LinearLayout>
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_export_excel"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:layout_margin="16dp"
+                            android:text="Xuất Excel"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:backgroundTint="#27AE60"
+                            app:cornerRadius="12dp" />
                     </LinearLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_export_excel"
-                        style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_margin="16dp"
-                        android:text="Xuất Excel"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#27AE60"
-                        app:cornerRadius="12dp" />
-
                 </androidx.cardview.widget.CardView>
 
+                <!-- Export PDF -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,66 +133,68 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="16dp">
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/pdf_icon_background"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="PDF"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                android:textColor="#FFFFFF" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:gravity="center_vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/pdf_icon_background"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PDF"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="Export to PDF"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="#2C3E50" />
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Xuất dữ liệu dạng tài liệu PDF (.pdf)"
-                                android:textSize="14sp"
-                                android:textColor="#7F8C8D"
-                                android:layout_marginTop="4dp" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Export to PDF"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#2C3E50" />
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Xuất dữ liệu dạng tài liệu PDF (.pdf)"
+                                    android:textSize="14sp"
+                                    android:textColor="#7F8C8D"
+                                    android:layout_marginTop="4dp" />
+                            </LinearLayout>
                         </LinearLayout>
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_export_pdf"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:layout_margin="16dp"
+                            android:text="Xuất PDF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:backgroundTint="#E67E22"
+                            app:cornerRadius="12dp" />
                     </LinearLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_export_pdf"
-                        style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_margin="16dp"
-                        android:text="Xuất PDF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#E67E22"
-                        app:cornerRadius="12dp" />
-
                 </androidx.cardview.widget.CardView>
 
                 <!-- Back Button -->
@@ -202,9 +209,7 @@
                     android:textColor="#7F8C8D"
                     app:cornerRadius="12dp"
                     android:paddingHorizontal="32dp" />
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -217,7 +222,5 @@
             android:layout_marginTop="24dp"
             android:textStyle="italic"
             android:lineSpacingExtra="2dp" />
-
     </LinearLayout>
-
 </ScrollView>

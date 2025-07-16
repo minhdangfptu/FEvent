@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Color Indicator -->
+        <View
+            android:id="@+id/colorIndicator"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@color/blue_500" />
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Title with Icon -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Title"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray_800"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                tools:drawableStart="@drawable/baseline_event_24" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Type • Status"
+                android:textSize="12sp"
+                android:textColor="@color/gray_600"
+                android:layout_marginTop="4dp" />
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event description goes here..."
+                android:textSize="14sp"
+                android:textColor="@color/gray_700"
+                android:layout_marginTop="8dp"
+                android:maxLines="3"
+                android:ellipsize="end" />
+
+            <!-- Time -->
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09:00 - 17:00"
+                android:textSize="13sp"
+                android:textColor="@color/blue_600"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/baseline_access_time_24"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView> 

@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.EventFeedback;
+import com.fptu.fevent.model.User;
 import com.fptu.fevent.repository.EventFeedbackRepository;
 import com.fptu.fevent.repository.UserRepository;
+
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -33,8 +36,10 @@ public class EventFeedbackDetailActivity extends AppCompatActivity {
         int currentUserId = getIntent().getIntExtra("currentUserId", -1);
         int feedbackId = getIntent().getIntExtra("feedbackId", -1);
 
+        // Kiểm tra quyền trước khi tải
         checkPrivilegedRoleAndLoad(currentUserId, feedbackId);
 
+        // Nút quay lại
         findViewById(R.id.btn_back).setOnClickListener(v -> finish());
     }
 
@@ -56,10 +61,9 @@ public class EventFeedbackDetailActivity extends AppCompatActivity {
         new Thread(() -> {
             EventFeedback feedback = feedbackRepository.getById(feedbackId);
             if (feedback == null) {
-                runOnUiThread(() -> {
-                    Toast.makeText(this, "Không tìm thấy đánh giá!", Toast.LENGTH_SHORT).show();
-                    finish();
-                });
+                runOnUiThread(() ->
+                        Toast.makeText(this, "Không tìm thấy đánh giá!", Toast.LENGTH_SHORT).show()
+                );
                 return;
             }
 

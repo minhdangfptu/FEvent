@@ -5,20 +5,24 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.EventInfo;
 import com.fptu.fevent.model.Task;
 import com.fptu.fevent.model.User;
-import com.fptu.fevent.repository.UserRepository;
 import com.fptu.fevent.repository.EventInfoRepository;
 import com.fptu.fevent.repository.TaskRepository;
+import com.fptu.fevent.repository.UserRepository;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -39,7 +43,7 @@ public class ExportEventDataActivity extends AppCompatActivity {
         userRepository = new UserRepository(getApplication());
         eventInfoRepository = new EventInfoRepository(getApplication());
         taskRepository = new TaskRepository(getApplication());
-        dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", new Locale("vi", "VN"));
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
 
         int userId = getIntent().getIntExtra("userId", -1);
 
@@ -67,7 +71,7 @@ public class ExportEventDataActivity extends AppCompatActivity {
             try {
                 Workbook workbook = new XSSFWorkbook();
 
-                // Sheet cho Events
+                // Sheet Events
                 Sheet eventSheet = workbook.createSheet("Events");
                 Row eventHeader = eventSheet.createRow(0);
                 eventHeader.createCell(0).setCellValue("ID");
@@ -76,21 +80,20 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 eventHeader.createCell(3).setCellValue("End Date");
                 eventHeader.createCell(4).setCellValue("Location");
                 eventHeader.createCell(5).setCellValue("Description");
-                eventHeader.createCell(6).setCellValue("Organizer ID");
 
                 List<EventInfo> events = eventInfoRepository.getAllEventsSync();
-                int eventRowNum = 1;
+                int rowNum = 1;
                 for (EventInfo event : events) {
-                    Row row = eventSheet.createRow(eventRowNum++);
+                    Row row = eventSheet.createRow(rowNum++);
                     row.createCell(0).setCellValue(event.id);
                     row.createCell(1).setCellValue(event.name);
-                    row.createCell(2).setCellValue(event.start_time != null ? dateFormat.format(event.end_time) : "");
+                    row.createCell(2).setCellValue(event.start_time != null ? dateFormat.format(event.start_time) : "");
                     row.createCell(3).setCellValue(event.end_time != null ? dateFormat.format(event.end_time) : "");
                     row.createCell(4).setCellValue(event.location);
                     row.createCell(5).setCellValue(event.description);
                 }
 
-                // Sheet cho Users
+                // Sheet Users
                 Sheet userSheet = workbook.createSheet("Users");
                 Row userHeader = userSheet.createRow(0);
                 userHeader.createCell(0).setCellValue("User ID");
@@ -99,27 +102,27 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 userHeader.createCell(3).setCellValue("Role ID");
 
                 List<User> users = userRepository.getAllUsersSync();
-                int userRowNum = 1;
+                rowNum = 1;
                 for (User user : users) {
-                    Row row = userSheet.createRow(userRowNum++);
+                    Row row = userSheet.createRow(rowNum++);
                     row.createCell(0).setCellValue(user.getId());
                     row.createCell(1).setCellValue(user.getFullName());
                     row.createCell(2).setCellValue(user.getEmail());
                     row.createCell(3).setCellValue(user.getRole_id());
                 }
 
-                // Sheet cho Tasks
+                // Sheet Tasks
                 Sheet taskSheet = workbook.createSheet("Tasks");
                 Row taskHeader = taskSheet.createRow(0);
                 taskHeader.createCell(0).setCellValue("Task ID");
                 taskHeader.createCell(1).setCellValue("Title");
                 taskHeader.createCell(2).setCellValue("Description");
-                taskHeader.createCell(3).setCellValue("Event ID");
+                taskHeader.createCell(3).setCellValue("Team ID");
 
                 List<Task> tasks = taskRepository.getAllTasksSync();
-                int taskRowNum = 1;
+                rowNum = 1;
                 for (Task task : tasks) {
-                    Row row = taskSheet.createRow(taskRowNum++);
+                    Row row = taskSheet.createRow(rowNum++);
                     row.createCell(0).setCellValue(task.id);
                     row.createCell(1).setCellValue(task.title);
                     row.createCell(2).setCellValue(task.description);
@@ -127,13 +130,9 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 }
 
                 // Auto-size columns
-                for (int i = 0; i < 7; i++) {
-                    eventSheet.autoSizeColumn(i);
-                    if (i < 4) {
-                        userSheet.autoSizeColumn(i);
-                        taskSheet.autoSizeColumn(i);
-                    }
-                }
+                for (int i = 0; i <= 5; i++) eventSheet.autoSizeColumn(i);
+                for (int i = 0; i <= 3; i++) userSheet.autoSizeColumn(i);
+                for (int i = 0; i <= 3; i++) taskSheet.autoSizeColumn(i);
 
                 File file = new File(Environment.getExternalStorageDirectory(), "EventData.xlsx");
                 FileOutputStream fos = new FileOutputStream(file);
@@ -148,7 +147,6 @@ public class ExportEventDataActivity extends AppCompatActivity {
         }).start();
     }
 
-    @SuppressLint("DefaultLocale")
     private void exportToPdf() {
         new Thread(() -> {
             try {
@@ -157,28 +155,25 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf);
 
-                // Title
                 document.add(new Paragraph("Event Data Report").setBold().setFontSize(16));
                 document.add(new Paragraph(" "));
 
-                // Events Section
+                // Events
                 document.add(new Paragraph("EVENTS").setBold().setFontSize(14));
                 List<EventInfo> events = eventInfoRepository.getAllEventsSync();
                 for (EventInfo event : events) {
                     document.add(new Paragraph(String.format("ID: %d", event.id)));
-                    document.add(new Paragraph(String.format("Event Name: %s", event.name)));
-                    document.add(new Paragraph(String.format("Start Date: %s",
-                            event.start_time != null ? dateFormat.format(event.start_time) : "N/A")));
-                    document.add(new Paragraph(String.format("End Date: %s",
-                            event.end_time != null ? dateFormat.format(event.end_time) : "N/A")));
-                    document.add(new Paragraph(String.format("Location: %s", event.location)));
-                    document.add(new Paragraph(String.format("Description: %s", event.description)));
-                    document.add(new Paragraph("---"));
+                    document.add(new Paragraph("Event Name: " + event.name));
+                    document.add(new Paragraph("Start Date: " + (event.start_time != null ? dateFormat.format(event.start_time) : "N/A")));
+                    document.add(new Paragraph("End Date: " + (event.end_time != null ? dateFormat.format(event.end_time) : "N/A")));
+                    document.add(new Paragraph("Location: " + event.location));
+                    document.add(new Paragraph("Description: " + event.description));
+                    document.add(new Paragraph("----------------------"));
                 }
 
                 document.add(new Paragraph(" "));
 
-                // Users Section
+                // Users
                 document.add(new Paragraph("USERS").setBold().setFontSize(14));
                 List<User> users = userRepository.getAllUsersSync();
                 for (User user : users) {
@@ -188,14 +183,14 @@ public class ExportEventDataActivity extends AppCompatActivity {
 
                 document.add(new Paragraph(" "));
 
-                // Tasks Section
+                // Tasks
                 document.add(new Paragraph("TASKS").setBold().setFontSize(14));
                 List<Task> tasks = taskRepository.getAllTasksSync();
                 for (Task task : tasks) {
                     document.add(new Paragraph(String.format("ID: %d - Title: %s", task.id, task.title)));
-                    document.add(new Paragraph(String.format("Description: %s", task.description)));
-                    document.add(new Paragraph(String.format("Team ID: %d", task.team_id)));
-                    document.add(new Paragraph("---"));
+                    document.add(new Paragraph("Description: " + task.description));
+                    document.add(new Paragraph("Team ID: " + task.team_id));
+                    document.add(new Paragraph("----------------------"));
                 }
 
                 document.close();

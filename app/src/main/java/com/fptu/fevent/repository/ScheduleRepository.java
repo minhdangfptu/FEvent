@@ -26,6 +26,15 @@ public class ScheduleRepository {
         executor.execute(() -> scheduleDao.insert(entity));
     }
 
+    public void insertAsync(Schedule entity, java.util.function.Consumer<Long> callback) {
+        executor.execute(() -> {
+            long id = scheduleDao.insert(entity);
+            if (callback != null) {
+                callback.accept(id);
+            }
+        });
+    }
+
     public void update(Schedule entity) {
         executor.execute(() -> scheduleDao.update(entity));
     }
@@ -33,6 +42,7 @@ public class ScheduleRepository {
     public void delete(Schedule entity) {
         executor.execute(() -> scheduleDao.delete(entity));
     }
+
 
     public List<Schedule> getAllSchedules() {
         return scheduleDao.getAllSchedules();
@@ -47,6 +57,5 @@ public class ScheduleRepository {
             return null;
         }
     }
-
 
 }

@@ -21,6 +21,9 @@ public interface TeamDao {
     @Query("SELECT * FROM Team")
     List<Team> getAll();
 
+    @Query("SELECT * FROM Team WHERE id = :teamId LIMIT 1")
+    Team getById(int teamId);
+
     @Insert
     void insertAll(Team... entities);
 

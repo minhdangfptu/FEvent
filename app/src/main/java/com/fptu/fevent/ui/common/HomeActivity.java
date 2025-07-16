@@ -27,6 +27,7 @@ import com.fptu.fevent.ui.component.DrawerController;
 import com.fptu.fevent.ui.component.TopMenuFragment;
 import com.fptu.fevent.ui.user.PrivacyManagementActivity;
 import com.fptu.fevent.ui.user.UserManagementActivity;
+import com.fptu.fevent.util.NotificationPermissionHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity extends AppCompatActivity implements DrawerController {
@@ -50,6 +51,18 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         String email = prefs.getString("email", "Email chưa xác định");
         String position = prefs.getString("position", "Position chưa xác định");
         int roleId = prefs.getInt("role_id", 0); // 1 = admin
+
+        // Start notification background service
+        Intent serviceIntent = new Intent(this, com.fptu.fevent.service.NotificationBackgroundService.class);
+        startService(serviceIntent);
+
+        // Create sample notifications for testing (only on first run)
+        if (prefs.getBoolean("first_run", true)) {
+            com.fptu.fevent.util.NotificationHelper notificationHelper = new com.fptu.fevent.util.NotificationHelper(getApplication());
+            notificationHelper.createSampleNotifications();
+            notificationHelper.testScheduleNotificationFixes();
+            prefs.edit().putBoolean("first_run", false).apply();
+        }
 
         if (roleId == 1) {
             Menu menu = navigationView.getMenu();
@@ -99,6 +112,9 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
+
+        // Xin quyền thông báo
+        NotificationPermissionHelper.requestNotificationPermission(this);
     }
 
     @Override
@@ -115,7 +131,8 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         int id = item.getItemId();
 
         if (id == R.id.nav_notification) {
-            Toast.makeText(this, "Thông báo", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, com.fptu.fevent.ui.notification.NotificationActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_manage) {
 //            Toast.makeText(this, "Quản lý tài khoản", Toast.LENGTH_SHORT).show();
             manageAccount();
@@ -227,6 +244,10 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         }
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        NotificationPermissionHelper.handlePermissionResult(this, requestCode, permissions, grantResults);
+    }
 
 }

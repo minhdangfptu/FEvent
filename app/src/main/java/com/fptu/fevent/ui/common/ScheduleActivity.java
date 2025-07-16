@@ -24,6 +24,7 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
     private List<Schedule> scheduleList;
     private ScheduleRepository repository;
     private Button btnCreate;
+    private TextView emptyMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
     private void initViews() {
         recyclerView = findViewById(R.id.recycler_schedules);
         btnCreate = findViewById(R.id.btn_create_schedule);
+        emptyMessage = findViewById(R.id.tv_empty_message);
     }
 
     private void setupRecyclerView() {
@@ -72,7 +74,6 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
                 scheduleList.addAll(schedules);
                 adapter.updateSchedules(scheduleList);
 
-                TextView emptyMessage = findViewById(R.id.tv_empty_message);
                 if (emptyMessage != null) {
                     if (scheduleList.isEmpty()) {
                         emptyMessage.setVisibility(View.VISIBLE);
@@ -85,7 +86,6 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
             });
         }).start();
     }
-
 
     @Override
     protected void onResume() {
@@ -117,12 +117,11 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
         new AlertDialog.Builder(this)
                 .setTitle("Xác nhận xóa")
                 .setMessage("Bạn có chắc chắn muốn xóa lịch trình \"" + schedule.title + "\"?")
-                .setPositiveButton("Xóa", (dialog, which) -> {
-                    deleteSchedule(schedule);
-                })
+                .setPositiveButton("Xóa", (dialog, which) -> deleteSchedule(schedule))
                 .setNegativeButton("Hủy", null)
                 .show();
     }
+
     @Override
     public void onItemClick(Schedule schedule) {
         ScheduleDetailActivity.start(this, schedule.id);
@@ -133,12 +132,14 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleAdapt
             repository.delete(schedule);
             runOnUiThread(() -> {
                 Toast.makeText(this, "Đã xóa lịch trình", Toast.LENGTH_SHORT).show();
-                loadSchedules(); // Refresh the list
+                loadSchedules();
             });
         }).start();
     }
 
     private int getCurrentUserRoleId() {
-        return 2; // Placeholder - replace with actual user role logic
+        // TODO: Replace with actual logic to get logged-in user's role
+        // For now, 2 = Organizer
+        return 2;
     }
 }

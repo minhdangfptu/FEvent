@@ -1,19 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="🔔 Test Push Notifications - FEvent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnTestTaskAssigned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📝 Test: Giao công việc mới"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnTestTaskDeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⏰ Test: Deadline 1 giờ"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnTestScheduleCreated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📅 Test: Lịch họp mới"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnTestScheduleReminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🔔 Test: Nhắc lịch họp 1h"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnTestTaskOverdue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚨 Test: Công việc quá hạn"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnGoToHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🏠 Đi đến Home"
+        android:backgroundTint="@color/blue_500"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

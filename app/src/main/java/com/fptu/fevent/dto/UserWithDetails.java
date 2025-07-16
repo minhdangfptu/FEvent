@@ -25,4 +25,6 @@ public class UserWithDetails {
 
     @ColumnInfo(name = "role_name")
     public String roleName;
+
+    public String image;
 }

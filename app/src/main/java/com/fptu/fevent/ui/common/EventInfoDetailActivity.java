@@ -1,5 +1,6 @@
 package com.fptu.fevent.ui.common;
 
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,15 @@ import com.fptu.fevent.repository.EventInfoRepository;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import com.fptu.fevent.R;
+import com.fptu.fevent.model.EventInfo;
+import com.fptu.fevent.repository.EventInfoRepository;
+import java.text.SimpleDateFormat;
+
 import java.util.Locale;
 
 public class EventInfoDetailActivity extends AppCompatActivity {
@@ -45,6 +55,7 @@ public class EventInfoDetailActivity extends AppCompatActivity {
         } else {
             finish();
         }
+
 
         Button btnExport = findViewById(R.id.btn_export);
         btnExport.setOnClickListener(v -> {
@@ -119,6 +130,8 @@ public class EventInfoDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(context, EventInfoDetailActivity.class);
         intent.putExtra("eventId", eventId);
         context.startActivity(intent);
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+
     }
 
     private void loadEventInfo(int eventId) {

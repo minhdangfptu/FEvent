@@ -20,12 +20,12 @@ import java.util.concurrent.Executors;
         entities = {
                 User.class, Role.class, Permission.class,
                 Team.class, EventInfo.class, Schedule.class,
-                Task.class, EventFeedback.class, UserFeedback.class
+                Task.class, EventFeedback.class, UserFeedback.class,
+                Notification.class
         },
-        version = 2
+        version = 3
 )
 @TypeConverters({PermissionConverter.class, DateConverter.class, IntegerListConverter.class})
-
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
@@ -35,33 +35,29 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            AppDatabase.class,
-                            "FEvent_Database"
-                    ).fallbackToDestructiveMigration().build();
+                                    context.getApplicationContext(),
+                                    AppDatabase.class,
+                                    "FEvent_Database"
+                            )
+                            .fallbackToDestructiveMigration() // ✅ Nếu bạn chưa dùng Migration, giữ dòng này
+                            .build();
                 }
             }
         }
         return INSTANCE;
     }
+
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(4);
 
     public abstract UserDao userDao();
-
     public abstract RoleDao roleDao();
-
     public abstract PermissionDao permissionDao();
-
     public abstract TeamDao teamDao();
-
     public abstract EventInfoDao eventInfoDao();
-
     public abstract ScheduleDao scheduleDao();
-
     public abstract TaskDao taskDao();
-
     public abstract EventFeedbackDao eventFeedbackDao();
-
     public abstract UserFeedbackDao userFeedbackDao();
+    public abstract NotificationDao notificationDao();
 }

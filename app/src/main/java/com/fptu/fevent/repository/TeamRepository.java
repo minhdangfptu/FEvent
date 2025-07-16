@@ -21,6 +21,10 @@ public class TeamRepository {
         return teamDao.getAll();
     }
 
+    public Team getTeamById(int teamId) {
+        return teamDao.getById(teamId);
+    }
+
     public void insert(Team entity) {
         executor.execute(() -> teamDao.insert(entity));
     }
@@ -38,5 +42,8 @@ public class TeamRepository {
             callback.accept(result);
         });
     }
-
+    
+    public List<Team> getAllTeams() {
+        return teamDao.getAll();
+    }
 }

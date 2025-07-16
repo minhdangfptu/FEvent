@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.Schedule;
 import com.fptu.fevent.repository.ScheduleRepository;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,23 +19,29 @@ public class EditScheduleActivity extends AppCompatActivity {
     private Date startTime, endTime;
     private ScheduleRepository repository;
     private Schedule schedule;
+
     private Button btnStartTime, btnEndTime;
+
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Kiểm tra quyền tạo lịch họp
         int roleId = getCurrentUserRoleId();
         if (roleId != 2) {
             Toast.makeText(this, "Bạn không có quyền tạo lịch họp", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
+
         setContentView(R.layout.activity_edit_schedule);
 
         int scheduleId = getIntent().getIntExtra("schedule_id", -1);
         repository = new ScheduleRepository(getApplication());
 
+        // Ánh xạ view
         etTitle = findViewById(R.id.et_title);
         etLocation = findViewById(R.id.et_location);
         etDescription = findViewById(R.id.et_description);
@@ -42,6 +49,7 @@ public class EditScheduleActivity extends AppCompatActivity {
         btnEndTime = findViewById(R.id.btn_end_time);
         Button btnSave = findViewById(R.id.btn_save);
 
+        // Lấy dữ liệu Schedule
         new Thread(() -> {
             for (Schedule s : repository.getAll()) {
                 if (s.id == scheduleId) {
@@ -49,6 +57,7 @@ public class EditScheduleActivity extends AppCompatActivity {
                     break;
                 }
             }
+
             runOnUiThread(() -> {
                 if (schedule != null) {
                     etTitle.setText(schedule.title);
@@ -62,9 +71,11 @@ public class EditScheduleActivity extends AppCompatActivity {
             });
         }).start();
 
-        // Thiết lập event listeners
+        // Sự kiện click chọn thời gian
         btnStartTime.setOnClickListener(v -> pickDateTime(true, btnStartTime));
         btnEndTime.setOnClickListener(v -> pickDateTime(false, btnEndTime));
+
+        // Sự kiện lưu
         btnSave.setOnClickListener(v -> {
             if (schedule != null) {
                 schedule.title = etTitle.getText().toString();
@@ -72,8 +83,9 @@ public class EditScheduleActivity extends AppCompatActivity {
                 schedule.description = etDescription.getText().toString();
                 schedule.start_time = startTime;
                 schedule.end_time = endTime;
+
                 repository.update(schedule);
-                Toast.makeText(this, "Schedule updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Lịch đã được cập nhật", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -85,6 +97,7 @@ public class EditScheduleActivity extends AppCompatActivity {
         if (initialDate != null) {
             calendar.setTime(initialDate);
         }
+
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -113,6 +126,7 @@ public class EditScheduleActivity extends AppCompatActivity {
     }
 
     private int getCurrentUserRoleId() {
+        // Giả lập quyền, cần thay bằng lấy từ SharedPreferences hoặc Repository
         return 2;
     }
 }

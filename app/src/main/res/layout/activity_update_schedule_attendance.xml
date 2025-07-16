@@ -58,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:padding="16dp">
 
+                        <!-- Option Yes -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -93,9 +94,7 @@
                                     android:text="I confirm my attendance"
                                     android:textSize="14sp"
                                     android:textColor="#7F8C8D" />
-
                             </LinearLayout>
-
                         </LinearLayout>
 
                         <View
@@ -104,6 +103,7 @@
                             android:background="#E8E8E8"
                             android:layout_marginHorizontal="12dp" />
 
+                        <!-- Option No -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -139,15 +139,12 @@
                                     android:text="Please provide a reason below"
                                     android:textSize="14sp"
                                     android:textColor="#7F8C8D" />
-
                             </LinearLayout>
-
                         </LinearLayout>
-
                     </RadioGroup>
-
                 </androidx.cardview.widget.CardView>
 
+                <!-- Reason Field -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -184,9 +181,9 @@
                         android:maxLines="5"
                         android:maxLength="200"
                         android:gravity="top" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Submit Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_submit"
                     style="@style/Widget.MaterialComponents.Button"
@@ -198,11 +195,10 @@
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#3498DB"
                     app:cornerRadius="12dp" />
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
+        <!-- Footer Text -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,7 +208,5 @@
             android:gravity="center"
             android:layout_marginTop="24dp"
             android:lineSpacingExtra="2dp" />
-
     </LinearLayout>
-
 </ScrollView>

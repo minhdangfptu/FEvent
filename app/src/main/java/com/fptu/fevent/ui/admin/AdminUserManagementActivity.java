@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
 import androidx.appcompat.widget.SearchView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -162,9 +165,70 @@ public class AdminUserManagementActivity extends AppCompatActivity implements Us
                 .show();
     }
 
+    //    @Override
+//    public void onAssignRole(User user) {
+//        Toast.makeText(this, "Phân quyền: " + user.getFullName(), Toast.LENGTH_SHORT).show();
+//
+//    }
     @Override
     public void onAssignRole(User user) {
-        Toast.makeText(this, "Phân quyền: " + user.getFullName(), Toast.LENGTH_SHORT).show();
+        // Inflate the custom dialog layout
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_assign_role, null);
+        TextView tvAssignRoleTitle = view.findViewById(R.id.tv_assign_role_title);
+        RadioGroup radioRoleGroup = view.findViewById(R.id.radio_role_group);
+
+        // Set the title with the user's name
+        tvAssignRoleTitle.setText("Phân quyền cho: " + user.getFullName());
+
+        // Pre-select the current role of the user
+        if (user.getRole_id() != null) {
+            for (int i = 0; i < radioRoleGroup.getChildCount(); i++) {
+                View child = radioRoleGroup.getChildAt(i);
+                if (child instanceof RadioButton) {
+                    RadioButton radioButton = (RadioButton) child;
+                    // Compare the tag (which holds role_id as String) with current role_id
+                    if (radioButton.getTag() != null && String.valueOf(user.getRole_id()).equals(radioButton.getTag().toString())) {
+                        radioButton.setChecked(true);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        new AlertDialog.Builder(this)
+                .setView(view)
+                .setPositiveButton("Xác nhận", (dialog, which) -> {
+                    int selectedId = radioRoleGroup.getCheckedRadioButtonId();
+                    if (selectedId != -1) {
+                        RadioButton selectedRadioButton = view.findViewById(selectedId);
+                        String selectedRoleTag = selectedRadioButton.getTag().toString();
+                        try {
+                            int newRoleId = Integer.parseInt(selectedRoleTag);
+
+                            // Check if the role is actually changing to avoid unnecessary updates
+                            if (user.getRole_id() == null || user.getRole_id() != newRoleId) {
+                                userRepository.updateUserRole(user.getId(), newRoleId, success -> runOnUiThread(() -> {
+                                    if (success) {
+                                        Toast.makeText(AdminUserManagementActivity.this, "Đã cập nhật vai trò cho " + user.getFullName(), Toast.LENGTH_SHORT).show();
+                                        loadUsers(); // Refresh the list to show updated role
+                                    } else {
+                                        Toast.makeText(AdminUserManagementActivity.this, "Cập nhật vai trò thất bại.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }));
+                            } else {
+                                Toast.makeText(AdminUserManagementActivity.this, "Vai trò không thay đổi.", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(AdminUserManagementActivity.this, "Lỗi: Không thể đọc ID vai trò.", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast.makeText(AdminUserManagementActivity.this, "Vui lòng chọn một vai trò.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Hủy", null)
+                .show();
     }
 
     @Override

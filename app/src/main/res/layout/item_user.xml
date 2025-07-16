@@ -104,7 +104,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_animation_24"
+                    android:src="@drawable/baseline_lock_24"
                     app:tint="@color/warning_yellow" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_animation_24"
+                    android:src="@drawable/baseline_update_24"
                     app:tint="@color/red_500" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_animation_24"
+                    android:src="@drawable/baseline_ads_click_24"
                     app:tint="@color/blue_500" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -194,12 +194,12 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_apartment_24"
+                    android:src="@drawable/baseline_groups_24"
                     app:tint="@color/black" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông tin"
+                    android:text="Info"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>

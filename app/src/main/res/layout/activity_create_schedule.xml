@@ -35,15 +35,16 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
+                <!-- Title -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#3498DB"
                     app:hintTextColor="#3498DB">
 
@@ -54,9 +55,9 @@
                         android:hint="Event Title"
                         android:textSize="16sp"
                         android:textColor="#2C3E50" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Start / End Time Buttons -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,18 +91,18 @@
                         app:cornerRadius="12dp"
                         app:strokeColor="#3498DB"
                         app:strokeWidth="1dp" />
-
                 </LinearLayout>
 
+                <!-- Location -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#3498DB"
                     app:hintTextColor="#3498DB">
 
@@ -112,18 +113,18 @@
                         android:hint="Location"
                         android:textSize="16sp"
                         android:textColor="#2C3E50" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Description -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
                     app:boxStrokeColor="#3498DB"
                     app:hintTextColor="#3498DB">
 
@@ -138,10 +139,9 @@
                         android:maxLines="5"
                         android:gravity="top"
                         android:inputType="textMultiLine" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
-
+                <!-- Save Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_save"
                     style="@style/Widget.MaterialComponents.Button"
@@ -155,9 +155,6 @@
                     app:cornerRadius="12dp" />
 
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
-
 </ScrollView>

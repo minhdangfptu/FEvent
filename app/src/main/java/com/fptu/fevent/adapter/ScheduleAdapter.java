@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.fptu.fevent.R;
 import com.fptu.fevent.model.Schedule;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
@@ -19,7 +22,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         void onItemClick(Schedule schedule);
     }
 
-        public interface OnScheduleClickListener {
+    public interface OnScheduleClickListener {
         void onEditClick(Schedule schedule);
         void onDeleteClick(Schedule schedule);
     }
@@ -27,14 +30,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     private List<Schedule> scheduleList;
     private final OnItemClickListener itemClickListener;
     private final OnScheduleClickListener actionListener;
+
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
 
+    // Constructor dùng cho danh sách chỉ có click
     public ScheduleAdapter(List<Schedule> scheduleList, OnItemClickListener listener) {
         this.scheduleList = scheduleList;
         this.itemClickListener = listener;
         this.actionListener = null;
     }
 
+    // Constructor đầy đủ: click item + edit/delete
     public ScheduleAdapter(List<Schedule> scheduleList,
                            OnScheduleClickListener actionListener,
                            OnItemClickListener itemListener) {
@@ -81,9 +87,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             btnDelete = itemView.findViewById(R.id.btn_delete_item);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(Schedule schedule) {
             tvTitle.setText(schedule.title);
             tvLocation.setText(schedule.location);
+
             if (tvDescription != null) {
                 tvDescription.setText(schedule.description);
             }
@@ -91,12 +99,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             String timeText = sdf.format(schedule.start_time) + " - " + sdf.format(schedule.end_time);
             tvTime.setText(timeText);
 
-            // Set up item click listener (for ScheduleListActivity)
+            // Click item để xem chi tiết
             if (itemClickListener != null) {
                 itemView.setOnClickListener(v -> itemClickListener.onItemClick(schedule));
             }
 
-            // Set up action buttons (for ScheduleActivity)
+            // Hiện/ẩn nút edit/delete nếu cần
             if (actionListener != null && btnEdit != null && btnDelete != null) {
                 btnEdit.setOnClickListener(v -> actionListener.onEditClick(schedule));
                 btnDelete.setOnClickListener(v -> actionListener.onDeleteClick(schedule));

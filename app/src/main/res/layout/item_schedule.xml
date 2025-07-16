@@ -14,6 +14,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Title -->
         <TextView
             android:id="@+id/tv_schedule_title"
             android:layout_width="match_parent"
@@ -24,6 +25,7 @@
             android:textColor="#2C3E50"
             android:layout_marginBottom="8dp" />
 
+        <!-- Time -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,9 +47,9 @@
                 android:text="01/01/2024 09:00 - 01/01/2024 10:00"
                 android:textSize="14sp"
                 android:textColor="#7F8C8D" />
-
         </LinearLayout>
 
+        <!-- Location -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,9 +71,9 @@
                 android:text="Location"
                 android:textSize="14sp"
                 android:textColor="#7F8C8D" />
-
         </LinearLayout>
 
+        <!-- Description -->
         <TextView
             android:id="@+id/tv_schedule_description"
             android:layout_width="match_parent"
@@ -83,6 +85,7 @@
             android:maxLines="2"
             android:ellipsize="end" />
 
+        <!-- Edit & Delete Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,9 +114,7 @@
                 android:textColor="#F44336"
                 android:minWidth="0dp"
                 app:cornerRadius="8dp" />
-
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

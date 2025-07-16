@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView; // FIX: Import TextView
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,9 +41,10 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.Feedba
         holder.itemView.setOnClickListener(v -> listener.onFeedbackClick(feedback));
     }
 
+    // ✅ Đã thêm phương thức cập nhật dữ liệu
     public void updateData(List<EventFeedback> newFeedbacks) {
-        this.feedbackList.clear();
-        this.feedbackList.addAll(newFeedbacks);
+        feedbackList.clear();
+        feedbackList.addAll(newFeedbacks);
         notifyDataSetChanged();
     }
 

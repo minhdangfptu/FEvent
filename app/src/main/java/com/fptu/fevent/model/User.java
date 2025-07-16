@@ -37,6 +37,7 @@ public class User {
     public String fullname;
     public Date date_of_birth;
     public String phone_number;
+    public String image;
     public String club;
     public String department;
     public String position;
@@ -58,12 +59,14 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
     @Ignore
-    public User(int id, String name, String email, String password, String fullname, Date date_of_birth, String phone_number, String club, String department, String position, Integer role_id, Integer team_id) {
+    public User(int id, String name, String email, String password, String fullname, String image, Date date_of_birth, String phone_number, String club, String department, String position, Integer role_id, Integer team_id) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.image = image;
         this.fullname = fullname;
         this.date_of_birth = date_of_birth;
         this.phone_number = phone_number;
@@ -97,5 +100,22 @@ public class User {
 
     public Date getDeactivated_until() {
         return deactivated_until;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public String getClub() {
+        return club;
+    }
+    public String getDepartment() {
+        return department;
+    }
+    public String getPosition() {
+        return position;
     }
 }

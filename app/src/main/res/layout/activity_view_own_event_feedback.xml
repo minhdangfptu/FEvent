@@ -77,7 +77,6 @@
                         android:textColor="#27AE60"
                         android:background="@drawable/rating_badge"
                         android:padding="8dp" />
-
                 </LinearLayout>
 
                 <!-- Comment Section -->
@@ -107,7 +106,6 @@
                         android:textColor="#2C3E50"
                         android:lineSpacingExtra="4dp"
                         android:padding="16dp" />
-
                 </androidx.cardview.widget.CardView>
 
                 <!-- Date Section -->
@@ -137,7 +135,6 @@
                         android:textSize="14sp"
                         android:textColor="#34495E"
                         android:textStyle="italic" />
-
                 </LinearLayout>
 
                 <!-- Back Button -->
@@ -154,9 +151,7 @@
                     app:strokeColor="#3498DB"
                     app:strokeWidth="2dp"
                     android:paddingHorizontal="32dp" />
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <!-- Additional Info -->
@@ -169,7 +164,5 @@
             android:gravity="center"
             android:layout_marginTop="24dp"
             android:textStyle="italic" />
-
     </LinearLayout>
-
 </ScrollView>

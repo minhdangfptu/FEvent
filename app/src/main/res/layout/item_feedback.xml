@@ -14,27 +14,30 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Rating & Timestamp -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="12dp">
 
+            <!-- Rating Text + Stars -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/tv_feedback_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="5.0"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#FF9800"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical" />
+                    android:drawablePadding="4dp" />
 
                 <RatingBar
                     android:id="@+id/rating_bar"
@@ -43,41 +46,42 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:numStars="5"
-                    android:rating="5"
                     android:isIndicator="true"
                     android:progressTint="#FF9800"
                     android:secondaryProgressTint="#E0E0E0" />
-
             </LinearLayout>
 
+            <!-- Timestamp -->
             <TextView
                 android:id="@+id/tv_feedback_timestamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="2 giờ trước"
                 android:textSize="12sp"
                 android:textColor="#757575"
-                android:gravity="center_vertical"
-                android:text="2 giờ trước" />
-
+                android:gravity="center_vertical" />
         </LinearLayout>
 
+        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#F0F0F0"
             android:layout_marginBottom="12dp" />
 
+        <!-- Comment -->
         <TextView
             android:id="@+id/tv_feedback_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Sự kiện rất tuyệt vời, tôi rất hài lòng với chất lượng tổ chức và nội dung chương trình."
             android:textSize="15sp"
             android:textColor="#212121"
             android:lineSpacingExtra="4dp"
             android:minHeight="40dp"
-            android:text="Sự kiện rất tuyệt vời, tôi rất hài lòng với chất lượng tổ chức và nội dung chương trình."
             android:layout_marginBottom="8dp" />
 
+        <!-- User & Helpful -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,21 +89,25 @@
             android:gravity="center_vertical"
             android:layout_marginTop="8dp">
 
+            <!-- Avatar Placeholder -->
             <View
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="#E3F2FD"
                 android:layout_marginEnd="8dp" />
 
+            <!-- Username -->
             <TextView
                 android:id="@+id/tv_feedback_user"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Nguyễn Văn A"
                 android:textSize="13sp"
                 android:textColor="#757575"
                 android:textStyle="italic" />
 
+            <!-- Helpful Section -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,14 +125,10 @@
                     android:id="@+id/tv_feedback_helpful"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Hữu ích"
                     android:textSize="12sp"
-                    android:textColor="#757575"
-                    android:text="Hữu ích" />
-
+                    android:textColor="#757575" />
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

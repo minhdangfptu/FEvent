@@ -36,7 +36,9 @@ public class EventInfoRepository {
         return eventInfoDao.getById(eventId);
     }
 
+
     public List<EventInfo> getAllEventsSync() {
         return eventInfoDao.getAll();
     }
+
 }

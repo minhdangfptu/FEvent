@@ -17,6 +17,7 @@ public class DeleteScheduleActivity extends AppCompatActivity {
             return;
         }
 
+
         int scheduleId = getIntent().getIntExtra("schedule_id", -1);
         ScheduleRepository repository = new ScheduleRepository(getApplication());
 
@@ -46,6 +47,22 @@ public class DeleteScheduleActivity extends AppCompatActivity {
                 }
             });
         }).start();
+
+        int scheduleId = getIntent().getIntExtra("schedule_id", -1);
+        ScheduleRepository repository = new ScheduleRepository(getApplication());
+        Schedule schedule = null;
+        for (Schedule s : repository.getAll()) {
+            if (s.id == scheduleId) {
+                schedule = s;
+                break;
+            }
+        }
+        if (schedule != null) {
+            repository.delete(schedule);
+            Toast.makeText(this, "Schedule deleted", Toast.LENGTH_SHORT).show();
+        }
+        finish();
+
     }
 
     private int getCurrentUserRoleId() {

@@ -4,14 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.fptu.fevent.R;
 import com.fptu.fevent.adapter.FeedbackAdapter;
 import com.fptu.fevent.model.EventFeedback;
 import com.fptu.fevent.repository.EventFeedbackRepository;
 import com.fptu.fevent.repository.UserRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,9 @@ public class EventFeedbackListActivity extends AppCompatActivity {
     private EventFeedbackRepository feedbackRepository;
     private UserRepository userRepository;
 
+    private int userId;
+    private int eventId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,18 +34,21 @@ public class EventFeedbackListActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycler_feedback);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         feedbackRepository = new EventFeedbackRepository(getApplication());
         userRepository = new UserRepository(getApplication());
 
-        int userId = getIntent().getIntExtra("userId", -1);
-        int eventId = getIntent().getIntExtra("eventId", -1);
+        userId = getIntent().getIntExtra("userId", -1);
+        eventId = getIntent().getIntExtra("eventId", -1);
 
         adapter = new FeedbackAdapter(feedbackList, feedback -> {
+            // Mặc định mở trang chi tiết đánh giá
             Intent intent = new Intent(this, EventFeedbackDetailActivity.class);
             intent.putExtra("feedbackId", feedback.id);
             intent.putExtra("currentUserId", userId);
             startActivity(intent);
         });
+
         recyclerView.setAdapter(adapter);
 
         checkPrivilegedRoleAndLoad(userId, eventId);
