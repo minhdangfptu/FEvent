@@ -69,4 +69,7 @@ public interface UserDao {
     List<User> searchUsers(String query);
     @Query("UPDATE User SET role_id = :newRoleId WHERE id = :userId")
     int updateUserRole(int userId, int newRoleId);
+
+    @Query("SELECT * FROM User WHERE team_id = :teamId")
+    List<User> getUsersByTeamId(int teamId);
 }

@@ -22,6 +22,7 @@ import com.fptu.fevent.ui.common.HomeActivity;
 import com.fptu.fevent.ui.common.DepartmentActivity;
 import com.fptu.fevent.ui.common.ScheduleActivity;
 import com.fptu.fevent.ui.common.TaskActivity;
+import com.fptu.fevent.ui.team.TeamListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavFragment extends Fragment {
@@ -62,7 +63,7 @@ public class BottomNavFragment extends Fragment {
             if (id == R.id.nav_home && !(context instanceof HomeActivity)) {
                 requireActivity().startActivity(new Intent(context, HomeActivity.class));
             } else if (id == R.id.nav_department && !(context instanceof DepartmentActivity)) {
-                requireActivity().startActivity(new Intent(context, DepartmentActivity.class));
+                requireActivity().startActivity(new Intent(context, TeamListActivity.class));
             } else if (id == R.id.nav_schedule && !(context instanceof ScheduleActivity) && !(context instanceof EventTimelineActivity)) {
                 requireActivity().startActivity(new Intent(context, ScheduleActivity.class));
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {

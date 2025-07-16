@@ -10,6 +10,7 @@ appcompat = "1.7.1"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+<<<<<<< Updated upstream
 maps = "18.2.0"
 coreKtx = "1.12.0"
 lifecycle = "2.7.0"
@@ -17,6 +18,17 @@ recyclerview = "1.3.2"
 swiperefreshlayout = "1.1.0"
 navigation = "2.7.7"
 room = "2.6.1"
+=======
+core-ktx = "1.13.1"
+recyclerview = "1.3.2"
+swiperefreshlayout = "1.2.0-alpha01"
+lifecycle-viewmodel = "2.8.0"
+lifecycle-livedata = "2.8.0"
+room-runtime = "2.6.1"
+room-compiler = "2.6.1"
+navigation-fragment = "2.7.7"
+navigation-ui = "2.7.7"
+>>>>>>> Stashed changes
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -28,6 +40,7 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+<<<<<<< Updated upstream
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
@@ -42,8 +55,23 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "maps" }
+=======
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel" }
+lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room-runtime" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room-compiler" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui" }
+>>>>>>> Stashed changes
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 
+<<<<<<< Updated upstream
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+=======
+
+>>>>>>> Stashed changes

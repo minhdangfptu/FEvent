@@ -1,5 +1,9 @@
 package com.fptu.fevent.ui.common;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

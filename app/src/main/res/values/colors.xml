@@ -49,4 +49,15 @@
     <color name="primary_500">#4C6FFF</color>
     <color name="primary_700">#3553F0</color>
 
+    <!-- 🎨 Màu cho các Activity mới của Duy -->
+    <color name="primary_color">@color/blue_500</color>
+    <color name="secondary_color">@color/gray_500</color>
+    <color name="background_color">@color/gray_100</color>
+    <color name="surface_color">@color/white</color>
+    <color name="text_primary">@color/gray_800</color>
+    <color name="text_secondary">@color/gray_600</color>
+    <color name="info_color">@color/blue_500</color>
+    <color name="warning_color">@color/orange_500</color>
+    <color name="danger_color">@color/red_500</color>
+    <color name="primary">#FF6200EE</color>
 </resources>

@@ -54,6 +54,12 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< Updated upstream
+=======
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_500"
+>>>>>>> Stashed changes
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="12dp"
                 android:textColor="@color/gray_600"

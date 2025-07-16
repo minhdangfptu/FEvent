@@ -65,6 +65,7 @@
 
         <!-- ADMIN ACTIVITIES -->
         <activity
+<<<<<<< Updated upstream
             android:name=".ui.admin.AdminUserManagementActivity"
             android:exported="false" />
 
@@ -115,6 +116,49 @@
             android:exported="false" />
         <activity
             android:name=".ui.common.CreateScheduleActivity"
+=======
+            android:name=".ui.team.CreateTeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.EditTeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.DeleteTeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.TeamListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.TeamDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.AssignUserToTeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.team.TeamMembersActivity"
+            android:exported="false" />
+
+        <!-- User Feedback Activities -->
+        <activity
+            android:name=".ui.feedback.AddUserFeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.feedback.ViewOwnUserFeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.feedback.UserFeedbackListActivity"
+            android:exported="false" />
+
+        <!-- Event Info Management Activities -->
+        <activity
+            android:name=".ui.eventinfo.AddEventInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.eventinfo.EditEventInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+>>>>>>> Stashed changes
             android:exported="true" />
         <activity
             android:name=".ui.common.DeleteScheduleActivity"
