@@ -63,10 +63,11 @@ dependencies {
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     // Cloudinary
-    implementation("com.cloudinary:cloudinary-android:3.1.0")
+    implementation ("com.cloudinary:cloudinary-android:2.3.1")
+    //Email
     implementation("com.sun.mail:android-mail:1.6.7")
-    // Cloudinary
-    implementation("com.cloudinary:cloudinary-android:3.1.0")
+
+
     // Apache POI
     implementation("org.apache.poi:poi:5.4.1")
     implementation("org.apache.poi:poi-ooxml:5.4.1")

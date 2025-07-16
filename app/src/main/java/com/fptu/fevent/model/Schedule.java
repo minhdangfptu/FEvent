@@ -28,4 +28,14 @@ public class Schedule {
     public Date end_time;
     public String location;
     public String description;
+
+    public Schedule( String title, Date start_time, Date end_time, String location, String description, Integer team_id) {
+        this.id = id;
+        this.team_id = team_id;
+        this.title = title;
+        this.start_time = start_time;
+        this.end_time = end_time;
+        this.location = location;
+        this.description = description;
+    }
 }
