@@ -40,7 +40,6 @@ public class EventInfoActivity extends AppCompatActivity implements EventInfoAda
     @Override
     public void onItemClick(EventInfo event) {
         Intent intent = new Intent(this, EventInfoDetailActivity.class);
-        EventInfoDetailActivity.start(this, event.id);
         intent.putExtra("eventId", event.id);
         startActivity(intent);
     }

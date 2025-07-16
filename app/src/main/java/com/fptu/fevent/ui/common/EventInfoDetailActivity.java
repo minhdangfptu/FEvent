@@ -1,6 +1,5 @@
 package com.fptu.fevent.ui.common;
 
-<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -126,7 +125,7 @@ public class EventInfoDetailActivity extends AppCompatActivity {
         return 2;
     }
 
-    public static void start(Context context, int eventId) {
+    public void start(Context context, int eventId) {
         Intent intent = new Intent(context, EventInfoDetailActivity.class);
         intent.putExtra("eventId", eventId);
         context.startActivity(intent);

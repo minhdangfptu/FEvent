@@ -53,7 +53,7 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.swiperefreshlayout)
 
-    implementation(libs.room.runtime)
+
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
@@ -66,7 +66,9 @@ dependencies {
     implementation ("com.cloudinary:cloudinary-android:2.3.1")
     //Email
     implementation("com.sun.mail:android-mail:1.6.7")
-
+    // Room
+    implementation(libs.room.runtime)
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 
     // Apache POI
     implementation("org.apache.poi:poi:5.4.1")

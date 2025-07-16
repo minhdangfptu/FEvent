@@ -20,6 +20,7 @@ import com.fptu.fevent.repository.ScheduleRepository;
 import com.fptu.fevent.service.NotificationService;
 import com.fptu.fevent.service.LocationApiClient;
 import com.fptu.fevent.service.LocationResult;
+import com.google.android.material.button.MaterialButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

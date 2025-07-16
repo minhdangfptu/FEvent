@@ -1,6 +1,5 @@
 package com.fptu.fevent.ui.common;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.widget.Button;
@@ -15,6 +14,9 @@ import com.fptu.fevent.model.User;
 import com.fptu.fevent.repository.EventInfoRepository;
 import com.fptu.fevent.repository.TaskRepository;
 import com.fptu.fevent.repository.UserRepository;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -155,11 +157,14 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf);
 
-                document.add(new Paragraph("Event Data Report").setBold().setFontSize(16));
+                // Font in đậm
+                PdfFont boldFont = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+
+                document.add(new Paragraph("Event Data Report").setFont(boldFont).setFontSize(16));
                 document.add(new Paragraph(" "));
 
                 // Events
-                document.add(new Paragraph("EVENTS").setBold().setFontSize(14));
+                document.add(new Paragraph("EVENTS").setFont(boldFont).setFontSize(14));
                 List<EventInfo> events = eventInfoRepository.getAllEventsSync();
                 for (EventInfo event : events) {
                     document.add(new Paragraph(String.format("ID: %d", event.id)));
@@ -174,7 +179,7 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 document.add(new Paragraph(" "));
 
                 // Users
-                document.add(new Paragraph("USERS").setBold().setFontSize(14));
+                document.add(new Paragraph("USERS").setFont(boldFont).setFontSize(14));
                 List<User> users = userRepository.getAllUsersSync();
                 for (User user : users) {
                     document.add(new Paragraph(String.format("ID: %d - Name: %s - Email: %s - Role: %d",
@@ -184,7 +189,7 @@ public class ExportEventDataActivity extends AppCompatActivity {
                 document.add(new Paragraph(" "));
 
                 // Tasks
-                document.add(new Paragraph("TASKS").setBold().setFontSize(14));
+                document.add(new Paragraph("TASKS").setFont(boldFont).setFontSize(14));
                 List<Task> tasks = taskRepository.getAllTasksSync();
                 for (Task task : tasks) {
                     document.add(new Paragraph(String.format("ID: %d - Title: %s", task.id, task.title)));

@@ -46,4 +46,7 @@ public class TeamRepository {
     public List<Team> getAllTeams() {
         return teamDao.getAll();
     }
+    public Team getTeamByIdSync(Integer teamId) {
+        return teamDao.getById(teamId);
+    }
 }

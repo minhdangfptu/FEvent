@@ -38,4 +38,7 @@ public class Schedule {
         this.location = location;
         this.description = description;
     }
+    @Ignore
+    public Schedule() {
+    }
 }

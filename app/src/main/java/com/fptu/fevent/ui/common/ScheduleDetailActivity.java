@@ -61,7 +61,7 @@ public class ScheduleDetailActivity extends AppCompatActivity {
         tvTime = findViewById(R.id.tv_time);
         tvLocation = findViewById(R.id.tv_location);
         tvDescription = findViewById(R.id.tv_description);
-        tvScheduleType = findViewById(R.id.tv_schedule_type);
+//        tvScheduleType = findViewById(R.id.tv_schedule_type);
         btnBack = findViewById(R.id.btnBack);
     }
 
