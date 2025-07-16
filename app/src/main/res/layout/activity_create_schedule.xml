@@ -12,6 +12,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
             android:gravity="center"
             android:layout_marginBottom="32dp" />
 
+        <!-- CardView container -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,11 +95,11 @@
                         app:strokeWidth="1dp" />
                 </LinearLayout>
 
-                <!-- Location -->
+                <!-- Location Field (for selected lat/lng or name) -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusTopStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
@@ -106,14 +108,26 @@
                     app:boxStrokeColor="#3498DB"
                     app:hintTextColor="#3498DB">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:id="@+id/et_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Location"
+                        android:hint="@string/location_hint"
                         android:textSize="16sp"
-                        android:textColor="#2C3E50" />
+                        android:textColor="#2C3E50"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Location Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_choose_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_location"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#3498DB"
+                    android:layout_marginBottom="16dp"
+                    app:cornerRadius="12dp" />
 
                 <!-- Description -->
                 <com.google.android.material.textfield.TextInputLayout

@@ -2,4 +2,12 @@
     <string name="app_name">FEvent</string>
     <string name="navigation_drawer_open">Mở menu</string>
     <string name="navigation_drawer_close">Đóng menu</string>
+    <string name="create_schedule">Create Schedule</string>
+    <string name="event_title">Event Title</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="location_hint">Địa điểm</string>
+    <string name="choose_location">Chọn vị trí từ bản đồ</string>
+    <string name="description_hint">Description</string>
+    <string name="save_schedule">Save Schedule</string>
 </resources>

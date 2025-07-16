@@ -1,19 +1,24 @@
 plugins {
     alias(libs.plugins.android.application)
+
+    alias(libs.plugins.secrets)
 }
 
 android {
     namespace = "com.fptu.fevent"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.fptu.fevent"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
@@ -40,53 +45,42 @@ android {
 }
 
 dependencies {
-    // AndroidX and Jetpack
-    implementation(libs.core.ktx)
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.recyclerview)
+    implementation(libs.swiperefreshlayout)
 
-    // ViewModel & LiveData
-    implementation(libs.lifecycle.viewmodel)
-    implementation(libs.lifecycle.livedata)
-
-    // Room for Java
     implementation(libs.room.runtime)
-    annotationProcessor(libs.room.compiler)
 
-    // Navigation Component
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
-    // MPAndroidChart
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
-    // Cloudinary
-    implementation("com.cloudinary:cloudinary-android:2.4.0")
-
-    // Glide (image loading)
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
-    // JavaMail API
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    // Cloudinary
+    implementation("com.cloudinary:cloudinary-android:3.1.0")
     implementation("com.sun.mail:android-mail:1.6.7")
-    implementation("com.sun.mail:android-activation:1.6.7")
+    // Cloudinary
+    implementation("com.cloudinary:cloudinary-android:3.1.0")
+    // Apache POI
+    implementation("org.apache.poi:poi:5.4.1")
+    implementation("org.apache.poi:poi-ooxml:5.4.1")
+    // iText
+    implementation("com.itextpdf:itext7-core:9.2.0")
 
-    // Apache POI for Excel
-    implementation("org.apache.poi:poi:5.2.3")
-    implementation("org.apache.poi:poi-ooxml:5.2.3")
 
-    // iText PDF
-    implementation("com.itextpdf:itext7-core:7.2.5")
 
-    // ActivityResultLauncher support (Camera/Gallery, etc.)
-    implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.0")
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
 
-    // Testing
+    implementation(libs.maps)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
