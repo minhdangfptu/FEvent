@@ -59,13 +59,12 @@ public class BottomNavFragment extends Fragment {
 
         nav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
             if (id == R.id.nav_home && !(context instanceof HomeActivity)) {
                 requireActivity().startActivity(new Intent(context, HomeActivity.class));
-            } else if (id == R.id.nav_department && !(context instanceof DepartmentActivity)) {
+            } else if (id == R.id.nav_department && !(context instanceof TeamListActivity))
                 requireActivity().startActivity(new Intent(context, TeamListActivity.class));
             } else if (id == R.id.nav_schedule && !(context instanceof ScheduleActivity) && !(context instanceof EventTimelineActivity)) {
-                requireActivity().startActivity(new Intent(context, ScheduleActivity.class));
+                requireActivity().startActivity(new Intent(context, ScheduleActivity.class));   
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {
                 requireActivity().startActivity(new Intent(context, TaskActivity.class));
 //            } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
