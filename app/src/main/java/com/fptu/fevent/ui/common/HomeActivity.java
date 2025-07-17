@@ -25,6 +25,7 @@ import com.fptu.fevent.ui.admin.AdminUserManagementActivity;
 import com.fptu.fevent.ui.auth.LoginActivity;
 import com.fptu.fevent.ui.component.DrawerController;
 import com.fptu.fevent.ui.component.TopMenuFragment;
+import com.fptu.fevent.ui.team.TeamListActivity;
 import com.fptu.fevent.ui.user.PrivacyManagementActivity;
 import com.fptu.fevent.ui.user.UserManagementActivity;
 import com.fptu.fevent.util.NotificationPermissionHelper;
@@ -257,7 +258,7 @@ public class HomeActivity extends AppCompatActivity implements DrawerController 
         NotificationPermissionHelper.handlePermissionResult(this, requestCode, permissions, grantResults);
     }
     private void navigateToTeamManagement() {
-        Intent intent = new Intent(HomeActivity.this, DepartmentActivity.class);
+        Intent intent = new Intent(HomeActivity.this, TeamListActivity.class);
         startActivity(intent);
     }
 

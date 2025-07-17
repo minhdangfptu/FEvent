@@ -1,7 +1,9 @@
 package com.fptu.fevent.model;
 
 import androidx.room.*;
+
 import com.fptu.fevent.util.DateConverter;
+
 import java.util.Date;
 
 @Entity(
@@ -29,24 +31,18 @@ public class Schedule {
     public String location;
     public String description;
 
-    public Schedule( String title, Date start_time, Date end_time, String location, String description, Integer team_id) {
-<<<<<<< Updated upstream
+    public Schedule(String title, Date start_time, Date end_time, String location, String description, Integer team_id) {
         this.id = id;
         this.team_id = team_id;
-=======
-
->>>>>>> Stashed changes
         this.title = title;
         this.start_time = start_time;
         this.end_time = end_time;
         this.location = location;
         this.description = description;
-<<<<<<< Updated upstream
     }
+
     @Ignore
     public Schedule() {
-=======
         this.team_id = team_id;
->>>>>>> Stashed changes
     }
 }
