@@ -45,6 +45,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/gray_800" />
+            <ImageView
+                android:id="@+id/btn_manage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/baseline_ads_click_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="2dp" />
 
         </LinearLayout>
 

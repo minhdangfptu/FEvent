@@ -63,8 +63,8 @@ public class BottomNavFragment extends Fragment {
                 requireActivity().startActivity(new Intent(context, HomeActivity.class));
             } else if (id == R.id.nav_department && !(context instanceof DepartmentActivity)) {
                 requireActivity().startActivity(new Intent(context, DepartmentActivity.class));
-            } else if (id == R.id.nav_schedule && !(context instanceof ScheduleActivity) && !(context instanceof EventTimelineActivity)) {
-                requireActivity().startActivity(new Intent(context, ScheduleActivity.class));
+            } else if (id == R.id.nav_schedule && !(context instanceof EventTimelineActivity) && !(context instanceof EventTimelineActivity)) {
+                requireActivity().startActivity(new Intent(context, EventTimelineActivity.class));
             } else if (id == R.id.nav_task && !(context instanceof TaskActivity)) {
                 requireActivity().startActivity(new Intent(context, TaskActivity.class));
 //            } else if (id == R.id.nav_info && !(context instanceof EventInfoActivity)) {
